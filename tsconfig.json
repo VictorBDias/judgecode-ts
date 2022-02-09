@@ -18,9 +18,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "typeRoots": ["./src/@types", "node_modules/@types"],
+    "types": ["node", "jest"],
+    "paths": {
+        "@modules/*": ["modules/*"],
+        "@config/*": ["config/*"],
+        "@shared/*": ["shared/*"],
+        "@database/*": ["database/*"],
+        "@layers/*": ["layers/*"],
+        "@tests/*": ["tests/*"]
+      }
+    
   },
   "include": [
     "src"
   ]
 }
+
+
