@@ -1,5 +1,8 @@
 import React, { createContext, useContext } from 'react';
 
+// CUSTOM IMPORTS
+import { SideNavigation } from '../components/templates';
+
 interface SignedContextData {}
 
 const SignedContext = createContext<SignedContextData>({} as SignedContextData);
@@ -8,7 +11,9 @@ const SignedProvider: React.FC = ({ children }) => (
   <SignedContext.Provider
     value={{ }}
   >
-    {children}
+    <SideNavigation>
+      {children}
+    </SideNavigation>
   </SignedContext.Provider>
 );
 

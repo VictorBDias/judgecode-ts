@@ -14,7 +14,7 @@ export const SignedRoutes: React.FC = () =>
   (
     <SignedProvider>
       <Routes>
-        <Route path="/" element={<FormList><h1>teste</h1></FormList>} />
+        <Route path="/" element={<FormList />} />
       </Routes>
     </SignedProvider>
   );
