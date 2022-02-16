@@ -1,65 +1,178 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+// import { useHistory } from 'react-router-dom';
 
-// import { SideNavigation } from '@shared/components/templates';
-
+// CUSTOM IMPORTS
+import { Box, Button } from '@chakra-ui/react';
 import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from '@chakra-ui/react';
+  Typography,
+  // Icon,
+  // Button,
+} from '../../../../shared/components/atoms';
+import { Container } from './formlist.styles';
+// import Card from '../../../../../shared/components/atoms/Card';
+import { ScrollableList } from '../../../../shared/components/molecules';
+import { ScrollableListProps } from '../../../../shared/components/molecules/ScrollableList/scrollableList.interfaces';
 
-import { Teste } from './interfaces/formList.interface';
+const mockup = [
+  {
+    id: 1,
+    title: 'Form 1',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 2,
+    title: 'Form 2',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 3,
+    title: 'Form 3',
+    description: 'Eng. Comp 2022',
+  },
+  {
+    id: 4,
+    title: 'Form 4',
+    description: 'Ads',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor a la simet lorem ipsim',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 1,
+    title: 'Form 1',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 2,
+    title: 'Form 2',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 3,
+    title: 'Form 3',
+    description: 'Eng. Comp 2022',
+  },
+  {
+    id: 4,
+    title: 'Form 4',
+    description: 'Ads',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor a la simet lorem ipsim',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 1,
+    title: 'Form 1',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 2,
+    title: 'Form 2',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 3,
+    title: 'Form 3',
+    description: 'Eng. Comp 2022',
+  },
+  {
+    id: 4,
+    title: 'Form 4',
+    description: 'Ads',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor a la simet lorem ipsim',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 1,
+    title: 'Form 1',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 2,
+    title: 'Form 2',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 3,
+    title: 'Form 3',
+    description: 'Eng. Comp 2022',
+  },
+  {
+    id: 4,
+    title: 'Form 4',
+    description: 'Ads',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor a la simet lorem ipsim',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 1,
+    title: 'Form 1',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 2,
+    title: 'Form 2',
+    description: 'Eng. Software 2021',
+  },
+  {
+    id: 3,
+    title: 'Form 3',
+    description: 'Eng. Comp 2022',
+  },
+  {
+    id: 4,
+    title: 'Form 4',
+    description: 'Ads',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor a la simet lorem ipsim',
+    description: 'Eng. Software 2021',
+  },
+];
 
-function FormList() {
-  // hooks
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<Teste>();
+type MockType ={
+  id: number,
+  title: string,
+  description: string,
+}
+const FormList = () => {
+// STATES
+// const history = useHistory();
 
-  // functions
-  function onSubmit(data:any) {
-    console.log(data);
-  }
+  // FUNCTIONS
+  const renderCell = (mock : any) => (
+    <Box height={140} width={300} margin={8}>
+      <Typography>{mock.title}</Typography>
+      <Typography>{mock.description}</Typography>
+    </Box>
+  );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl>
-        <FormLabel htmlFor="name">label</FormLabel>
-        <Input
-          id="name"
-          placeholder="placeholder"
-          {...register('name', {
-            required: 'This is required',
-            minLength: { value: 4, message: 'Minimum length should be 4' },
-          })}
-        />
-        <FormErrorMessage>
-          {errors.name && errors.name.message}
-        </FormErrorMessage>
-      </FormControl>
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
-    // <FormControl>
-    //   {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
-    //   <Input
-    //     name={name}
-    //     placeholder={placeholder}
-    //     focusBorderColor="secondary"
-    //     bgColor="gray.200"
-    //     variant="filled"
-    //     isRequired
-    //     {...rest}
-    //   />
-    // </FormControl>
+    <Container>
+      <Typography variant="title">{mockup[0].title}</Typography>
+      <Typography variant="title" style={{ marginBottom: 16 }}>
+        Formulários
+      </Typography>
 
+      <Button colorScheme="blue"><Typography variant="whiteSubTitle" onClick={() => console.log('kk')}>Criar formulário</Typography></Button>
+
+      <ScrollableList
+        data={mockup}
+        renderCell={renderCell}
+        size={600}
+      />
+    </Container>
   );
-}
-
+};
 export { FormList };

@@ -20,6 +20,8 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "no-unused-vars": "off",
+      "consistent-return": "off",
       "implicit-arrow-linebreak": "off",
       "no-shadow": "off",
       "react/jsx-props-no-spreading": "off",
