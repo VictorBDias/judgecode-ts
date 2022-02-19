@@ -2,14 +2,14 @@ import React from 'react';
 // import { useHistory } from 'react-router-dom';
 
 // CUSTOM IMPORTS
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import {
   Typography,
+  Card,
   // Icon,
-  // Button,
+  Button,
 } from '../../../../shared/components/atoms';
 import { Container } from './formlist.styles';
-// import Card from '../../../../../shared/components/atoms/Card';
 import { ScrollableList } from '../../../../shared/components/molecules';
 import { ScrollableListProps } from '../../../../shared/components/molecules/ScrollableList/scrollableList.interfaces';
 
@@ -152,10 +152,10 @@ const FormList = () => {
 
   // FUNCTIONS
   const renderCell = (mock : any) => (
-    <Box height={140} width={300} margin={8}>
+    <Card margin={8}>
       <Typography>{mock.title}</Typography>
       <Typography>{mock.description}</Typography>
-    </Box>
+    </Card>
   );
 
   return (
@@ -165,12 +165,13 @@ const FormList = () => {
         Formulários
       </Typography>
 
-      <Button colorScheme="blue"><Typography variant="whiteSubTitle" onClick={() => console.log('kk')}>Criar formulário</Typography></Button>
+      <Button color="lightSecondary" onClick={() => {}} style={{ marginBottom: 8 }}>Criar formulário</Button>
 
       <ScrollableList
+        style={{ marginLeft: -4, marginBottom: 40 }}
         data={mockup}
         renderCell={renderCell}
-        size={600}
+        size={800}
       />
     </Container>
   );

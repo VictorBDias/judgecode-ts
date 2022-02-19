@@ -84,14 +84,12 @@ const NavItem = ({ children, ...rest }: NavItemProps) => (
   <Link href="https://chakra-templates.dev/navigation/sidebar" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
     <Flex
       align="center"
-      p="4"
-      mx="4"
-      borderRadius="lg"
+      p="6"
       role="group"
       cursor="pointer"
       color="white"
       _hover={{
-        bg: 'secondary',
+        bg: 'primary',
       }}
       {...rest}
     >
