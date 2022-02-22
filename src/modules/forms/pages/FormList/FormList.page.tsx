@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
 import { Box } from '@chakra-ui/react';
@@ -11,7 +11,6 @@ import {
 } from '../../../../shared/components/atoms';
 import { Container } from './formlist.styles';
 import { ScrollableList } from '../../../../shared/components/molecules';
-import { ScrollableListProps } from '../../../../shared/components/molecules/ScrollableList/scrollableList.interfaces';
 
 const mockup = [
   {
@@ -148,7 +147,7 @@ type MockType ={
 }
 const FormList = () => {
 // STATES
-// const history = useHistory();
+  const navigate = useNavigate();
 
   // FUNCTIONS
   const renderCell = (mock : any) => (
@@ -160,12 +159,11 @@ const FormList = () => {
 
   return (
     <Container>
-      <Typography variant="title">{mockup[0].title}</Typography>
-      <Typography variant="title" style={{ marginBottom: 16 }}>
+      <Typography variant="title" style={{ marginBottom: 16, marginTop: 40 }}>
         Formulários
       </Typography>
 
-      <Button color="lightSecondary" onClick={() => {}} style={{ marginBottom: 8 }}>Criar formulário</Button>
+      <Button color="lightSecondary" onClick={() => navigate('/forms/create')} style={{ marginBottom: 8 }}>Criar formulário</Button>
 
       <ScrollableList
         style={{ marginLeft: -4, marginBottom: 40 }}
