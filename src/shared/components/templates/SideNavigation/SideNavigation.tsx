@@ -1,10 +1,10 @@
 import React, { ReactNode, ReactText } from 'react';
 import {
+  IconButton,
   Box,
   CloseButton,
   Flex,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -12,17 +12,21 @@ import {
   BoxProps,
   FlexProps,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import {
+  FiMenu,
+} from 'react-icons/fi';
+import { Typography } from '../../atoms';
 
-interface LinkItemProps {
-  name: string;
+interface NavItemProps extends FlexProps {
+  children: ReactText;
 }
-const LinkItems: Array<LinkItemProps> = [
-  { name: 'Meus formulários' },
-  { name: 'Banco de questões' },
-];
+interface MobileProps extends FlexProps {
+  onOpen: () => void;
+}
 
 function SideNavigation({ children }: { children: ReactNode }) {
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg="background">
       <SidebarContent
@@ -42,6 +46,9 @@ function SideNavigation({ children }: { children: ReactNode }) {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
+
+      {/* mobilenav */}
+      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -53,49 +60,93 @@ interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => (
-  <Box
-    bg="nav"
-    borderRight="1px"
-    borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-    w={{ base: 'full', md: 60 }}
-    pos="fixed"
-    h="full"
-    {...rest}
-  >
-    <Flex marginTop="24px" h="20" alignItems="center" mx="8" justifyContent="space-between">
-      <Text fontSize="3xl" fontFamily="monospace" fontWeight="bold" color="white">
-        JudgeCode
-      </Text>
-      <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-    </Flex>
-    {LinkItems.map((link) => (
-      <NavItem key={link.name}>
-        {link.name}
-      </NavItem>
-    ))}
-  </Box>
-);
-
-interface NavItemProps extends FlexProps {
-  children: ReactText;
-}
-const NavItem = ({ children, ...rest }: NavItemProps) => (
-  <Link href="https://chakra-templates.dev/navigation/sidebar" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-    <Flex
-      align="center"
-      p="6"
-      role="group"
-      cursor="pointer"
-      color="white"
-      _hover={{
-        bg: 'primary',
-      }}
+const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const navigate = useNavigate();
+  return (
+    <Box
+      bg="nav"
+      borderRight="1px"
+      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      w={{ base: 'full', md: 60 }}
+      pos="fixed"
+      h="full"
       {...rest}
     >
-      {children}
-    </Flex>
-  </Link>
+      <Flex marginTop="24px" h="20" alignItems="center" mx="8" justifyContent="space-between">
+        <Text fontSize="3xl" fontFamily="monospace" fontWeight="bold" color="white">
+          JudgeCode
+        </Text>
+        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+      </Flex>
+      <div
+        onClick={() => navigate('/forms')}
+        style={{ textDecoration: 'none' }}
+        onKeyPress={() => navigate('/forms')}
+        role="button"
+        tabIndex={0}
+      >
+        <Flex
+          align="center"
+          p="6"
+          role="group"
+          cursor="pointer"
+          color="white"
+          _hover={{
+            bg: 'primary',
+          }}
+          {...rest}
+        >
+          <Typography>Formulários</Typography>
+        </Flex>
+      </div>
+
+      <div
+        onClick={() => navigate('/question-bank')}
+        style={{ textDecoration: 'none' }}
+        onKeyPress={() => navigate('/question-bank')}
+        role="button"
+        tabIndex={0}
+      >
+        <Flex
+          align="center"
+          p="6"
+          role="group"
+          cursor="pointer"
+          color="white"
+          _hover={{
+            bg: 'primary',
+          }}
+          {...rest}
+        >
+          <Typography>Banco de questões</Typography>
+        </Flex>
+      </div>
+    </Box>
+  );
+};
+
+const MobileNav = ({ onOpen, ...rest }: MobileProps) => (
+  <Flex
+    ml={{ base: 0, md: 60 }}
+    px={{ base: 4, md: 24 }}
+    height="20"
+    alignItems="center"
+    bg="nav"
+    justifyContent="flex-start"
+    {...rest}
+  >
+    <IconButton
+      variant="unstyled"
+      color="white"
+      onClick={onOpen}
+      aria-label="open menu"
+      icon={<FiMenu />}
+    />
+
+    <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" color="white" marginLeft={4}>
+      JudgeCode
+    </Text>
+  </Flex>
 );
 
 export { SideNavigation };

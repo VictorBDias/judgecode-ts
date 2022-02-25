@@ -20,18 +20,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
-    "baseUrl": "./src",
-    "types": ["node", "jest"],
-    "paths": {
-        "@modules/*": ["modules/*"],
-        "@config/*": ["config/*"],
-        "@shared/*": ["shared/*"],
-        "@database/*": ["database/*"],
-        "@layers/*": ["layers/*"],
-        "@tests/*": ["tests/*"]
-      }
-    
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@shared/*": ["./src/shared/*"],
+    // }
   },
+  
   "include": [
     "src"
   ]

@@ -1,16 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import {
-  Button,
-} from '@chakra-ui/react';
-
+//* CUSTOM IMPORTS
 import { FormInput } from '../../../../shared/components/atoms';
+import { Tabs } from '../../../../shared/components/molecules';
+import { GeneralTab } from './components/GeneralTab/GeneralTab';
 
 // import { Teste } from './interfaces/formList.interface';\type FormInputs = {
   type FieldValues = {
     name: string
   }
+
+const tabs = ['Geral', 'Questões', 'Visualizar'];
 
 const CreateForm = () => {
   const {
@@ -21,14 +22,9 @@ const CreateForm = () => {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-
-      <FormInput {...register('name', { required: true })} placeholder="name" label="label" />
-
-      <Button mt={4} colorScheme="teal" type="submit">
-        Submit
-      </Button>
-    </form>
+    <Tabs tabs={tabs} variant="line">
+      <GeneralTab />
+    </Tabs>
   );
 };
 

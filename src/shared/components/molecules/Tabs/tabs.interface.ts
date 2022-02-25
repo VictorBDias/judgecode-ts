@@ -10,6 +10,6 @@ type TabsVariants =
 
 export interface TabsProps {
   children: ReactNode,
-  tabs: Array<object>,
-  variant: TabsVariants
+  tabs: Array<string>,
+  variant?: TabsVariants
 }
