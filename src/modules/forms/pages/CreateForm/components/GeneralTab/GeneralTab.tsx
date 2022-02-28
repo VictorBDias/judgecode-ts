@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, FormInput } from '../../../../../../shared/components/atoms';
+import { Button, FormInput, NumericFormInput } from '../../../../../../shared/components/atoms';
+import { FooterButtons } from '../../../../../../shared/components/molecules';
 
-// import { Teste } from './interfaces/formList.interface';\type FormInputs = {
   type FieldValues = {
     title: string,
     attempts: number,
@@ -18,14 +18,12 @@ const GeneralTab = () => {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
 
-      <FormInput {...register('title', { required: true })} placeholder="Adicione um nome para o formulário" label="Nome do formulário" />
-      <FormInput {...register('attempts', { required: true })} placeholder="Adicione um nome para o formulário" label="Nome do formulário" />
+      <FormInput style={{ marginBottom: 16, maxWidth: 320 }} {...register('title', { required: true })} placeholder="Adicione um nome para o formulário" label="Nome do formulário" />
+      <NumericFormInput {...register('attempts', { required: true })} placeholder="Selecione o número de tentativas" label="Número de tentativas" />
 
-      <Button mt={4} colorScheme="teal" type="submit">
-        Submit
-      </Button>
+      <FooterButtons type="submit" onCancel={() => console.log('cancel')} />
     </form>
   );
 };

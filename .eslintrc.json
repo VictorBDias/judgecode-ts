@@ -17,9 +17,14 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks",
+        "jsx-a11y",
+        "import",
+        "prettier"
     ],
     "rules": {
+      "max-len": "off",
       "no-undef": "off",
       "no-console": "off",
       "no-unused-vars": "off",
