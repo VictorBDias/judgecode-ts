@@ -29,6 +29,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "framer-motion": "^5",
+    "polished": "^4.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.0",

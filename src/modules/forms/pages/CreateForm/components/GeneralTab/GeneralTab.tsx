@@ -23,7 +23,6 @@ const GeneralTab = () => {
       <FormInput style={{ marginBottom: 16, maxWidth: 320 }} {...register('title', { required: true })} placeholder="Adicione um nome para o formulário" label="Nome do formulário" />
       <NumericFormInput {...register('attempts', { required: true })} placeholder="Selecione o número de tentativas" label="Número de tentativas" />
 
-      <FooterButtons type="submit" onCancel={() => console.log('cancel')} />
     </form>
   );
 };

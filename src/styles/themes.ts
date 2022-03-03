@@ -5,6 +5,7 @@ export const theme = extendTheme({
     primary: '#242424',
     secondary: '#D172D8',
     lightSecondary: '#E190F0',
+    error: '#cd3248',
     background: '#F8F8F8',
     white: '#fff',
     nav: '#444343',
@@ -18,6 +19,7 @@ export const theme = extendTheme({
     200: '#B3B5C6',
     100: '#D1D2DC',
     50: '#EEEEF2',
+    null: null,
   },
   fonts: {
     heading: 'Roboto',

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 //* CUSTOM IMPORTS
 import { FormInput } from '../../../../shared/components/atoms';
-import { Tabs } from '../../../../shared/components/molecules';
+import { Tabs, FooterButtons } from '../../../../shared/components/molecules';
 import { GeneralTab } from './components/GeneralTab/GeneralTab';
 
 // import { Teste } from './interfaces/formList.interface';\type FormInputs = {
@@ -22,9 +22,12 @@ const CreateForm = () => {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Tabs tabs={tabs} variant="line">
-      <GeneralTab />
-    </Tabs>
+    <>
+      <Tabs tabs={tabs} variant="line">
+        <GeneralTab />
+      </Tabs>
+      <FooterButtons formId="form-form" type="submit" onCancel={() => console.log('cancel')} />
+    </>
   );
 };
 

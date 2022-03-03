@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface FooterButtonProps {
   onCancel: any,
   isDisable?: boolean,
-  formId?: number,
+  formId?: number | string,
   isLoading?: boolean,
   type?: string,
   disableCancelButton?: boolean,
