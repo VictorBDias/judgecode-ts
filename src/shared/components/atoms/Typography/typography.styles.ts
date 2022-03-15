@@ -51,16 +51,16 @@ export const Paragraph = styled.p<TypographyProps>`
         `;
       case 'secondary':
         return css`
-           font-size: 16px;
-           color: #E190F0;
-           font-weight: regular;
+          font-size: 16px;
+          color: #e190f0;
+          font-weight: regular;
         `;
       case 'error':
         return css`
-                  font-size: 16px;
-                  color: #cd3248;
-                  font-weight: regular;
-                `;
+          font-size: 16px;
+          color: #cd3248;
+          font-weight: regular;
+        `;
       case 'regular':
         return css`
           font-size: 16px;

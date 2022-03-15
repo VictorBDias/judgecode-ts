@@ -7,15 +7,18 @@ import { Tabs, FooterButtons } from '../../../../shared/components/molecules';
 import { GeneralTab } from './components/GeneralTab/GeneralTab';
 
 // import { Teste } from './interfaces/formList.interface';\type FormInputs = {
-  type FieldValues = {
-    name: string
-  }
+type FieldValues = {
+  name: string;
+};
 
 const tabs = ['Geral', 'Questões', 'Visualizar'];
 
 const CreateForm = () => {
   const {
-    control, handleSubmit, register, formState: { errors },
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
   } = useForm<FieldValues>();
 
   // FUNCTIONS
@@ -26,7 +29,11 @@ const CreateForm = () => {
       <Tabs tabs={tabs} variant="line">
         <GeneralTab />
       </Tabs>
-      <FooterButtons formId="form-form" type="submit" onCancel={() => console.log('cancel')} />
+      <FooterButtons
+        formId="form-form"
+        type="submit"
+        onCancel={() => console.log('cancel')}
+      />
     </>
   );
 };

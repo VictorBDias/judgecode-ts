@@ -9,7 +9,11 @@ import { Typography } from '..';
 type ColorTypes = Pick<ButtonProps, 'color'>;
 
 const Button = ({
-  children, onClick, variant, color = 'lightSecondary', ...rest
+  children,
+  onClick,
+  variant,
+  color = 'lightSecondary',
+  ...rest
 }: ButtonProps) => {
   // FUNCTIONS
   const getHoverColor = (color: any) => {
@@ -36,7 +40,6 @@ const Button = ({
         {children}
       </Typography>
     </ButtonC>
-
   );
 };
 

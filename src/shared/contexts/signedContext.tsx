@@ -8,12 +8,8 @@ interface SignedContextData {}
 const SignedContext = createContext<SignedContextData>({} as SignedContextData);
 
 const SignedProvider: React.FC = ({ children }) => (
-  <SignedContext.Provider
-    value={{ }}
-  >
-    <SideNavigation>
-      {children}
-    </SideNavigation>
+  <SignedContext.Provider value={{}}>
+    <SideNavigation>{children}</SideNavigation>
   </SignedContext.Provider>
 );
 

@@ -140,17 +140,17 @@ const mockup = [
   },
 ];
 
-type MockType ={
-  id: number,
-  title: string,
-  description: string,
-}
+type MockType = {
+  id: number;
+  title: string;
+  description: string;
+};
 const FormList = () => {
-// STATES
+  // STATES
   const navigate = useNavigate();
 
   // FUNCTIONS
-  const renderCell = (mock : any) => (
+  const renderCell = (mock: any) => (
     <Card margin={8}>
       <Typography>{mock.title}</Typography>
       <Typography>{mock.description}</Typography>
@@ -163,7 +163,13 @@ const FormList = () => {
         Formulários
       </Typography>
 
-      <Button color="lightSecondary" onClick={() => navigate('/forms/create')} style={{ marginBottom: 8 }}>Criar formulário</Button>
+      <Button
+        color="lightSecondary"
+        onClick={() => navigate('/forms/create')}
+        style={{ marginBottom: 8 }}
+      >
+        Criar formulário
+      </Button>
 
       <ScrollableList
         style={{ marginLeft: -4, marginBottom: 40 }}

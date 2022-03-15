@@ -5,11 +5,11 @@ import 'simplebar/dist/simplebar.min.css';
 import { ScrollableListProps } from './scrollableList.interfaces';
 
 type ContainerType = {
-  class: string
-}
+  class: string;
+};
 
 export const Container = styled.div<ContainerType>`
-color: "#000";
+  color: '#000';
   .simplebar-content {
     display: flex;
     align-items: flex-start;
@@ -19,8 +19,8 @@ color: "#000";
 
 export const List = styled(SimpleBar)<any>`
   ${(props) =>
-    props.size
-    && css`
+    props.size &&
+    css`
       height: ${props.size}px;
     `};
 `;

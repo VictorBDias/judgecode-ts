@@ -5,7 +5,12 @@ import { Box } from '@chakra-ui/react';
 import { CardProps } from './card.interfaces';
 
 const Card = ({
-  children, width = 300, height = 150, color, margin = 150, ...rest
+  children,
+  width = 300,
+  height = 150,
+  color,
+  margin = 150,
+  ...rest
 }: CardProps) => (
   <Box
     shadow="lg"

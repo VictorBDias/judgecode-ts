@@ -6,7 +6,11 @@ import { TypographyProps } from './typography.interfaces';
 
 /** Typography displays words and characters at various sizes. */
 function Typography({
-  children, maxLines, className, variant, ...rest
+  children,
+  maxLines,
+  className,
+  variant,
+  ...rest
 }: TypographyProps) {
   return (
     <Paragraph

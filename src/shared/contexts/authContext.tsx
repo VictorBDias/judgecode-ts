@@ -10,35 +10,34 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const AuthProvider: React.FC = ({ children }) =>
-// STATES
-// const [isLoaded, setIsLoaded] = React.useState(false);
-// const [user, setUser] = React.useState<>();
+const AuthProvider: React.FC = ({ children }) => (
+  // STATES
+  // const [isLoaded, setIsLoaded] = React.useState(false);
+  // const [user, setUser] = React.useState<>();
 
-// FUNCTIONS
-// const signIn = React.useCallback((data) => {}, []);
+  // FUNCTIONS
+  // const signIn = React.useCallback((data) => {}, []);
 
-// const signUp = React.useCallback((data) => {}, []);
+  // const signUp = React.useCallback((data) => {}, []);
 
-// const signOut = React.useCallback(() => {}, []);
+  // const signOut = React.useCallback(() => {}, []);
 
-  (
-    <AuthContext.Provider
-      value={{
+  <AuthContext.Provider
+    value={
+      {
         // STATES
         // user,
         // sLoaded,
-
         // FUNCTIONS
-
         // signIn,
         // signUp,
         // signOut,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+      }
+    }
+  >
+    {children}
+  </AuthContext.Provider>
+);
 const useAuth = (): AuthContextData => {
   const context = useContext(AuthContext);
 

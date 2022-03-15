@@ -14,7 +14,10 @@ import { NumericInputProps } from './numericInput.interfaces';
 import { Container } from './numericInput.styles';
 import { Typography } from '..';
 
-const NumericInput: ForwardRefRenderFunction<NumericInputProps, any> = (props, ref) => {
+const NumericInput: ForwardRefRenderFunction<NumericInputProps, any> = (
+  props,
+  ref,
+) => {
   const { label } = props;
   return (
     <Container>

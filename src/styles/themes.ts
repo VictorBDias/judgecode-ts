@@ -4,6 +4,10 @@ export const theme = extendTheme({
   colors: {
     primary: '#242424',
     secondary: '#D172D8',
+    batata: {
+      600: '#D172D8',
+      500: '#D172D8',
+    },
     lightSecondary: '#E190F0',
     error: '#cd3248',
     background: '#F8F8F8',
@@ -25,5 +29,4 @@ export const theme = extendTheme({
     heading: 'Roboto',
     body: 'Roboto',
   },
-
 });

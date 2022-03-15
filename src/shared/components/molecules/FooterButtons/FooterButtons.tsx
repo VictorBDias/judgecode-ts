@@ -37,17 +37,15 @@ function FooterButtons({
       {...rest}
     >
       {!disableCancelButton && (
-      <Button
-        colorScheme="teal"
-        color="null"
-        size="lg"
-        variant="ghost"
-        onClick={() => onCancel()}
-      >
-        {cancelButton || (
-        <Typography variant="error">Cancelar</Typography>
-        )}
-      </Button>
+        <Button
+          colorScheme="teal"
+          color="null"
+          size="lg"
+          variant="ghost"
+          onClick={() => onCancel()}
+        >
+          {cancelButton || <Typography variant="error">Cancelar</Typography>}
+        </Button>
       )}
 
       {!disableConfirmButton && (
@@ -58,9 +56,7 @@ function FooterButtons({
           form={formId}
           style={{ marginLeft: 8 }}
         >
-          {confirmButtonName || (
-            <Typography>Salvar</Typography>
-          )}
+          {confirmButtonName || <Typography>Salvar</Typography>}
         </Button>
       )}
     </Box>

@@ -13,9 +13,7 @@ import {
   FlexProps,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import {
-  FiMenu,
-} from 'react-icons/fi';
+import { FiMenu } from 'react-icons/fi';
 import { Typography } from '../../atoms';
 
 interface NavItemProps extends FlexProps {
@@ -72,8 +70,19 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}
     >
-      <Flex marginTop="24px" h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="3xl" fontFamily="monospace" fontWeight="bold" color="white">
+      <Flex
+        marginTop="24px"
+        h="20"
+        alignItems="center"
+        mx="8"
+        justifyContent="space-between"
+      >
+        <Text
+          fontSize="3xl"
+          fontFamily="monospace"
+          fontWeight="bold"
+          color="white"
+        >
           JudgeCode
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
@@ -143,7 +152,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => (
       icon={<FiMenu />}
     />
 
-    <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" color="white" marginLeft={4}>
+    <Text
+      fontSize="2xl"
+      fontFamily="monospace"
+      fontWeight="bold"
+      color="white"
+      marginLeft={4}
+    >
       JudgeCode
     </Text>
   </Flex>

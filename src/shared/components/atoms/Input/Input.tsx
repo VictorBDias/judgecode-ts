@@ -13,7 +13,12 @@ const Input: ForwardRefRenderFunction<InputProps, any> = (props, ref) => {
   return (
     <Container>
       <Typography variant="regular">{label}</Typography>
-      <ChakraInput focusBorderColor="secondary" style={{ maxWidth: 320 }} ref={ref} {...props} />
+      <ChakraInput
+        focusBorderColor="secondary"
+        style={{ maxWidth: 320 }}
+        ref={ref}
+        {...props}
+      />
     </Container>
   );
 };

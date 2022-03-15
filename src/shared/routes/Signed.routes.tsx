@@ -8,15 +8,14 @@ import { SignedProvider } from '../contexts';
 
 // ELEMENTS
 
-export const SignedRoutes: React.FC = () =>
-// const { user } = useAuth();
+export const SignedRoutes: React.FC = () => (
+  // const { user } = useAuth();
 
-  (
-    <SignedProvider>
-      <Routes>
-        <Route path="/" element={<FormList />} />
-        <Route path="/forms" element={<FormList />} />
-        <Route path="/forms/create" element={<CreateForm />} />
-      </Routes>
-    </SignedProvider>
-  );
+  <SignedProvider>
+    <Routes>
+      <Route path="/" element={<FormList />} />
+      <Route path="/forms" element={<FormList />} />
+      <Route path="/forms/create" element={<CreateForm />} />
+    </Routes>
+  </SignedProvider>
+);

@@ -68,6 +68,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.22",
+    "prettier": "^2.5.1",
     "tsconfig-paths": "^3.12.0"
   }
 }
