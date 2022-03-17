@@ -31,6 +31,8 @@
       "no-unused-vars": "off",
       "consistent-return": "off",
       "implicit-arrow-linebreak": "off",
+      "import/no-extraneous-dependencies": "off",
+      "react/jsx-wrap-multilines": "off",
       "no-shadow": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",

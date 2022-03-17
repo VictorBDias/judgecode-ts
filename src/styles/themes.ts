@@ -4,7 +4,7 @@ export const theme = extendTheme({
   colors: {
     primary: '#242424',
     secondary: '#D172D8',
-    batata: {
+    secondaryObj: {
       600: '#D172D8',
       500: '#D172D8',
     },

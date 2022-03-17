@@ -15,7 +15,7 @@ const CheckBox = ({
     {...rest}
     isDisabled={isDisabled}
     defaultChecked={defaultChecked}
-    colorScheme="batata"
+    colorScheme="secondaryObj"
     size="md"
   >
     <Typography>{label}</Typography>

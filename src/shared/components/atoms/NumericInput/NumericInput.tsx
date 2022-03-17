@@ -23,7 +23,7 @@ const NumericInput: ForwardRefRenderFunction<NumericInputProps, any> = (
     <Container>
       <Typography variant="regular">{label}</Typography>
       <NumberInput style={{ maxWidth: 320 }}>
-        <NumberInputField ref={ref} {...props} />
+        <NumberInputField ref={ref} {...props} focusBorderColor="secondary" />
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />
