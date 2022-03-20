@@ -1,5 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
+// 259DFF blue 2090FF
+
 export const theme = extendTheme({
   colors: {
     primary: '#242424',
@@ -7,6 +9,10 @@ export const theme = extendTheme({
     secondaryObj: {
       600: '#D172D8',
       500: '#D172D8',
+    },
+    lightSecondaryObj: {
+      600: '#E190F0',
+      500: '#E190F0',
     },
     lightSecondary: '#E190F0',
     error: '#cd3248',

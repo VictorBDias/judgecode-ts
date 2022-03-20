@@ -52,7 +52,7 @@ export const Paragraph = styled.p<TypographyProps>`
       case 'secondary':
         return css`
           font-size: 16px;
-          color: #e190f0;
+          color: #d172d8;
           font-weight: regular;
         `;
       case 'error':

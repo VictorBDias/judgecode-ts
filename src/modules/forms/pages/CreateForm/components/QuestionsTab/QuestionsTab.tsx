@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoDatabase, GoPlus } from 'react-icons/go';
 
 // CUSTOM IMPORTS
 import {
@@ -7,13 +8,12 @@ import {
   Card,
   Button,
 } from '../../../../../../shared/components/atoms';
+import { Container } from './questionsTab.styles';
 import {
-  Container,
-  AddIcon,
-  BookmarkIcon,
-  IconContainer,
-} from './questionsTab.styles';
-import { ScrollableList } from '../../../../../../shared/components/molecules';
+  ScrollableList,
+  Modal,
+  SearchBar,
+} from '../../../../../../shared/components/molecules';
 
 const mockup = [
   {
@@ -34,9 +34,9 @@ type MockType = {
   description: string;
 };
 const QuestionsTab = () => {
-  // STATES
   const navigate = useNavigate();
-
+  // STATES
+  const [show, setShow] = React.useState(false);
   // FUNCTIONS
   const renderCell = (mock: any) => (
     <Card margin={8}>
@@ -46,33 +46,41 @@ const QuestionsTab = () => {
   );
 
   return (
-    <Container>
-      <Button
-        variant="outline"
-        color="lightSecondary"
-        onClick={() => navigate('/question/create')}
-        size="sm"
-        style={{ marginBottom: 8, marginRight: 8 }}
-      >
-        Criar questão
-      </Button>
-      <Button
-        variant="outline"
-        color="lightSecondary"
-        onClick={() => navigate('/question/create')}
-        size="sm"
-        style={{ marginBottom: 8 }}
-      >
-        Utilizar banco
-      </Button>
+    <>
+      <Container>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            // variant="outline"
+            leftIcon={<GoPlus />}
+            onClick={() => navigate('/question/create')}
+            size="sm"
+            style={{ marginBottom: 8 }}
+          >
+            Criar questão
+          </Button>
+          <Button
+            variant="outline"
+            leftIcon={<GoDatabase />}
+            onClick={() => setShow(true)}
+            // onClick={() => navigate('/question/create')}
+            size="sm"
+            style={{ marginBottom: 8, marginLeft: 16 }}
+          >
+            Utilizar banco
+          </Button>
+        </div>
 
-      <ScrollableList
-        style={{ marginLeft: -4, marginBottom: 40 }}
-        data={mockup}
-        renderCell={renderCell}
-        size={800}
-      />
-    </Container>
+        <ScrollableList
+          style={{ marginLeft: -4, marginBottom: 40 }}
+          data={mockup}
+          renderCell={renderCell}
+          size={800}
+        />
+      </Container>
+      <Modal title="Selecione para adicionar" stateControl={{ show, setShow }}>
+        <SearchBar />
+      </Modal>
+    </>
   );
 };
 export { QuestionsTab };

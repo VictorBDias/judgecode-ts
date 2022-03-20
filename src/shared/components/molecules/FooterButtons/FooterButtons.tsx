@@ -38,25 +38,30 @@ function FooterButtons({
     >
       {!disableCancelButton && (
         <Button
-          colorScheme="teal"
-          color="null"
           size="lg"
-          variant="ghost"
+          variant="outline"
+          color="secondaryObj"
           onClick={() => onCancel()}
         >
-          {cancelButton || <Typography variant="error">Cancelar</Typography>}
+          {cancelButton || (
+            <Typography variant="secondary">Cancelar</Typography>
+          )}
         </Button>
       )}
 
       {!disableConfirmButton && (
         <Button
+          onClick={() => onCancel()}
+          color="secondaryObj"
           size="lg"
-          variant="regular"
+          variant="solid"
           type={type}
           form={formId}
           style={{ marginLeft: 8 }}
         >
-          {confirmButtonName || <Typography>Salvar</Typography>}
+          {confirmButtonName || (
+            <Typography variant="whiteSubTitle">Salvar</Typography>
+          )}
         </Button>
       )}
     </Box>

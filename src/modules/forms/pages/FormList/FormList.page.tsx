@@ -164,7 +164,6 @@ const FormList = () => {
       </Typography>
 
       <Button
-        color="lightSecondary"
         onClick={() => navigate('/forms/create')}
         style={{ marginBottom: 8 }}
       >

@@ -1,46 +1,34 @@
 import React from 'react';
-import { Button as ButtonC } from '@chakra-ui/react';
-import { lighten, shade } from 'polished';
-
-// CUSTOM IMPORTS
+import PropTypes from 'prop-types';
+import { Button as ButtonChakra } from '@chakra-ui/react';
 import { ButtonProps } from './button.interfaces';
-import { Typography } from '..';
 
-type ColorTypes = Pick<ButtonProps, 'color'>;
+import { Container } from './button.styles';
 
-const Button = ({
+function Button({
   children,
   onClick,
-  variant,
-  color = 'lightSecondary',
+  variant = 'solid',
+  size = 'md',
+  color = 'lightSecondaryObj',
+  leftIcon,
   ...rest
-}: ButtonProps) => {
-  // FUNCTIONS
-  const getHoverColor = (color: any) => {
-    switch (color) {
-      case 'lightSecondary':
-        return shade(0.15, '#E190F0');
-
-      case 'null':
-        return lighten(0.4, '#cd3248');
-
-      default:
-        return shade(0.15, '#D172D8');
-    }
-  };
-
+}: ButtonProps) {
   return (
-    <ButtonC
-      bg={color}
-      variant={variant}
-      _hover={{ bg: getHoverColor(color) }}
-      {...rest}
-    >
-      <Typography variant="whiteSubTitle" onClick={onClick}>
+    <Container>
+      <ButtonChakra
+        leftIcon={leftIcon}
+        style={{ boxShadow: ' 2px 4px 4px #00000030' }}
+        variant={variant}
+        size={size}
+        onClick={onClick}
+        colorScheme={color}
+        {...rest}
+      >
         {children}
-      </Typography>
-    </ButtonC>
+      </ButtonChakra>
+    </Container>
   );
-};
+}
 
 export { Button };
