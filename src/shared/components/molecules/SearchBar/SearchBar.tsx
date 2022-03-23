@@ -1,16 +1,16 @@
 import React from 'react';
-import { GrSearch } from 'react-icons/gr';
-// import { DebounceInput } from 'react-debounce-input';
+
+//* CUSTOM IMPORTS
 import debounce from 'lodash.debounce';
-// CUSTOM IMPORTS
-import { Container, SearchButton } from './searchBar.styles';
+import { Icon } from '../../atoms/Icon';
+import { Container, SearchButton, ClearButton } from './searchBar.styles';
 import { SearchBarProps } from './searchBar.interfaces';
 
 /** The default SearchBar for the hole application */
 const SearchBar = ({
   className = 'search-bar',
-  placeholder = 'Pesquise por nome',
-  onChange = () => {},
+  placeholder,
+  onChange,
   defaultValue,
   ...rest
 }: SearchBarProps) => {
@@ -18,36 +18,63 @@ const SearchBar = ({
   const inputRef = React.useRef(null);
 
   //* STATES
+  const [isFocused, setIsFocused] = React.useState(false);
   const [searchBar, setSearchBar] = React.useState('');
 
   //* FUNCTIONS
-
-  const onSearchChange = () => {
+  function onSearchChange() {
     if (inputRef.current) {
       const { current } = inputRef;
       const { value } = current;
       onChange(value);
+      setSearchBar(value);
     }
-  };
+  }
+
+  function clearSearchBar() {
+    if (inputRef.current) {
+      const { current } = inputRef;
+      let { value } = current;
+      onChange('');
+      value = '' as never;
+      setSearchBar('');
+    }
+  }
 
   const debouncedSearch = debounce((func: any) => {
     onSearchChange();
   }, 500);
 
   return (
-    <Container className={className} {...rest}>
-      <SearchButton onClick={() => console.log('cliq')}>
-        <GrSearch style={{ height: 20, width: 20 }} />
+    <Container
+      className={className}
+      isFocused={isFocused}
+      isFilled={searchBar !== ''}
+      {...rest}
+    >
+      <SearchButton type="button" title="pesquisar">
+        <Icon iconName="search" />
       </SearchButton>
 
       <input
-        className="input"
         ref={inputRef}
         type="text"
         defaultValue={defaultValue}
         placeholder={placeholder}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         onChange={debouncedSearch}
       />
+
+      {searchBar !== '' && (
+        <ClearButton
+          type="button"
+          onClick={() => clearSearchBar}
+          title="Limpar"
+        >
+          <Icon iconName="close" />
+        </ClearButton>
+      )}
     </Container>
   );
 };

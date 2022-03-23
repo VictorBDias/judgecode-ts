@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoDatabase, GoPlus } from 'react-icons/go';
 
 // CUSTOM IMPORTS
 import {
@@ -14,6 +13,7 @@ import {
   Modal,
   SearchBar,
 } from '../../../../../../shared/components/molecules';
+import { Icon } from '../../../../../../shared/components/atoms/Icon';
 
 const mockup = [
   {
@@ -48,10 +48,16 @@ const QuestionsTab = () => {
   return (
     <>
       <Container>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginRight: 32,
+          }}
+        >
           <Button
             // variant="outline"
-            leftIcon={<GoPlus />}
+            leftIcon={<Icon iconName="plus" variant="white" />}
             onClick={() => navigate('/question/create')}
             size="sm"
             style={{ marginBottom: 8 }}
@@ -60,11 +66,11 @@ const QuestionsTab = () => {
           </Button>
           <Button
             variant="outline"
-            leftIcon={<GoDatabase />}
+            leftIcon={<Icon iconName="database" variant="secondary" />}
             onClick={() => setShow(true)}
             // onClick={() => navigate('/question/create')}
             size="sm"
-            style={{ marginBottom: 8, marginLeft: 16 }}
+            style={{ marginBottom: 8, marginLeft: 24 }}
           >
             Utilizar banco
           </Button>
