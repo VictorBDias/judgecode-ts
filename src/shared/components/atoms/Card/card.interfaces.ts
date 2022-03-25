@@ -6,4 +6,5 @@ export interface CardProps {
   height?: number;
   margin?: number;
   color?: string;
+  [x: string]: any;
 }

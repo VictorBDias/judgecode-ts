@@ -7,12 +7,14 @@ import { Typography } from '../Typography';
 
 const CheckBox = ({
   label,
+  isChecked,
   isDisabled = false,
   defaultChecked = false,
   ...rest
 }: CheckBoxProps) => (
   <Checkbox
     {...rest}
+    isChecked={isChecked}
     isDisabled={isDisabled}
     defaultChecked={defaultChecked}
     colorScheme="secondaryObj"

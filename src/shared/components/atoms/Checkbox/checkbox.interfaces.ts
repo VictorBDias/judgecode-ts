@@ -1,7 +1,8 @@
 import React from 'react';
 
 export interface CheckBoxProps {
-  label: string;
+  isChecked?: boolean;
+  label?: string;
   isDisabled?: boolean;
   defaultChecked?: boolean;
   [x: string]: any;

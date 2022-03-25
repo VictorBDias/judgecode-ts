@@ -14,6 +14,7 @@ import {
   SearchBar,
 } from '../../../../../../shared/components/molecules';
 import { Icon } from '../../../../../../shared/components/atoms/Icon';
+import { QuestionBankModal } from './QuestionBankModal/QuestionBankModal';
 
 const mockup = [
   {
@@ -83,9 +84,7 @@ const QuestionsTab = () => {
           size={800}
         />
       </Container>
-      <Modal title="Selecione para adicionar" stateControl={{ show, setShow }}>
-        <SearchBar />
-      </Modal>
+      <QuestionBankModal stateControl={{ show, setShow }} />
     </>
   );
 };
