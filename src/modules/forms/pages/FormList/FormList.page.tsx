@@ -10,7 +10,11 @@ import {
   Button,
 } from '../../../../shared/components/atoms';
 import { Container } from './formlist.styles';
-import { ScrollableList } from '../../../../shared/components/molecules';
+import {
+  ScrollableList,
+  SearchBar,
+} from '../../../../shared/components/molecules';
+import { Icon } from '../../../../shared/components/atoms/Icon';
 
 const mockup = [
   {
@@ -162,16 +166,30 @@ const FormList = () => {
       <Typography variant="title" style={{ marginBottom: 16, marginTop: 40 }}>
         Formulários
       </Typography>
-
-      <Button
-        onClick={() => navigate('/forms/create')}
-        style={{ marginBottom: 8 }}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+        }}
       >
-        Criar formulário
-      </Button>
+        <SearchBar
+          placeholder="Busque um formulário"
+          style={{ maxWidth: 400 }}
+        />
+
+        <Button
+          leftIcon={<Icon iconName="plus" variant="white" />}
+          onClick={() => navigate('/forms/create')}
+          size="md"
+          style={{ marginLeft: 24 }}
+        >
+          Criar formulário
+        </Button>
+      </div>
 
       <ScrollableList
-        style={{ marginLeft: -4, marginBottom: 40 }}
+        style={{ marginLeft: -4, marginBottom: 40, marginTop: 16 }}
         data={mockup}
         renderCell={renderCell}
         size={800}

@@ -6,4 +6,5 @@ export interface SearchBarProps {
   defaultValue?: string;
   isFocused?: boolean;
   onChange?: any;
+  [x: string]: any;
 }
