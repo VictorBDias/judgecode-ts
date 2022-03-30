@@ -17,6 +17,7 @@ export const theme = extendTheme({
     lightSecondary: '#E190F0',
     error: '#cd3248',
     background: '#F8F8F8',
+    backgroundDark: '#EBEBEB',
     white: '#fff',
     nav: '#444343',
     900: '#181B23',

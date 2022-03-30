@@ -1,43 +1,43 @@
 import React, { createContext, useContext } from 'react';
 
 interface AuthContextData {
-  // signIn: any,
-  // signUp: any,
-  // signOut: any,
-  // user?: any,
-  // isLoaded: any,
+  signIn: any;
+  signUp: any;
+  signOut: any;
+  user?: any;
+  isLoaded: any;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const AuthProvider: React.FC = ({ children }) => (
+const AuthProvider: React.FC = ({ children }) => {
   // STATES
-  // const [isLoaded, setIsLoaded] = React.useState(false);
-  // const [user, setUser] = React.useState<>();
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [user, setUser] = React.useState();
 
   // FUNCTIONS
-  // const signIn = React.useCallback((data) => {}, []);
+  const signIn = React.useCallback((data) => {}, []);
 
-  // const signUp = React.useCallback((data) => {}, []);
+  const signUp = React.useCallback((data) => {}, []);
 
-  // const signOut = React.useCallback(() => {}, []);
+  const signOut = React.useCallback(() => {}, []);
 
-  <AuthContext.Provider
-    value={
-      {
+  return (
+    <AuthContext.Provider
+      value={{
         // STATES
-        // user,
-        // sLoaded,
+        user,
+        isLoaded,
         // FUNCTIONS
-        // signIn,
-        // signUp,
-        // signOut,
-      }
-    }
-  >
-    {children}
-  </AuthContext.Provider>
-);
+        signIn,
+        signUp,
+        signOut,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
 const useAuth = (): AuthContextData => {
   const context = useContext(AuthContext);
 

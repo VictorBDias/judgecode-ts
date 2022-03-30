@@ -1,11 +1,14 @@
 import React from 'react';
 import { GoDatabase, GoPlus } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
+import { MdEmail, MdLock } from 'react-icons/md';
 
 export const iconTypes = {
   DATABASE: 'database',
   PLUS: 'plus',
   SEARCH: 'search',
+  EMAIL: 'email',
+  LOCK: 'lock',
 };
 
 export const setIcon = (type: string) => {
@@ -18,6 +21,12 @@ export const setIcon = (type: string) => {
 
     case iconTypes.SEARCH:
       return <GrSearch />;
+
+    case iconTypes.EMAIL:
+      return <MdEmail />;
+
+    case iconTypes.LOCK:
+      return <MdLock />;
 
     default:
       return null;
