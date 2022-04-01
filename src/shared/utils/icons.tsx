@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoDatabase, GoPlus } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
-import { MdEmail, MdLock } from 'react-icons/md';
+import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 
 export const iconTypes = {
   DATABASE: 'database',
@@ -9,6 +9,7 @@ export const iconTypes = {
   SEARCH: 'search',
   EMAIL: 'email',
   LOCK: 'lock',
+  PERSON: 'person',
 };
 
 export const setIcon = (type: string) => {
@@ -27,6 +28,9 @@ export const setIcon = (type: string) => {
 
     case iconTypes.LOCK:
       return <MdLock />;
+
+    case iconTypes.PERSON:
+      return <MdPerson />;
 
     default:
       return null;

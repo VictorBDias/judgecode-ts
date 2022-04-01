@@ -2,24 +2,20 @@ import React, { useState } from 'react';
 import { Flex, Heading } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import {
-  Card,
-  FormInput,
-  Button,
-  Typography,
-} from '../../../../shared/components/atoms';
+import { Card, FormInput, Button } from '../../../../shared/components/atoms';
 
-type SignInForm = {
+type SignUpForm = {
+  name: string;
   email: string;
   password: string;
 };
-const SignIn = () => {
+const SignUp = () => {
   const {
     control,
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<SignInForm>();
+  } = useForm<SignUpForm>();
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => console.log(data);
@@ -34,10 +30,18 @@ const SignIn = () => {
       alignItems="center"
     >
       <Heading color="secondary" style={{ marginBottom: -130 }}>
-        Conecte-se
+        Registre-se
       </Heading>
-      <Card width={400} height={300}>
+      <Card width={400} height={380}>
         <form id="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
+          <FormInput
+            variant="filled"
+            style={{ marginBottom: 16 }}
+            {...register('name', { required: true })}
+            placeholder="Insira seu nome completo"
+            label="Nome"
+            icon="person"
+          />
           <FormInput
             variant="filled"
             style={{ marginBottom: 16 }}
@@ -46,7 +50,6 @@ const SignIn = () => {
             label="Email"
             icon="email"
           />
-
           <FormInput
             variant="filled"
             style={{ marginBottom: 16 }}
@@ -61,15 +64,15 @@ const SignIn = () => {
             id="sign-in-form"
             style={{ width: '300%', maxWidth: 380 }}
           >
-            Fazer Login
+            Realizar cadastro
           </Button>
 
           <Button
             variant="outline"
             style={{ width: '300%', maxWidth: 380, marginTop: 16 }}
-            onClick={() => navigate('/signUp')}
+            onClick={() => navigate('/signIn')}
           >
-            Não possui cadastro?
+            Já possui cadastro?
           </Button>
         </form>
       </Card>
@@ -77,4 +80,4 @@ const SignIn = () => {
   );
 };
 
-export { SignIn };
+export { SignUp };
