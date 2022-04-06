@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 // import { CreateForm } from '../../modules/forms/pages/CreateForm/CreateForm.page';
 import { FormList, CreateForm } from '../../modules/forms/pages';
 import { QuestionsBank } from '../../modules/questionBank/QuestionsBank';
+import { CreateQuestion } from '../../modules/createQuestion/CreateQuestion';
 import { SignedProvider } from '../contexts';
 
 // ELEMENTS
@@ -18,6 +19,7 @@ export const SignedRoutes: React.FC = () => (
       <Route path="/forms" element={<FormList />} />
       <Route path="/forms/create" element={<CreateForm />} />
       <Route path="/question-bank" element={<QuestionsBank />} />
+      <Route path="/question/create" element={<CreateQuestion />} />
     </Routes>
   </SignedProvider>
 );
