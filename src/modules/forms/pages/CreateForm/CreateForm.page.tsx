@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 //* CUSTOM IMPORTS
-import { FormInput } from '../../../../shared/components/atoms';
 import { Tabs, FooterButtons } from '../../../../shared/components/molecules';
 import { GeneralTab } from './components/GeneralTab/GeneralTab';
 import { QuestionsTab } from './components/QuestionsTab/QuestionsTab';

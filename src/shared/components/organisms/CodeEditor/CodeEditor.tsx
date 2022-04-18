@@ -30,9 +30,88 @@ import 'ace-builds/src-noconflict/theme-solarized_dark';
 import 'ace-builds/src-noconflict/theme-solarized_light';
 import 'ace-builds/src-noconflict/theme-terminal';
 
+import debounce from 'lodash.debounce';
 import { CodeEditorProps } from './codeEditor.interfaces';
 import { Container } from './codeEditor.styles';
 import { Select } from '../../atoms/Select';
+
+const languageOptions = [
+  {
+    id: 1,
+    label: 'javascript',
+    value: 'javascript',
+  },
+  {
+    id: 2,
+    label: 'java',
+    value: 'java',
+  },
+  {
+    id: 3,
+    label: 'python',
+    value: 'python',
+  },
+  {
+    id: 4,
+    label: 'ruby',
+    value: 'ruby',
+  },
+  {
+    id: 5,
+    label: 'sass',
+    value: 'sass',
+  },
+  {
+    id: 6,
+    label: 'markdown',
+    value: 'markdown',
+  },
+  {
+    id: 7,
+    label: 'mysql',
+    value: 'mysql',
+  },
+  {
+    id: 8,
+    label: 'json',
+    value: 'json',
+  },
+  {
+    id: 9,
+    label: 'html',
+    value: 'html',
+  },
+  {
+    id: 10,
+    label: 'handlebars',
+    value: 'handlebars',
+  },
+  {
+    id: 11,
+    label: 'golang',
+    value: 'golang',
+  },
+  {
+    id: 12,
+    label: 'csharp',
+    value: 'csharp',
+  },
+  {
+    id: 13,
+    label: 'elixir',
+    value: 'elixir',
+  },
+  {
+    id: 14,
+    label: 'typescript',
+    value: 'typescript',
+  },
+  {
+    id: 15,
+    label: 'css',
+    value: 'css',
+  },
+];
 
 const CodeEditor = ({
   placeholder = '',
@@ -43,83 +122,9 @@ const CodeEditor = ({
 }: CodeEditorProps) => {
   const [language, setLanguage] = useState('javascript');
 
-  const languageOptions = [
-    {
-      id: 1,
-      label: 'javascript',
-      value: 'javascript',
-    },
-    {
-      id: 2,
-      label: 'java',
-      value: 'java',
-    },
-    {
-      id: 3,
-      label: 'python',
-      value: 'python',
-    },
-    {
-      id: 4,
-      label: 'ruby',
-      value: 'ruby',
-    },
-    {
-      id: 5,
-      label: 'sass',
-      value: 'sass',
-    },
-    {
-      id: 6,
-      label: 'markdown',
-      value: 'markdown',
-    },
-    {
-      id: 7,
-      label: 'mysql',
-      value: 'mysql',
-    },
-    {
-      id: 8,
-      label: 'json',
-      value: 'json',
-    },
-    {
-      id: 9,
-      label: 'html',
-      value: 'html',
-    },
-    {
-      id: 10,
-      label: 'handlebars',
-      value: 'handlebars',
-    },
-    {
-      id: 11,
-      label: 'golang',
-      value: 'golang',
-    },
-    {
-      id: 12,
-      label: 'csharp',
-      value: 'csharp',
-    },
-    {
-      id: 13,
-      label: 'elixir',
-      value: 'elixir',
-    },
-    {
-      id: 14,
-      label: 'typescript',
-      value: 'typescript',
-    },
-    {
-      id: 15,
-      label: 'css',
-      value: 'css',
-    },
-  ];
+  const debouncedOnChange = debounce((newValue: string) => {
+    onChange(newValue);
+  }, 500);
   return (
     <Container>
       <Select
@@ -138,7 +143,7 @@ const CodeEditor = ({
         theme={theme}
         name="blah2"
         onLoad={onLoad}
-        onChange={onChange}
+        onChange={debouncedOnChange}
         fontSize={fontSize}
         showPrintMargin
         showGutter

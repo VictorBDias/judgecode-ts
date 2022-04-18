@@ -51,7 +51,6 @@ function FooterButtons({
 
       {!disableConfirmButton && (
         <Button
-          onClick={() => onCancel()}
           color="secondaryObj"
           size="lg"
           variant="solid"

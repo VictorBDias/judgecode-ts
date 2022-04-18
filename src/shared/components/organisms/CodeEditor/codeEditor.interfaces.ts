@@ -33,7 +33,7 @@ export interface CodeEditorProps {
   placeholder?: string;
   theme?: Themes;
   fontSize?: number;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
   onLoad?: () => void;
   [x: string]: any;
 }

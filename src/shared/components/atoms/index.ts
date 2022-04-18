@@ -4,3 +4,4 @@ export * from './Button/Button';
 export * from './Input/Input';
 export * from './NumericInput/NumericInput';
 export * from './IconedButton/IconedButton';
+export * from './Select/Select';
