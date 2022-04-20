@@ -1,14 +1,10 @@
 import { ReactElement } from 'react';
 
-type StateControlType = {
-  show: boolean;
-  setShow: (arg: boolean) => void;
-};
-
 export interface ModalProps {
   children: ReactElement;
   title: string;
-  stateControl: StateControlType;
+  show: boolean;
+  onClose: () => void;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
   onSubmit?: any;
   disableFooter?: boolean;

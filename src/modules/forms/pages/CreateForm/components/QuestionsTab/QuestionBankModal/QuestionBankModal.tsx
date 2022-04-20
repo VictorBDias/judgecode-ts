@@ -7,7 +7,7 @@ import {
   SearchBar,
 } from '../../../../../../../shared/components/molecules';
 
-const QuestionBankModal = ({ stateControl }: any) => {
+const QuestionBankModal = ({ show, onClose }: any) => {
   const mockup = [
     {
       id: 1,
@@ -34,7 +34,8 @@ const QuestionBankModal = ({ stateControl }: any) => {
     <Modal
       size="lg"
       title="Selecione para adicionar"
-      stateControl={stateControl}
+      show={show}
+      onClose={onClose}
     >
       <>
         <SearchBar placeholder="Busque uma questão" />

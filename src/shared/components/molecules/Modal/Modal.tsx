@@ -17,17 +17,15 @@ import { ModalProps } from './modal.interfaces';
 const Modal = ({
   children,
   title,
-  stateControl,
+  show,
+  onClose,
   size = 'md',
   onSubmit,
   disableFooter = false,
 }: ModalProps) => {
-  const { show, setShow } = stateControl;
-
-  const btnRef = React.useRef();
   return (
     <ChakraModal
-      onClose={() => setShow(false)}
+      onClose={onClose}
       isOpen={show}
       scrollBehavior="inside"
       size={size}
@@ -43,7 +41,7 @@ const Modal = ({
               size="sm"
               variant="outline"
               color="secondaryObj"
-              onClick={() => setShow(false)}
+              onClick={onClose}
             >
               <Typography variant="secondary">Cancelar</Typography>
             </Button>

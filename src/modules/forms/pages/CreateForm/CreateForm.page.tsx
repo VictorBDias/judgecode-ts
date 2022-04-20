@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 
 //* CUSTOM IMPORTS
 import { Tabs, FooterButtons } from '../../../../shared/components/molecules';
+import { CreateQuestionsProvider } from '../../../createQuestion/contexts/CreateQuestion.context';
 import { GeneralTab } from './components/GeneralTab/GeneralTab';
 import { QuestionsTab } from './components/QuestionsTab/QuestionsTab';
 
-// import { Teste } from './interfaces/formList.interface';\type FormInputs = {
 type FieldValues = {
   name: string;
 };
@@ -28,7 +28,9 @@ const CreateForm = () => {
     <>
       <Tabs tabs={tabs} variant="line">
         <GeneralTab />
-        <QuestionsTab />
+        <CreateQuestionsProvider>
+          <QuestionsTab />
+        </CreateQuestionsProvider>
       </Tabs>
       <FooterButtons
         formId="form-form"

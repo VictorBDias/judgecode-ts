@@ -119,6 +119,7 @@ const CodeEditor = ({
   fontSize = 14,
   onLoad,
   onChange,
+  value,
 }: CodeEditorProps) => {
   const [language, setLanguage] = useState('javascript');
 
@@ -148,6 +149,7 @@ const CodeEditor = ({
         showPrintMargin
         showGutter
         highlightActiveLine
+        value={value}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,

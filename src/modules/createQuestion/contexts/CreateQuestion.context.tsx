@@ -1,22 +1,23 @@
-import React, { createContext, ReactNode } from 'react';
+import React, { createContext, ReactNode, useState } from 'react';
 
 interface createQuestionProviderProps {
   children: ReactNode;
 }
 
-interface CreateQuestionContextProps {}
+type CreateQuestionContextProps = any;
 
 const CreateQuestionContext = createContext({} as CreateQuestionContextProps);
 
 const CreateQuestionsProvider = ({ children }: createQuestionProviderProps) => {
+  const [codeEditorContent, setCodeEditorContent] = useState('');
   return (
     <CreateQuestionContext.Provider
-      value={
-        {
-          // STATES
-          // FUNCTIONS
-        }
-      }
+      value={{
+        // STATES
+        codeEditorContent,
+        setCodeEditorContent,
+        // FUNCTIONS
+      }}
     >
       {children}
     </CreateQuestionContext.Provider>

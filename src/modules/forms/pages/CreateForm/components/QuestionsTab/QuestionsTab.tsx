@@ -8,13 +8,10 @@ import {
   Button,
 } from '../../../../../../shared/components/atoms';
 import { Container } from './questionsTab.styles';
-import {
-  ScrollableList,
-  Modal,
-  SearchBar,
-} from '../../../../../../shared/components/molecules';
+import { ScrollableList } from '../../../../../../shared/components/molecules';
 import { Icon } from '../../../../../../shared/components/atoms/Icon';
 import { QuestionBankModal } from './QuestionBankModal/QuestionBankModal';
+import { CreateQuestionModal } from '../../../../components/CreateQuestionModal/CreateQuestionModal';
 
 const mockup = [
   {
@@ -37,7 +34,8 @@ type MockType = {
 const QuestionsTab = () => {
   const navigate = useNavigate();
   // STATES
-  const [show, setShow] = React.useState(false);
+  const [showBankModal, setShowBankModal] = React.useState(false);
+  const [showQuestionModal, setShowQuestionModal] = React.useState(false);
   // FUNCTIONS
   const renderCell = (mock: any) => (
     <Card margin={8}>
@@ -57,9 +55,8 @@ const QuestionsTab = () => {
           }}
         >
           <Button
-            // variant="outline"
             leftIcon={<Icon iconName="plus" variant="white" />}
-            onClick={() => navigate('/question/create')}
+            onClick={() => setShowQuestionModal(true)}
             size="sm"
             style={{ marginBottom: 8 }}
           >
@@ -68,8 +65,7 @@ const QuestionsTab = () => {
           <Button
             variant="outline"
             leftIcon={<Icon iconName="database" variant="secondary" />}
-            onClick={() => setShow(true)}
-            // onClick={() => navigate('/question/create')}
+            onClick={() => setShowBankModal(true)}
             size="sm"
             style={{ marginBottom: 8, marginLeft: 24 }}
           >
@@ -84,7 +80,14 @@ const QuestionsTab = () => {
           size={800}
         />
       </Container>
-      <QuestionBankModal stateControl={{ show, setShow }} />
+      <QuestionBankModal
+        show={showBankModal}
+        onClose={() => setShowBankModal(false)}
+      />
+      <CreateQuestionModal
+        show={showQuestionModal}
+        onClose={() => setShowQuestionModal(false)}
+      />
     </>
   );
 };
