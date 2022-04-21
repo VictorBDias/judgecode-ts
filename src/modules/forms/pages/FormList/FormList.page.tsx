@@ -155,7 +155,11 @@ const FormList = () => {
 
   // FUNCTIONS
   const renderCell = (mock: any) => (
-    <Card margin={8}>
+    <Card
+      margin={8}
+      onEdit={() => console.log('Edit')}
+      onDelete={() => console.log('Delete')}
+    >
       <Typography>{mock.title}</Typography>
       <Typography>{mock.description}</Typography>
     </Card>

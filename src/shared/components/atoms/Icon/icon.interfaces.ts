@@ -9,7 +9,8 @@ export type Icons =
   | 'search'
   | 'close'
   | 'email'
-  | 'lock';
+  | 'lock'
+  | 'menu';
 
 export interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;

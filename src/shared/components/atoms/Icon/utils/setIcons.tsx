@@ -2,6 +2,7 @@ import React from 'react';
 import { GoDatabase, GoPlus } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const iconTypes = {
   DATABASE: 'database',
@@ -10,9 +11,10 @@ export const iconTypes = {
   EMAIL: 'email',
   LOCK: 'lock',
   PERSON: 'person',
+  MENU: 'menu',
 };
 
-export const setIcon = (type: string) => {
+export const setIcons = (type: string) => {
   switch (type) {
     case iconTypes.DATABASE:
       return <GoDatabase />;
@@ -31,6 +33,9 @@ export const setIcon = (type: string) => {
 
     case iconTypes.PERSON:
       return <MdPerson />;
+
+    case iconTypes.MENU:
+      return <BsThreeDotsVertical />;
 
     default:
       return null;

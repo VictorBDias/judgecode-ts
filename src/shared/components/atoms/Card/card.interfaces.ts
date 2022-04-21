@@ -6,5 +6,7 @@ export interface CardProps {
   height?: number;
   margin?: number;
   color?: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
   [x: string]: any;
 }
