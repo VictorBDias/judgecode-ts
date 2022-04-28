@@ -14,12 +14,12 @@ export type Icons =
 
 export interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
-  iconName: Icons;
+  name: Icons;
   variant?: IconVariants;
 }
 
 export interface IconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
-  iconName?: Icons;
+  name?: Icons;
   variant?: IconVariants;
 }

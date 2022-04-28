@@ -18,7 +18,7 @@ const SimpleMenu = ({ onEdit, onDelete }: SimpleMenuProps) => {
         isRound
         variant="ghost"
         aria-label="Options"
-        icon={<Icon iconName="menu" />}
+        icon={<Icon name="menu" />}
       />
       <MenuList>
         <MenuItem onClick={onEdit}>Editar</MenuItem>

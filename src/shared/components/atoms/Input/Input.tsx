@@ -21,7 +21,7 @@ const Input: ForwardRefRenderFunction<InputProps, any> = (props, ref) => {
       <InputGroup>
         {icon !== '' && (
           <InputLeftElement pointerEvents="none">
-            <Icon iconName={icon} variant="secondary" />
+            <Icon name={icon} variant="secondary" />
           </InputLeftElement>
         )}
         <ChakraInput

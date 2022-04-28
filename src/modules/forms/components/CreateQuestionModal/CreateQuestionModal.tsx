@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 
 // CUSTOM IMPORTS
 import { Container } from './createQuestionModal.styles';
-import { Select } from '../../../../shared/components/atoms';
+import { Select, Tag } from '../../../../shared/components/atoms';
 import { Modal } from '../../../../shared/components/molecules';
 import { CodeEditorForm } from '../../../createQuestion/components/CodeEditorForm/CodeEditorForm';
 import { useCreateQuestion } from '../../../createQuestion/contexts/CreateQuestion.context';
 import { TestQuestionForm } from '../../../createQuestion/components/TestQuestionForm/CodeEditorForm';
+import { QuestionTypes } from './createQuestion.interfaces';
+import TagGroup from '../../../../shared/components/atoms/TagGroup/TagGroup';
 
 const questionTypes = [
   {
@@ -22,6 +24,12 @@ const questionTypes = [
   },
 ];
 
+const TagsMock = [
+  { id: 1, label: 'JavaScript' },
+  { id: 2, label: 'C++' },
+  { id: 3, label: 'TypeScript' },
+];
+
 const CreateQuestionModal = ({ show, onClose }: any) => {
   const { codeEditorContent } = useCreateQuestion();
   const {
@@ -30,7 +38,7 @@ const CreateQuestionModal = ({ show, onClose }: any) => {
     register,
     formState: { errors },
   } = useForm<any>();
-  const [questionType, setQuestionType] = useState('codeEditor');
+  const [questionType, setQuestionType] = useState<QuestionTypes>('codeEditor');
 
   const handleRenderQuestion = () => {
     switch (questionType) {
@@ -62,6 +70,7 @@ const CreateQuestionModal = ({ show, onClose }: any) => {
             onChange={(e: any) => setQuestionType(e.target.value)}
           />
         </div>
+        <TagGroup data={TagsMock} create />
         <form id="question-form" onSubmit={onSubmit}>
           {handleRenderQuestion()}
         </form>

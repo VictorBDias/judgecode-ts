@@ -74,6 +74,12 @@ export const Paragraph = styled.p<TypographyProps>`
           font-weight: regular;
         `;
 
+      case 'tag':
+        return css`
+          font-size: 16px;
+          color: #fff;
+          font-weight: bold;
+        `;
       default:
         break;
     }

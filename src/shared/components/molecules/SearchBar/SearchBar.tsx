@@ -53,7 +53,7 @@ const SearchBar = ({
       {...rest}
     >
       <SearchButton type="button" title="pesquisar">
-        <Icon iconName="search" />
+        <Icon name="search" />
       </SearchButton>
 
       <input
@@ -72,7 +72,7 @@ const SearchBar = ({
           onClick={() => clearSearchBar}
           title="Limpar"
         >
-          <Icon iconName="close" />
+          <Icon name="close" />
         </ClearButton>
       )}
     </Container>

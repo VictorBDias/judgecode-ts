@@ -12,7 +12,7 @@ export const IconContainer = styled.div<IconProps>`
     min-height: ${(props) => props.size}px;
     min-height: ${(props) => props.size}px;
 
-    color: ${(props) => {
+    fill: ${(props) => {
       const { variant } = props;
       switch (variant) {
         case 'secondary':

@@ -51,7 +51,7 @@ const QuestionsBank = () => {
       >
         <SearchBar placeholder="Busque uma questão" style={{ maxWidth: 400 }} />
         <Button
-          leftIcon={<Icon iconName="plus" variant="white" />}
+          leftIcon={<Icon name="plus" variant="white" />}
           onClick={() => navigate('/question/create')}
           size="md"
           style={{ marginLeft: 24 }}

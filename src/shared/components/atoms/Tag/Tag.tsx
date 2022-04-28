@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
-import { Tag as TagChakra, TagLabel } from '@chakra-ui/react';
+import {
+  Tag as TagChakra,
+  TagCloseButton,
+  TagLabel,
+  TagRightIcon,
+} from '@chakra-ui/react';
+import { TagProps } from './tag.interfaces';
+import { Icon } from '../Icon';
+import { Typography } from '../Typography';
 
-// import { Container } from './styles';
-
-const Tag = ({ label }: any) => {
+const Tag = ({
+  label,
+  iconName,
+  tagVariant,
+  create = false,
+  onClose,
+}: TagProps) => {
   const [isSelected, setIsSelected] = useState(false);
   return (
-    <div style={{ cursor: 'pointer' }}>
+    <div style={{ cursor: 'pointer', display: 'flex' }}>
       <TagChakra
-        borderRadius="full"
-        variant={isSelected ? 'solid' : 'outline'}
-        colorScheme="telegram"
+        borderRadius="md"
+        variant={tagVariant || 'solid'}
+        colorScheme="lightSecondaryObj"
+        size="lg"
       >
-        <TagLabel onClick={() => setIsSelected(!isSelected)}>label</TagLabel>
+        <TagLabel onClick={() => setIsSelected(!isSelected)}>
+          <Typography variant={tagVariant !== 'outline' ? 'tag' : 'secondary'}>
+            {label}
+          </Typography>
+        </TagLabel>
+        <TagCloseButton onClick={onClose} />
       </TagChakra>
     </div>
   );

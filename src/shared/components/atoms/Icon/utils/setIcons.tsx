@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoDatabase, GoPlus } from 'react-icons/go';
+import { GoDatabase, GoPlus, GoX } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -12,6 +12,7 @@ export const iconTypes = {
   LOCK: 'lock',
   PERSON: 'person',
   MENU: 'menu',
+  CLOSE: 'close',
 };
 
 export const setIcons = (type: string) => {
@@ -36,6 +37,9 @@ export const setIcons = (type: string) => {
 
     case iconTypes.MENU:
       return <BsThreeDotsVertical />;
+
+    case iconTypes.CLOSE:
+      return <GoX />;
 
     default:
       return null;

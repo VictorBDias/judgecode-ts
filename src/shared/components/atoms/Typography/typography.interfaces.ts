@@ -11,7 +11,9 @@ export interface TypographyProps
     | 'whiteRegular'
     | 'whiteSubTitle'
     | 'secondary'
-    | 'error';
+    | 'error'
+    | 'tag';
+
   maxLines?: number;
   className?: string;
 }

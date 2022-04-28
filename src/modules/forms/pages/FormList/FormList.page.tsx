@@ -183,7 +183,7 @@ const FormList = () => {
         />
 
         <Button
-          leftIcon={<Icon iconName="plus" variant="white" />}
+          leftIcon={<Icon name="plus" variant="white" />}
           onClick={() => navigate('/forms/create')}
           size="md"
           style={{ marginLeft: 24 }}

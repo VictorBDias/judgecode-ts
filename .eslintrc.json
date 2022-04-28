@@ -24,6 +24,7 @@
         "prettier"
     ],
     "rules": {
+      "object-curly-newline": "off",
       "arrow-body-style": "off",
       "react/jsx-no-bind": "off",
       "prettier/prettier": "error",

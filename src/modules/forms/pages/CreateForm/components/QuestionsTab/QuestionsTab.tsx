@@ -55,7 +55,7 @@ const QuestionsTab = () => {
           }}
         >
           <Button
-            leftIcon={<Icon iconName="plus" variant="white" />}
+            leftIcon={<Icon name="plus" variant="white" />}
             onClick={() => setShowQuestionModal(true)}
             size="sm"
             style={{ marginBottom: 8 }}
@@ -64,7 +64,7 @@ const QuestionsTab = () => {
           </Button>
           <Button
             variant="outline"
-            leftIcon={<Icon iconName="database" variant="secondary" />}
+            leftIcon={<Icon name="database" variant="secondary" />}
             onClick={() => setShowBankModal(true)}
             size="sm"
             style={{ marginBottom: 8, marginLeft: 24 }}
