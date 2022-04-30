@@ -3,6 +3,7 @@ import { GoDatabase, GoPlus, GoX } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { AiFillTags } from 'react-icons/ai';
 
 export const iconTypes = {
   DATABASE: 'database',
@@ -13,6 +14,7 @@ export const iconTypes = {
   PERSON: 'person',
   MENU: 'menu',
   CLOSE: 'close',
+  TAGS: 'tags',
 };
 
 export const setIcons = (type: string) => {
@@ -40,6 +42,9 @@ export const setIcons = (type: string) => {
 
     case iconTypes.CLOSE:
       return <GoX />;
+
+    case iconTypes.TAGS:
+      return <AiFillTags />;
 
     default:
       return null;

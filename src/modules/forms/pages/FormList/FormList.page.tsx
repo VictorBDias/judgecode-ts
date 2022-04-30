@@ -190,6 +190,14 @@ const FormList = () => {
         >
           Criar formulário
         </Button>
+        <Button
+          variant="outline"
+          leftIcon={<Icon name="tags" variant="secondary" />}
+          onClick={() => {}}
+          size="md"
+        >
+          Criar formulário
+        </Button>
       </div>
 
       <ScrollableList
