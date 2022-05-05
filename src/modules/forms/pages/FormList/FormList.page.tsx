@@ -2,13 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
-import { Box } from '@chakra-ui/react';
-import {
-  Typography,
-  Card,
-  // Icon,
-  Button,
-} from '../../../../shared/components/atoms';
+import { Typography, Card, Button } from '../../../../shared/components/atoms';
 import { Container } from './formlist.styles';
 import {
   ScrollableList,
@@ -187,14 +181,6 @@ const FormList = () => {
           onClick={() => navigate('/forms/create')}
           size="md"
           style={{ marginLeft: 24 }}
-        >
-          Criar formulário
-        </Button>
-        <Button
-          variant="outline"
-          leftIcon={<Icon name="tags" variant="secondary" />}
-          onClick={() => {}}
-          size="md"
         >
           Criar formulário
         </Button>

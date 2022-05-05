@@ -7,7 +7,9 @@ const Select = ({ placeholder, options, ...rest }: SelectProps) => {
     <div style={{ width: 240 }}>
       <SelectChakra placeholder={placeholder} {...rest}>
         {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
+          <option key={option.id} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </SelectChakra>
     </div>

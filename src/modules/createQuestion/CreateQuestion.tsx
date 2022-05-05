@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 
 // CUSTOM IMPORTS
 import { Container } from './createQuestion.styles';
-import { Select, Typography } from '../../shared/components/atoms';
+import { Typography } from '../../shared/components/atoms';
 import { FooterButtons } from '../../shared/components/molecules';
-import { CodeEditorForm } from './components/CodeEditorForm/CodeEditorForm';
+import { QuestionTypes } from '../forms/components/CreateQuestionModal/createQuestion.interfaces';
+import { useQuestionsRender } from './hooks/useQuestion';
+import { useCreateQuestion } from './contexts/CreateQuestion.context';
 
 const questionTypes = [
   {
@@ -16,7 +18,15 @@ const questionTypes = [
   },
 ];
 
+const TagsMock = [
+  { id: 1, label: 'JavaScript' },
+  { id: 2, label: 'C++' },
+  { id: 3, label: 'TypeScript' },
+];
+
 const CreateQuestion = () => {
+  const { codeEditorContent } = useCreateQuestion();
+
   const navigate = useNavigate();
   const {
     control,
@@ -24,34 +34,15 @@ const CreateQuestion = () => {
     register,
     formState: { errors },
   } = useForm<any>();
-  const [language, setLanguage] = useState(questionTypes[0]);
+  const [questionType, setQuestionType] = useState<QuestionTypes>('codeEditor');
 
-  const handleRenderQuestion = () => {
-    switch (language.value) {
-      case 'codeEditor':
-        return <CodeEditorForm />;
-
-      default:
-        break;
-    }
-  };
-
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => console.log(codeEditorContent);
   return (
     <Container>
       <Typography variant="title" style={{ marginBottom: 16, marginTop: 40 }}>
         Criar Questão
       </Typography>
-      <div style={{ marginBottom: 16 }}>
-        <Select
-          options={questionTypes}
-          value={language}
-          onChange={(e: any) => setLanguage(e.target.value)}
-        />
-      </div>
-      <form id="question-form" onSubmit={onSubmit}>
-        {handleRenderQuestion()}
-      </form>
+      {useQuestionsRender(questionType, onSubmit, setQuestionType)}
       <FooterButtons
         formId="question-form"
         type="submit"

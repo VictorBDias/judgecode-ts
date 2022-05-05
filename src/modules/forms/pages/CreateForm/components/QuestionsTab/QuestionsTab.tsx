@@ -12,17 +12,38 @@ import { ScrollableList } from '../../../../../../shared/components/molecules';
 import { Icon } from '../../../../../../shared/components/atoms/Icon';
 import { QuestionBankModal } from './QuestionBankModal/QuestionBankModal';
 import { CreateQuestionModal } from '../../../../components/CreateQuestionModal/CreateQuestionModal';
+import { QuestionCard } from './QuestionCard/QuestionCard';
 
 const mockup = [
   {
     id: 1,
     title: 'Question 1',
     description: 'Description',
+    tag: 'Código',
   },
   {
     id: 2,
     title: 'Question 2',
     description: 'Eng. Software 2021 Description',
+    tag: 'Código',
+  },
+  {
+    id: 3,
+    title: 'Question 3',
+    description: 'Description',
+    tag: 'Múltipla escolha',
+  },
+  {
+    id: 4,
+    title: 'Question 4',
+    description: 'Eng. Software 2021 Description',
+    tag: 'Texto',
+  },
+  {
+    id: 5,
+    title: 'Question 5',
+    description: 'Description',
+    tag: 'Ordenar',
   },
 ];
 
@@ -37,12 +58,7 @@ const QuestionsTab = () => {
   const [showBankModal, setShowBankModal] = React.useState(false);
   const [showQuestionModal, setShowQuestionModal] = React.useState(false);
   // FUNCTIONS
-  const renderCell = (mock: any) => (
-    <Card margin={8}>
-      <Typography>{mock.title}</Typography>
-      <Typography>{mock.description}</Typography>
-    </Card>
-  );
+  const renderCell = (mock: any) => <QuestionCard data={mock} />;
 
   return (
     <>

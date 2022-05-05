@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
@@ -6,37 +6,54 @@ import { Typography, Card, Button } from '../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
 import { ScrollableList, SearchBar } from '../../shared/components/molecules';
 import { Icon } from '../../shared/components/atoms/Icon';
+import { CreateQuestionModal } from '../forms/components/CreateQuestionModal/CreateQuestionModal';
+import { CreateQuestionsProvider } from '../createQuestion/contexts/CreateQuestion.context';
+import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
 
 const mockup = [
   {
     id: 1,
     title: 'Question 1',
     description: 'Description',
+    tag: 'Código',
   },
   {
     id: 2,
     title: 'Question 2',
     description: 'Eng. Software 2021 Description',
+    tag: 'Código',
+  },
+  {
+    id: 3,
+    title: 'Question 3',
+    description: 'Description',
+    tag: 'Múltipla escolha',
+  },
+  {
+    id: 4,
+    title: 'Question 4',
+    description: 'Eng. Software 2021 Description',
+    tag: 'Texto',
+  },
+  {
+    id: 5,
+    title: 'Question 5',
+    description: 'Description',
+    tag: 'Ordenar',
   },
 ];
-
 type MockType = {
   id: number;
   title: string;
   description: string;
 };
-const QuestionsBank = () => {
+const QuestionsBankContent = () => {
   const navigate = useNavigate();
   // STATES
   const [show, setShow] = React.useState(false);
+  const [showQuestionModal, setShowQuestionModal] = useState(false);
   // FUNCTIONS
-  const renderCell = (mock: any) => (
-    <Card margin={8}>
-      <Typography>{mock.title}</Typography>
-      <Typography>{mock.description}</Typography>
-    </Card>
-  );
-
+  const renderCell = (mock: any) => <QuestionCard data={mock} />;
   return (
     <Container>
       <Typography variant="title" style={{ margin: '40px 0 8px 4px' }}>
@@ -52,11 +69,20 @@ const QuestionsBank = () => {
         <SearchBar placeholder="Busque uma questão" style={{ maxWidth: 400 }} />
         <Button
           leftIcon={<Icon name="plus" variant="white" />}
-          onClick={() => navigate('/question/create')}
+          onClick={() => setShowQuestionModal(true)}
           size="md"
           style={{ marginLeft: 24 }}
         >
           Criar questão
+        </Button>
+        <Button
+          variant="outline"
+          leftIcon={<Icon name="tags" variant="secondary" />}
+          onClick={() => {}}
+          size="md"
+          style={{ marginLeft: 68 }}
+        >
+          Filtrar por Tags
         </Button>
       </div>
 
@@ -66,7 +92,22 @@ const QuestionsBank = () => {
         renderCell={renderCell}
         size={800}
       />
+
+      <CreateQuestionModal
+        show={showQuestionModal}
+        onClose={() => setShowQuestionModal(false)}
+      />
     </Container>
   );
 };
+// import { Container } from './styles';
+
+const QuestionsBank: React.FC = () => {
+  return (
+    <CreateQuestionsProvider>
+      <QuestionsBankContent />
+    </CreateQuestionsProvider>
+  );
+};
+
 export { QuestionsBank };

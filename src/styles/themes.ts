@@ -14,6 +14,22 @@ export const theme = extendTheme({
       600: '#E190F0',
       500: '#E190F0',
     },
+    tagColorObj1: {
+      600: '#A393F5',
+      500: '#A393F5',
+    },
+    tagColorObj2: {
+      600: '#59B599',
+      500: '#59B599',
+    },
+    tagColorObj3: {
+      600: '#72B5E9',
+      500: '#72B5E9',
+    },
+    tagColorObj4: {
+      600: '#E9A672',
+      500: '#E9A672',
+    },
     lightSecondary: '#E190F0',
     error: '#cd3248',
     background: '#F8F8F8',

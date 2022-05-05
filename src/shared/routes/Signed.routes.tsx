@@ -7,6 +7,7 @@ import { FormList, CreateForm } from '../../modules/forms/pages';
 import { QuestionsBank } from '../../modules/questionBank/QuestionsBank';
 import { CreateQuestion } from '../../modules/createQuestion/CreateQuestion';
 import { SignedProvider } from '../contexts';
+import { CreateQuestionsProvider } from '../../modules/createQuestion/contexts/CreateQuestion.context';
 
 // ELEMENTS
 
