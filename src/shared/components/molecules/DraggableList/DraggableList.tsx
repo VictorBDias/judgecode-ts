@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { InputLoader } from '../../atoms/Input/InputLoader/InputLoader';
 import { DraggableListProps } from './draggableList.interfaces';
 
-export const DraggableList({
+export const DraggableList = ({
   gap = 16,
   data,
   onDragFinish = () => {},
