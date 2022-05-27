@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoDatabase, GoPlus, GoX } from 'react-icons/go';
 import { GrSearch } from 'react-icons/gr';
-import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
+import { MdEmail, MdLock, MdPerson, MdDragIndicator } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiFillTags } from 'react-icons/ai';
 
@@ -15,6 +15,7 @@ export const iconTypes = {
   MENU: 'menu',
   CLOSE: 'close',
   TAGS: 'tags',
+  DRAG: 'drag',
 };
 
 export const setIcons = (type: string) => {
@@ -45,6 +46,9 @@ export const setIcons = (type: string) => {
 
     case iconTypes.TAGS:
       return <AiFillTags />;
+
+    case iconTypes.DRAG:
+      return <MdDragIndicator />;
 
     default:
       return null;

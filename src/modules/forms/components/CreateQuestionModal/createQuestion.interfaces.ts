@@ -1,1 +1,1 @@
-export type QuestionTypes = 'codeEditor' | 'test';
+export type QuestionTypes = 'codeEditor' | 'orderCode' | 'test';

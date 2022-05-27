@@ -11,6 +11,7 @@ export type Icons =
   | 'email'
   | 'lock'
   | 'tags'
+  | 'drag'
   | 'menu';
 
 export interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {

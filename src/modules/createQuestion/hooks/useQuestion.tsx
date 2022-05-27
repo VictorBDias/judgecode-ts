@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Select } from '../../../shared/components/atoms';
 import { QuestionTypes } from '../../forms/components/CreateQuestionModal/createQuestion.interfaces';
 import { CodeEditorForm } from '../components/CodeEditorForm/CodeEditorForm';
+import { OrderCodeForm } from '../components/OrderCodeForm/OrderCodeForm';
 import { TestQuestionForm } from '../components/TestQuestionForm/CodeEditorForm';
 
 const questionTypes = [
@@ -12,6 +13,11 @@ const questionTypes = [
   },
   {
     id: 2,
+    label: 'Ordenar código',
+    value: 'orderCode',
+  },
+  {
+    id: 3,
     label: 'Teste',
     value: 'test',
   },
@@ -21,6 +27,9 @@ const handleRenderQuestion = (questionType: QuestionTypes) => {
   switch (questionType) {
     case 'codeEditor':
       return <CodeEditorForm />;
+
+    case 'orderCode':
+      return <OrderCodeForm />;
 
     case 'test':
       return <TestQuestionForm />;

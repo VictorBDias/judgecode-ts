@@ -6,4 +6,5 @@ export * from './NumericInput/NumericInput';
 export * from './IconedButton/IconedButton';
 export * from './Select/Select';
 export * from './Tag/Tag';
+export * from './Icon/Icon';
 export * from './TagGroup/TagGroup';

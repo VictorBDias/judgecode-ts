@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
-  Button,
   FormInput,
   NumericFormInput,
 } from '../../../../../../shared/components/atoms';

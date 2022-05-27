@@ -20,12 +20,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
-    // "baseUrl": ".",
-    // "paths": {
-    //   "@shared/*": ["./src/shared/*"],
-    // }
+    "baseUrl": "./src"
   },
   
+  "exclude": ["node_modules"],
   "include": [
     "src"
   ]
