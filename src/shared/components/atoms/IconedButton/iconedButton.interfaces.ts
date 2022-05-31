@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 export interface IconedButtonProps {
   icon: ReactElement;
-  label: string;
+  label?: string;
   color?: string;
   [x: string]: any;
 }

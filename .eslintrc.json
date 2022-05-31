@@ -24,6 +24,8 @@
         "prettier"
     ],
     "rules": {
+      "function-paren-newline": "off",
+      "no-confusing-arrow": "off",
       "indent": "off",
       "comma-dangle": "off",
       "object-curly-newline": "off",

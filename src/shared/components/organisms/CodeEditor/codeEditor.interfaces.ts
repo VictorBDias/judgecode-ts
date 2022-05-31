@@ -35,5 +35,7 @@ export interface CodeEditorProps {
   fontSize?: number;
   onChange: (value: string) => void;
   onLoad?: () => void;
+  showLanguageOptions?: boolean;
+  readOnly?: boolean;
   [x: string]: any;
 }

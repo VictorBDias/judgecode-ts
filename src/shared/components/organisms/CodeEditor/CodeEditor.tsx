@@ -120,6 +120,9 @@ const CodeEditor = ({
   onLoad,
   onChange,
   value,
+  showLanguageOptions = true,
+  readOnly = false,
+  ...rest
 }: CodeEditorProps) => {
   const [language, setLanguage] = useState('javascript');
 
@@ -128,12 +131,15 @@ const CodeEditor = ({
   }, 500);
   return (
     <Container>
-      <Select
-        options={languageOptions}
-        value={language}
-        onChange={(e: any) => setLanguage(e.target.value)}
-      />
+      {showLanguageOptions && (
+        <Select
+          options={languageOptions}
+          value={language}
+          onChange={(e: any) => setLanguage(e.target.value)}
+        />
+      )}
       <AceEditor
+        {...rest}
         style={{
           width: 600,
           marginTop: 24,
@@ -150,6 +156,7 @@ const CodeEditor = ({
         showGutter
         highlightActiveLine
         value={value}
+        readOnly={readOnly}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,

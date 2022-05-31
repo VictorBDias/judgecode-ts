@@ -1,16 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 //* CUSTOM IMPORTS
 import { CodeEditor } from '../../organisms/CodeEditor';
 import { Icon, IconedButton, Typography } from '../../atoms';
 import { DraggableList } from '../DraggableList';
 
-import {
-  Container,
-  CellContainer,
-  AbsoluteContainer,
-} from './linesDraggableList.styles';
+import { CellContainer, Container } from './linesDraggableList.styles';
+import { linesDraggableListProps } from './linesDraggableList.interfaces';
 
 export const LinesDraggableList = ({
   title,
@@ -18,40 +14,43 @@ export const LinesDraggableList = ({
   onAdd,
   onDragFinish,
   onDelete,
-}: any) => {
+}: linesDraggableListProps) => {
   //* FUNCTIONS
   const renderCell = (line: any) => {
-    const { id, name } = line;
+    const { id, content } = line;
 
     return (
       <CellContainer>
         <Icon name="drag" className="drag-icon" />
 
-        <CodeEditor
-          mode="javascript"
-          value="Teste"
-          onChange={(value) => console.log(value)}
-        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
+        >
+          <CodeEditor
+            mode="javascript"
+            value={content}
+            onChange={(value) => console.log(value)}
+            showLanguageOptions={false}
+            minLines={3}
+            maxLines={3}
+          />
 
-        <AbsoluteContainer>
-          <Icon onClick={() => onDelete(line)}>
-            <Icon name="close" />
-          </Icon>
-        </AbsoluteContainer>
+          <IconedButton
+            onClick={() => onDelete(line)}
+            icon={<Icon name="close" />}
+          />
+        </div>
       </CellContainer>
     );
   };
 
   return (
     <Container>
-      {title && (
-        <Typography
-          className="normal small bold uppercase"
-          style={{ marginBottom: 10 }}
-        >
-          {title}
-        </Typography>
-      )}
+      {title && <Typography variant="regular">{title}</Typography>}
 
       <DraggableList
         data={data}
@@ -60,7 +59,7 @@ export const LinesDraggableList = ({
       />
 
       <IconedButton
-        style={{ marginTop: 16 }}
+        style={{ marginTop: 24 }}
         onClick={onAdd}
         label="Adicionar"
         icon={<Icon name="plus" />}

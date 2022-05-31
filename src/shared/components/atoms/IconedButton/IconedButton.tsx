@@ -38,9 +38,11 @@ const IconedButton = ({
         aria-label="Search database"
         icon={icon}
       />
-      <Typography variant="regular" onClick={onClick}>
-        {label}
-      </Typography>
+      {label && (
+        <Typography variant="regular" onClick={onClick}>
+          {label}
+        </Typography>
+      )}
     </Container>
   );
 };

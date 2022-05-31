@@ -11,11 +11,5 @@ export const Container = styled.div`
 
 export const CellContainer = styled.div`
   display: flex;
-`;
-
-export const AbsoluteContainer = styled.div`
-  display: flex;
   align-items: center;
-  position: absolute;
-  right: -45px;
 `;

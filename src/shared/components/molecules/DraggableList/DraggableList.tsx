@@ -50,8 +50,6 @@ export const DraggableList = ({
   const getItemStyle = (isDragging: boolean, draggableStyle: any) =>
     draggableStyle;
 
-  if (isLoading) return cellLoader;
-
   return (
     <DragDropContext onDragEnd={onDragEnd} {...rest}>
       <Droppable droppableId="droppable">
@@ -67,29 +65,32 @@ export const DraggableList = ({
           >
             {!inverted && cellLoader}
 
-            {data.map((item: any, index: number) => (
-              <Draggable
-                isDragDisabled={isDragDisabled}
-                key={String(item.id)}
-                draggableId={String(item.id)}
-                index={index}
-              >
-                {(innerProvider, snapshot) => (
-                  <div
-                    ref={innerProvider.innerRef}
-                    {...innerProvider.draggableProps}
-                    {...innerProvider.dragHandleProps}
-                    style={getItemStyle(
-                      snapshot.isDragging,
-                      innerProvider.draggableProps.style,
-                    )}
-                  >
-                    {renderCell(item, index)}
-                  </div>
-                )}
-              </Draggable>
-            ))}
-
+            {data.map((item: any, index: number) =>
+              String(item.id) === String(1) ? (
+                cellLoader
+              ) : (
+                <Draggable
+                  isDragDisabled={isDragDisabled}
+                  key={String(item.id)}
+                  draggableId={String(item.id)}
+                  index={index}
+                >
+                  {(innerProvider, snapshot) => (
+                    <div
+                      ref={innerProvider.innerRef}
+                      {...innerProvider.draggableProps}
+                      {...innerProvider.dragHandleProps}
+                      style={getItemStyle(
+                        snapshot.isDragging,
+                        innerProvider.draggableProps.style,
+                      )}
+                    >
+                      {renderCell(item, index)}
+                    </div>
+                  )}
+                </Draggable>
+              ),
+            )}
             {inverted && cellLoader}
 
             {provided.placeholder}

@@ -6,7 +6,6 @@ import {
 } from '../../../../../../../shared/components/atoms';
 
 export const QuestionCard = (data: any) => {
-  console.log(data);
   const {
     data: { title, description, tag },
   } = data;
