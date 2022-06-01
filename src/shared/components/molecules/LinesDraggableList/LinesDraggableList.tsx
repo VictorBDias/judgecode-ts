@@ -14,6 +14,9 @@ export const LinesDraggableList = ({
   onAdd,
   onDragFinish,
   onDelete,
+  initialData,
+  readOnly = false,
+  ...rest
 }: linesDraggableListProps) => {
   //* FUNCTIONS
   const renderCell = (line: any) => {
@@ -31,6 +34,8 @@ export const LinesDraggableList = ({
           }}
         >
           <CodeEditor
+            {...rest}
+            readOnly={readOnly}
             mode="javascript"
             value={content}
             onChange={(value) => console.log(value)}
@@ -39,10 +44,12 @@ export const LinesDraggableList = ({
             maxLines={3}
           />
 
-          <IconedButton
-            onClick={() => onDelete(line)}
-            icon={<Icon name="close" />}
-          />
+          {!readOnly && (
+            <IconedButton
+              onClick={() => onDelete(line)}
+              icon={<Icon name="close" />}
+            />
+          )}
         </div>
       </CellContainer>
     );
@@ -58,12 +65,14 @@ export const LinesDraggableList = ({
         onDragFinish={onDragFinish}
       />
 
-      <IconedButton
-        style={{ marginTop: 24 }}
-        onClick={onAdd}
-        label="Adicionar"
-        icon={<Icon name="plus" />}
-      />
+      {!readOnly && (
+        <IconedButton
+          style={{ marginTop: 24 }}
+          onClick={onAdd}
+          label="Adicionar"
+          icon={<Icon name="plus" />}
+        />
+      )}
     </Container>
   );
 };

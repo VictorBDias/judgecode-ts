@@ -29,13 +29,16 @@ type Themes =
   | 'solarized_light'
   | 'terminal';
 
+type ICodeQuestion = any;
+
 export interface CodeEditorProps {
   placeholder?: string;
   theme?: Themes;
   fontSize?: number;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   onLoad?: () => void;
   showLanguageOptions?: boolean;
   readOnly?: boolean;
+  initialData?: ICodeQuestion;
   [x: string]: any;
 }

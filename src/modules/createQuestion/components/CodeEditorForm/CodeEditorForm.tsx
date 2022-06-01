@@ -11,7 +11,7 @@ const CodeEditorForm = () => {
     <CodeEditor
       mode="javascript"
       value={codeEditorContent}
-      onChange={(value) => setCodeEditorContent(value)}
+      onChange={(value) => console.log(value)}
     />
   );
 };

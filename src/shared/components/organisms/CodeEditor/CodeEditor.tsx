@@ -122,12 +122,13 @@ const CodeEditor = ({
   value,
   showLanguageOptions = true,
   readOnly = false,
+  initialData,
   ...rest
 }: CodeEditorProps) => {
   const [language, setLanguage] = useState('javascript');
 
   const debouncedOnChange = debounce((newValue: string) => {
-    onChange(newValue);
+    if (onChange) onChange(newValue);
   }, 500);
   return (
     <Container>

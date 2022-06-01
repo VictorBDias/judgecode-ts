@@ -14,8 +14,6 @@ const mockData = [
 ];
 
 const OrderCodeForm = () => {
-  const { codeEditorContent, setCodeEditorContent } = useCreateQuestion();
-
   return (
     <LinesDraggableList
       data={mockData}
