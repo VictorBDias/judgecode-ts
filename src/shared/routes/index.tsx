@@ -9,7 +9,7 @@ function AppRoutes() {
   const user = 'midaf';
   // const { user } = useAuth();
 
-  return !user ? <SignedRoutes /> : <AuthRoutes />;
+  return user ? <SignedRoutes /> : <AuthRoutes />;
 }
 
 export { AppRoutes };

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
-import { Typography, Card, Button } from '../../shared/components/atoms';
+import { Typography, Button } from '../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
 import { ScrollableList, SearchBar } from '../../shared/components/molecules';
 import { Icon } from '../../shared/components/atoms/Icon';
 import { CreateQuestionModal } from '../forms/components/CreateQuestionModal/CreateQuestionModal';
 import { CreateQuestionsProvider } from '../createQuestion/contexts/CreateQuestion.context';
 import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
+import FilterByTagModal from './FilterByTagModal/FilterByTagModal';
 
 const mockup = [
   {
@@ -97,10 +98,11 @@ const QuestionsBankContent = () => {
         show={showQuestionModal}
         onClose={() => setShowQuestionModal(false)}
       />
+
+      <FilterByTagModal show={false} />
     </Container>
   );
 };
-// import { Container } from './styles';
 
 const QuestionsBank: React.FC = () => {
   return (

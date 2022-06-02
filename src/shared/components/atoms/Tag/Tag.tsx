@@ -3,8 +3,8 @@ import { Tag as TagChakra, TagCloseButton, TagLabel } from '@chakra-ui/react';
 import { TagProps } from './tag.interfaces';
 import { Typography } from '../Typography';
 
-const Tag = ({ label, tagVariant, ...rest }: TagProps) => {
-  const [isSelected, setIsSelected] = useState(false);
+const Tag = ({ label, size = 'sm', selected = true, ...rest }: TagProps) => {
+  const [isSelected, setIsSelected] = useState(selected);
 
   const handleTagColor = () => {
     switch (label) {
@@ -28,12 +28,12 @@ const Tag = ({ label, tagVariant, ...rest }: TagProps) => {
     <div style={{ display: 'flex' }} {...rest}>
       <TagChakra
         borderRadius="md"
-        variant={tagVariant || 'solid'}
+        variant={!isSelected ? 'outline' : 'solid'}
         colorScheme={handleTagColor()}
-        size="sm"
+        size={size}
       >
         <TagLabel onClick={() => setIsSelected(!isSelected)}>
-          <Typography variant={tagVariant !== 'outline' ? 'tag' : 'secondary'}>
+          <Typography variant={!isSelected ? 'regular' : 'tag'}>
             {label}
           </Typography>
         </TagLabel>

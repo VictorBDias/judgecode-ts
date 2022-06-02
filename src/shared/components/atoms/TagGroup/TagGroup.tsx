@@ -1,32 +1,20 @@
 import React from 'react';
 import { HStack, Tag as TagChakra, TagLabel } from '@chakra-ui/react';
 import { Tag } from '../Tag/Tag';
-import { Typography } from '../Typography';
+import { TagProps } from '../Tag/tag.interfaces';
 
-const TagGroup = ({ data, create }: any) => {
+type TagGroupProps = {
+  data: TagProps[];
+};
+
+export const TagGroup = ({ data, ...rest }: TagGroupProps) => {
   return (
     <div style={{ display: 'flex' }}>
-      {create && (
-        <div style={{ cursor: 'pointer', display: 'flex', marginRight: 8 }}>
-          <TagChakra
-            borderRadius="md"
-            variant="outline"
-            colorScheme="lightSecondaryObj"
-            size="md"
-          >
-            <TagLabel onClick={() => console.log('isSelected')}>
-              <Typography variant="secondary">Criar tag</Typography>
-            </TagLabel>
-          </TagChakra>
-        </div>
-      )}
       <HStack>
         {data.map((data: any) => (
-          <Tag label={data.label} />
+          <Tag {...rest} label={data.label} size="lg" />
         ))}
       </HStack>
     </div>
   );
 };
-
-export default TagGroup;
