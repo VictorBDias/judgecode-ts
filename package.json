@@ -20,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "ace-builds": "^1.4.14",
+    "axios": "^0.27.2",
     "babel-eslint": "^10.1.0",
     "chakra-ui": "^0.3.9",
     "eslint": "^7.32.0",

@@ -24,6 +24,7 @@
         "prettier"
     ],
     "rules": {
+      "camelcase": "off",
       "import/no-unresolved": "off",
       "function-paren-newline": "off",
       "no-confusing-arrow": "off",
