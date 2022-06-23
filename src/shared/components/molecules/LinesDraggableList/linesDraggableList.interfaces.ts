@@ -1,7 +1,7 @@
 type IOrderCodeQuestion = any;
 
 export interface linesDraggableListProps {
-  title: string;
+  title?: string;
   data: any;
   onAdd?: any;
   onDelete?: any;

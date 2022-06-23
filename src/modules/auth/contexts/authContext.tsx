@@ -12,7 +12,7 @@ import { IUser } from '../interfaces/sessions.apis.interfaces';
 
 interface AuthContextData {
   signIn: (data: ICreateSessionDTO) => ICreateSessionAPI;
-  signUp: (data: ICreateUserDTO) => ICreateUserAPI;
+  signUp: ({ data }: ICreateUserDTO) => ICreateUserAPI;
   signOut: any;
   user?: IUser;
   isLoading: boolean;
@@ -43,13 +43,13 @@ const AuthProvider: React.FC = ({ children }) => {
   const signUp = React.useCallback(async ({ data }: ICreateUserDTO) => {
     setIsLoading(true);
     try {
-      const { data: user } = await createUserAPI({
-        data,
-      });
+      const response = await createUserAPI({ data });
       setUser(data);
       setIsLoading(false);
+      return response;
     } catch (err) {
       setIsLoading(false);
+      return {} as ICreateUserAPI;
     }
   }, []);
   const signOut = React.useCallback(() => {}, []);

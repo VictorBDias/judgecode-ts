@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
+import { SideNavigation } from 'shared/components/templates';
 
 // CUSTOM IMPORTS
-import { SideNavigation } from '../components/templates';
 
 interface SignedContextData {}
 

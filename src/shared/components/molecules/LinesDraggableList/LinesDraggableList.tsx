@@ -46,7 +46,7 @@ export const LinesDraggableList = ({
 
           {!readOnly && (
             <IconedButton
-              onClick={() => onDelete(line)}
+              onClick={() => onDelete(line.id)}
               icon={<Icon name="close" />}
             />
           )}

@@ -32,17 +32,13 @@ const IconedButton = ({
   };
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <IconButton
         colorScheme={color}
         aria-label="Search database"
         icon={icon}
       />
-      {label && (
-        <Typography variant="regular" onClick={onClick}>
-          {label}
-        </Typography>
-      )}
+      {label && <Typography variant="regular">{label}</Typography>}
     </Container>
   );
 };
