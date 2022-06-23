@@ -16,6 +16,7 @@ const INITIAL_DATA = {
     {
       id: 1,
       name: 'newline#1',
+      content: '',
     },
   ],
 };

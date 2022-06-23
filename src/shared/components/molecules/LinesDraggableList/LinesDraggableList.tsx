@@ -58,13 +58,6 @@ export const LinesDraggableList = ({
   return (
     <Container>
       {title && <Typography variant="regular">{title}</Typography>}
-
-      <DraggableList
-        data={data}
-        renderCell={renderCell}
-        onDragFinish={onDragFinish}
-      />
-
       {!readOnly && (
         <IconedButton
           style={{ marginTop: 24 }}
@@ -73,6 +66,11 @@ export const LinesDraggableList = ({
           icon={<Icon name="plus" />}
         />
       )}
+      <DraggableList
+        data={data}
+        renderCell={renderCell}
+        onDragFinish={onDragFinish}
+      />
     </Container>
   );
 };

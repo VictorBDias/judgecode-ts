@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormInput } from 'shared/components/atoms';
-import { CodeEditor } from '../../../../shared/components/organisms/CodeEditor';
+import { CodeEditor } from 'shared/components/organisms/CodeEditor';
 import { useCreateQuestion } from '../../contexts/CreateQuestion.context';
 
-// import { Container } from './styles';
 type FieldValues = {
   description: string;
 };
