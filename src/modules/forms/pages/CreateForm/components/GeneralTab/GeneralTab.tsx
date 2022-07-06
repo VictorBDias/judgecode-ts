@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Tooltip } from '@chakra-ui/react';
 import {
   FormInput,
   NumericFormInput,
 } from '../../../../../../shared/components/atoms';
 import { CheckBox } from '../../../../../../shared/components/atoms/Checkbox';
+import { CheckBoxesContainer } from './generalTab.styles';
 
 type FieldValues = {
   title: string;
@@ -36,10 +38,28 @@ const GeneralTab = () => {
         placeholder="Selecione o número de tentativas"
         label="Número de tentativas"
       />
-      <CheckBox
-        style={{ marginTop: 16 }}
-        label="Enviar feedback instantâneamente após resposta"
-      />
+      <CheckBoxesContainer>
+        <Tooltip
+          hasArrow
+          label="Os alunos saberão do resultado assim que terminarem o formulário"
+        >
+          <div style={{ maxWidth: 400 }}>
+            <CheckBox
+              style={{ marginTop: 16 }}
+              label="Enviar feedback instantâneamente após resposta"
+            />
+          </div>
+        </Tooltip>
+        <Tooltip label="Os alunos poderão acessar somente formulários ativos">
+          <div style={{ maxWidth: 300 }}>
+            <CheckBox
+              hasArrow
+              style={{ marginTop: 16 }}
+              label="Ativar formulário"
+            />
+          </div>
+        </Tooltip>
+      </CheckBoxesContainer>
     </form>
   );
 };

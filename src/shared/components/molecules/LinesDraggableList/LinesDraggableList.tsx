@@ -15,6 +15,7 @@ export const LinesDraggableList = ({
   onDragFinish,
   onDelete,
   initialData,
+  onChange,
   readOnly = false,
   ...rest
 }: linesDraggableListProps) => {
@@ -38,7 +39,7 @@ export const LinesDraggableList = ({
             readOnly={readOnly}
             mode="javascript"
             value={content}
-            onChange={(value) => console.log(value)}
+            onChange={onChange}
             showLanguageOptions={false}
             minLines={3}
             maxLines={3}

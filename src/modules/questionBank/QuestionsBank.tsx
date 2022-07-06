@@ -51,7 +51,8 @@ type MockType = {
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
   // STATES
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
+  const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   // FUNCTIONS
   const renderCell = (mock: any) => <QuestionCard data={mock} />;
@@ -79,7 +80,7 @@ const QuestionsBankContent = () => {
         <Button
           variant="outline"
           leftIcon={<Icon name="tags" variant="secondary" />}
-          onClick={() => {}}
+          onClick={() => setShowTagModal(true)}
           size="md"
           style={{ marginLeft: 68 }}
         >
@@ -104,7 +105,7 @@ const QuestionsBankContent = () => {
   );
 };
 
-const QuestionsBank: React.FC = () => {
+const QuestionsBank = () => {
   return (
     <CreateQuestionsProvider>
       <QuestionsBankContent />

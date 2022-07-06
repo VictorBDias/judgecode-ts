@@ -3,7 +3,7 @@ export const useOrderHandlers = (setState: any) => {
 
   const addLine = () => {
     setState((state: any) => {
-      const lineId = `${state.linesCount + 1}`;
+      const lineId = state.linesCount + 1;
 
       const newLine = {
         id: lineId,

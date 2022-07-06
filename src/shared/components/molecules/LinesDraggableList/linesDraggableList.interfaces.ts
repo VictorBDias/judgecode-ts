@@ -8,4 +8,5 @@ export interface linesDraggableListProps {
   onDragFinish?: any;
   initialData?: IOrderCodeQuestion;
   readOnly?: boolean;
+  onChange?: () => {};
 }
