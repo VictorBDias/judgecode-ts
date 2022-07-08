@@ -3,7 +3,7 @@ import {
   ICreateSessionAPI,
   ICreateSessionDTO,
 } from 'modules/auth/interfaces/dtos/sessions.create.dtos';
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 import {
   ICreateUserAPI,
   ICreateUserDTO,
@@ -11,9 +11,9 @@ import {
 import { IUser } from '../interfaces/sessions.apis.interfaces';
 
 interface AuthContextData {
-  signIn: (data: ICreateSessionDTO) => ICreateSessionAPI;
-  signUp: ({ data }: ICreateUserDTO) => ICreateUserAPI;
-  signOut: any;
+  handleSignIn: (data: ICreateSessionDTO) => ICreateSessionAPI;
+  handleSignUp: ({ data }: ICreateUserDTO) => ICreateUserAPI;
+  handleSignOut: any;
   user?: IUser;
   isLoading: boolean;
 }
@@ -23,13 +23,14 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider: React.FC = ({ children }) => {
   // STATES
   const [isLoading, setIsLoading] = React.useState(false);
-  const [user, setUser] = React.useState<any>();
+  const [user, setUser] = useState<any>();
 
   // FUNCTIONS
-  const signIn = React.useCallback(async (data: ICreateSessionDTO) => {
+  const handleSignIn = useCallback(async (data: ICreateSessionDTO) => {
+    const { uid, password } = data;
     setIsLoading(true);
     try {
-      const response = await createSessionAPI(data);
+      const response = await createSessionAPI({ uid, password });
       setIsLoading(false);
 
       setUser(data);
@@ -40,7 +41,7 @@ const AuthProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const signUp = React.useCallback(async ({ data }: ICreateUserDTO) => {
+  const handleSignUp = useCallback(async ({ data }: ICreateUserDTO) => {
     setIsLoading(true);
     try {
       const response = await createUserAPI({ data });
@@ -52,8 +53,7 @@ const AuthProvider: React.FC = ({ children }) => {
       return {} as ICreateUserAPI;
     }
   }, []);
-  const signOut = React.useCallback(() => {}, []);
-
+  const handleSignOut = useCallback(() => {}, []);
   return (
     <AuthContext.Provider
       value={{
@@ -61,9 +61,9 @@ const AuthProvider: React.FC = ({ children }) => {
         user,
         isLoading,
         // FUNCTIONS
-        signIn,
-        signUp,
-        signOut,
+        handleSignIn,
+        handleSignUp,
+        handleSignOut,
       }}
     >
       {children}

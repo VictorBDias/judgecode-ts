@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: 'https://judgecode-api.mrootx.xyz/',
 });
 export default api;

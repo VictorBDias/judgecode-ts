@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import { Flex, Heading } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import {
-  Card,
-  FormInput,
-  Button,
-  Typography,
-} from '../../../../shared/components/atoms';
+import { Card, FormInput, Button, Typography } from 'shared/components/atoms';
+import { useAuth } from 'modules/auth/contexts';
 
 type SignInForm = {
-  email: string;
+  uid: string;
   password: string;
 };
 const SignIn = () => {
+  const { handleSignIn } = useAuth();
   const {
     control,
     handleSubmit,
@@ -22,7 +19,7 @@ const SignIn = () => {
   } = useForm<SignInForm>();
   const navigate = useNavigate();
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => handleSignIn(data);
 
   return (
     <Flex
@@ -41,7 +38,7 @@ const SignIn = () => {
           <FormInput
             variant="filled"
             style={{ marginBottom: 16 }}
-            {...register('email', { required: true })}
+            {...register('uid', { required: true })}
             placeholder="Insira seu email"
             label="Email"
             icon="email"
