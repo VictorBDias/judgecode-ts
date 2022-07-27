@@ -4,6 +4,9 @@ import {
   ICreateSessionDTO,
 } from 'modules/auth/interfaces/dtos/sessions.create.dtos';
 import React, { createContext, useCallback, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import api from 'shared/services/api';
 import {
   ICreateUserAPI,
   ICreateUserDTO,
@@ -20,20 +23,28 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
+const setDefaultsHeaders = (token: string) => {
+  api.defaults.headers.common['X-User-Token'] = token;
+};
+
 const AuthProvider: React.FC = ({ children }) => {
-  // STATES
+  const navigate = useNavigate();
+  //* STATES
   const [isLoading, setIsLoading] = React.useState(false);
   const [user, setUser] = useState<any>();
 
-  // FUNCTIONS
+  //* FUNCTIONS
   const handleSignIn = useCallback(async (data: ICreateSessionDTO) => {
     const { uid, password } = data;
     setIsLoading(true);
     try {
       const response = await createSessionAPI({ uid, password });
       setIsLoading(false);
-
+      setDefaultsHeaders(response.data.token.token);
+      localStorage.setItem('token', response.data.token.token);
+      localStorage.setItem('userId', response.data.user.id);
       setUser(data);
+      navigate('/forms', { replace: true });
       return response;
     } catch (err) {
       console.log(err);
