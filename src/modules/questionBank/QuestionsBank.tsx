@@ -9,7 +9,7 @@ import { Icon } from '../../shared/components/atoms/Icon';
 import { CreateQuestionModal } from '../forms/components/CreateQuestionModal/CreateQuestionModal';
 import { CreateQuestionsProvider } from '../createQuestion/contexts/CreateQuestion.context';
 import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
-import FilterByTagModal from './FilterByTagModal/FilterByTagModal';
+import FilterByTagModal from './components/FilterByTagModal/FilterByTagModal';
 
 const mockup = [
   {
