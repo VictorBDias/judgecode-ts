@@ -6,7 +6,7 @@ export interface PaginationData {
 }
 
 export type ReplacePaginationFunction = (
-  paginationData: PaginationData
+  paginationData: PaginationData,
 ) => void;
 
 export interface UsePaginationData extends PaginationData {
@@ -27,21 +27,21 @@ export const usePagination = () => {
   }, []);
 
   const increasePage = useCallback(() => {
-    setPagination(oldPagination => ({
+    setPagination((oldPagination) => ({
       ...oldPagination,
       page: oldPagination.page + 1,
     }));
   }, []);
 
   const decreasePage = useCallback(() => {
-    setPagination(oldPagination => ({
+    setPagination((oldPagination) => ({
       ...oldPagination,
       page: oldPagination.page - 1,
     }));
   }, []);
 
   const changePage = useCallback((newPage: number) => {
-    setPagination(oldPagination => ({ ...oldPagination, page: newPage }));
+    setPagination((oldPagination) => ({ ...oldPagination, page: newPage }));
   }, []);
 
   return {

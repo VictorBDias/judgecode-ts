@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-type APIStatus =
+export type APIStatus =
   | 'pending'
   | 'paging'
   | 'idle'
@@ -18,11 +18,6 @@ type APIStatus =
   | 'showSuccess';
 
 export type ChangeStatusFunction = (newStatus: APIStatus) => void;
-
-interface UseApiStatusData {
-  status: APIStatus;
-  changeStatus: ChangeStatusFunction;
-}
 
 const useApiStatus = () => {
   //* STATES

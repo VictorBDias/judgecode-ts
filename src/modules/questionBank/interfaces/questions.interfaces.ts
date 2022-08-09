@@ -6,8 +6,11 @@ export interface IInputProps extends InputProps {
   placeholder: string;
 }
 
-export type Teste = {
-  name: string;
-  grade: string;
-  age: number;
+export type IQuestion = {
+  id: string;
+  title: string;
+  body: string;
+  language: string;
+  owner_id: string;
+  category_id: string;
 };
