@@ -50,10 +50,10 @@ type MockType = {
 };
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
-  // STATES
   const [show, setShow] = useState(false);
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
+
   // FUNCTIONS
   const renderCell = (mock: any) => <QuestionCard data={mock} />;
   return (

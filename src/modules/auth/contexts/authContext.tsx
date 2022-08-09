@@ -15,7 +15,7 @@ import { IUser } from '../interfaces/sessions.apis.interfaces';
 
 interface AuthContextData {
   handleSignIn: (data: ICreateSessionDTO) => ICreateSessionAPI;
-  handleSignUp: ({ data }: ICreateUserDTO) => ICreateUserAPI;
+  handleSignUp: (data: ICreateUserDTO) => ICreateUserAPI;
   handleSignOut: any;
   user?: IUser;
   isLoading: boolean;
@@ -52,10 +52,14 @@ const AuthProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const handleSignUp = useCallback(async ({ data }: ICreateUserDTO) => {
+  const handleSignUp = useCallback(async (data: ICreateUserDTO) => {
     setIsLoading(true);
     try {
-      const response = await createUserAPI({ data });
+      const forattedData = {
+        ...data,
+        roles: ['a1f347ff-2a17-42cb-8bc9-94693258a412'],
+      };
+      const response = await createUserAPI(forattedData);
       setUser(data);
       setIsLoading(false);
       return response;

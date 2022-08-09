@@ -14,5 +14,5 @@ export const createSessionAPI = ({
 }: ICreateSessionDTO): ICreateSessionAPI =>
   api.post('/login', { uid, password });
 
-export const createUserAPI = ({ data }: ICreateUserDTO): ICreateUserAPI =>
+export const createUserAPI = (data: ICreateUserDTO): ICreateUserAPI =>
   api.post('/admin/users', data);
