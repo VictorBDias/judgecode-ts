@@ -24,7 +24,7 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const setDefaultsHeaders = (token: any) => {
-  api.defaults.headers.common.token = token.token;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const AuthProvider: React.FC = ({ children }) => {
@@ -40,7 +40,6 @@ const AuthProvider: React.FC = ({ children }) => {
     try {
       const response = await createSessionAPI({ uid, password });
       setIsLoading(false);
-      console.log(response.data.token.token);
       setDefaultsHeaders(response.data.token.token);
       localStorage.setItem('token', response.data.token.token);
       localStorage.setItem('userId', response.data.user.id);
