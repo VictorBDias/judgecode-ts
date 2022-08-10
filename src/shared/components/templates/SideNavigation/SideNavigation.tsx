@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactText } from 'react';
+import React, { ReactNode, ReactText, useEffect } from 'react';
 import {
   IconButton,
   Box,
@@ -22,7 +22,6 @@ interface NavItemProps extends FlexProps {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
-
 function SideNavigation({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (

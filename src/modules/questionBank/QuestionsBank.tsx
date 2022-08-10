@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
@@ -10,6 +10,7 @@ import { CreateQuestionModal } from '../forms/components/CreateQuestionModal/Cre
 import { CreateQuestionsProvider } from '../createQuestion/contexts/CreateQuestion.context';
 import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
 import FilterByTagModal from './components/FilterByTagModal/FilterByTagModal';
+import { useQuestions } from './hooks/useQuestionBank';
 
 const mockup = [
   {
@@ -53,8 +54,16 @@ const QuestionsBankContent = () => {
   const [show, setShow] = useState(false);
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
+  const { listQuestions, page } = useQuestions();
 
   // FUNCTIONS
+  const listQuestionsFunc = useCallback((page = 1) => {
+    listQuestions({ page: 1 });
+  }, []);
+
+  useEffect(() => {
+    listQuestionsFunc();
+  }, []);
   const renderCell = (mock: any) => <QuestionCard data={mock} />;
   return (
     <Container>

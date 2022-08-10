@@ -5,54 +5,54 @@ type State = {
 };
 
 const useSideEffects = <T extends State>(
-  setState: Dispatch<SetStateAction<T[]>>
+  setState: Dispatch<SetStateAction<T[]>>,
 ) => {
   const create = useCallback(
-    state => {
+    (state) => {
       setState((oldState: T[]) => [state, ...oldState]);
     },
-    [setState]
+    [setState],
   );
 
   const append = useCallback(
-    state => {
+    (state) => {
       setState((oldState: T[]) => [...oldState, state]);
     },
-    [setState]
+    [setState],
   );
 
   const update = useCallback(
     (id: number | string, state: T) => {
-      setState(oldState => {
-        const foundIndex = oldState.findIndex(oldState => oldState.id === id);
+      setState((oldState) => {
+        const foundIndex = oldState.findIndex((oldState) => oldState.id === id);
 
         if (foundIndex !== -1) oldState[foundIndex] = state;
 
         return [...oldState];
       });
     },
-    [setState]
+    [setState],
   );
 
   const destroy = useCallback(
     (id: number | string) => {
-      setState(oldState => oldState.filter(oldState => oldState.id !== id));
+      setState((oldState) => oldState.filter((oldState) => oldState.id !== id));
     },
-    [setState]
+    [setState],
   );
 
   const replaceList = useCallback(
     (list: T[]) => {
       setState(list);
     },
-    [setState]
+    [setState],
   );
 
   const appendList = useCallback(
     (list: T[]) => {
-      setState(oldState => [...oldState, ...list]);
+      setState((oldState) => [...oldState, ...list]);
     },
-    [setState]
+    [setState],
   );
 
   return {
