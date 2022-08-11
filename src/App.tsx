@@ -1,6 +1,7 @@
 import React from 'react';
 // import 'dotenv/config';
 import { ChakraProvider } from '@chakra-ui/react';
+import { AuthProvider } from 'modules/auth/contexts';
 import { AppRoutes } from './shared/routes/index';
 import { theme } from './styles/themes';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +12,9 @@ import { theme } from './styles/themes';
 function App() {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <AppRoutes />
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
     </ChakraProvider>
   );
 }

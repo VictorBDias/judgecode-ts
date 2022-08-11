@@ -1,6 +1,15 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { GeneratedForm } from 'modules/public/GeneratedForm/GeneratedForm';
+import { SignIn } from 'modules/auth/pages/SignIn/SignIn';
+import { SignUp } from 'modules/auth/pages/SignUp/SignUp';
 
-// SCREENS
-import { AuthRoutes as AuthRoutesR } from '../../modules/auth/routes/Auth.routes';
+const AuthRoutes = () => (
+  <Routes>
+    <Route path="/signIn" element={<SignIn />} />
+    <Route path="/signUp" element={<SignUp />} />
+    <Route path="/answer-form/:formId" element={<GeneratedForm />} />
+  </Routes>
+);
 
-export const AuthRoutes = () => <AuthRoutesR />;
+export { AuthRoutes };

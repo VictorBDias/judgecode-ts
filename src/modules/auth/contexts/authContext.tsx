@@ -23,8 +23,12 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const setDefaultsHeaders = (token: any) => {
-  api.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setDefaultsHeaders = (token: string) => {
+  api.defaults.headers.common.authorization = `Bearer ${token}`;
+};
+
+const clearDefaultsHeaders = () => {
+  api.defaults.headers.common.authorization = '';
 };
 
 const AuthProvider: React.FC = ({ children }) => {
@@ -41,14 +45,28 @@ const AuthProvider: React.FC = ({ children }) => {
       const response = await createSessionAPI({ uid, password });
       setIsLoading(false);
       setDefaultsHeaders(response.data.token.token);
-      localStorage.setItem('token', response.data.token.token);
-      localStorage.setItem('userId', response.data.user.id);
+      localStorage.setItem('token', JSON.stringify(response.data.token.token));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       setUser(data);
-      navigate('/forms', { replace: true });
+
+      if (response) navigate('/forms');
       return response;
     } catch (err) {
       console.log(err);
       return {} as ICreateSessionAPI;
+    }
+  }, []);
+
+  const handleSignOut = useCallback(() => {
+    console.log('sai carai');
+    try {
+      clearDefaultsHeaders();
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      setUser(null);
+      if (!user) navigate('/signIn', { replace: true });
+    } catch (err) {
+      console.log(err);
     }
   }, []);
 
@@ -68,7 +86,6 @@ const AuthProvider: React.FC = ({ children }) => {
       return {} as ICreateUserAPI;
     }
   }, []);
-  const handleSignOut = useCallback(() => {}, []);
   return (
     <AuthContext.Provider
       value={{

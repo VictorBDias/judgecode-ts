@@ -7,8 +7,8 @@ import { AuthRoutes } from './Auth.routes';
 
 function AppRoutes() {
   const { user } = useAuth();
-  const persistedUserId = localStorage.getItem('userId');
-  return user || persistedUserId ? <SignedRoutes /> : <AuthRoutes />;
+  const persistedUser = localStorage.getItem('user');
+  return user || persistedUser ? <SignedRoutes /> : <AuthRoutes />;
 }
 
 export { AppRoutes };

@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { useAuth } from 'modules/auth/contexts';
 import { Typography } from '../../atoms';
 
 interface NavItemProps extends FlexProps {
@@ -59,6 +60,8 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const navigate = useNavigate();
+  const { handleSignOut } = useAuth();
+
   return (
     <Box
       bg="nav"
@@ -127,6 +130,27 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {...rest}
         >
           <Typography>Banco de questões</Typography>
+        </Flex>
+      </div>
+      <div
+        onClick={handleSignOut}
+        style={{ textDecoration: 'none' }}
+        onKeyPress={handleSignOut}
+        role="button"
+        tabIndex={0}
+      >
+        <Flex
+          align="center"
+          p="6"
+          role="group"
+          cursor="pointer"
+          color="white"
+          _hover={{
+            bg: 'primary',
+          }}
+          {...rest}
+        >
+          <Typography>Sair</Typography>
         </Flex>
       </div>
     </Box>

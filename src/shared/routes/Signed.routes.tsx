@@ -12,8 +12,6 @@ import { CreateQuestionsProvider } from '../../modules/createQuestion/contexts/C
 // ELEMENTS
 
 export const SignedRoutes: React.FC = () => (
-  // const { user } = useAuth();
-
   <SignedProvider>
     <Routes>
       <Route path="/" element={<FormList />} />
