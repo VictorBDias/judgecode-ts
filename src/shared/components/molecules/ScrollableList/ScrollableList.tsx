@@ -1,10 +1,11 @@
 import React from 'react';
 
 // CUSTOM IMPORTS
+import { Icon } from 'shared/components/atoms/Icon';
+import { Typography } from 'shared/components/atoms/Typography';
 import SimpleBar from 'simplebar-react';
 import { Container, List } from './scrollableList.styles';
 import { ScrollableListProps } from './scrollableList.interfaces';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'simplebar/dist/simplebar.min.css';
 
 /** List displays words and characters at various sizes. */
@@ -22,7 +23,17 @@ function ScrollableList({ data, renderCell, ...rest }: ScrollableListProps) {
               (item, index) => item !== null && handleRenderCell(item, index),
             )
           ) : (
-            <h1>empty</h1>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'cener',
+                marginTop: 24,
+              }}
+            >
+              <Icon name="error" />
+              <Typography>Lista vazia</Typography>
+            </div>
           ))}
       </List>
     </Container>

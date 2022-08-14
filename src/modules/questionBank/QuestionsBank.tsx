@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// CUSTOM IMPORTS
 import { Typography, Button } from '../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
 import { ScrollableList, SearchBar } from '../../shared/components/molecules';
@@ -12,51 +11,14 @@ import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/
 import FilterByTagModal from './components/FilterByTagModal/FilterByTagModal';
 import { useQuestions } from './hooks/useQuestionBank';
 
-const mockup = [
-  {
-    id: 1,
-    title: 'Question 1',
-    description: 'Description',
-    tag: 'Código',
-  },
-  {
-    id: 2,
-    title: 'Question 2',
-    description: 'Eng. Software 2021 Description',
-    tag: 'Código',
-  },
-  {
-    id: 3,
-    title: 'Question 3',
-    description: 'Description',
-    tag: 'Múltipla escolha',
-  },
-  {
-    id: 4,
-    title: 'Question 4',
-    description: 'Eng. Software 2021 Description',
-    tag: 'Texto',
-  },
-  {
-    id: 5,
-    title: 'Question 5',
-    description: 'Description',
-    tag: 'Ordenar',
-  },
-];
-type MockType = {
-  id: number;
-  title: string;
-  description: string;
-};
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
-  const { listQuestions, page } = useQuestions();
+  const { listQuestions, page, questions } = useQuestions();
 
-  // FUNCTIONS
+  //* FUNCTIONS
   const listQuestionsFunc = useCallback((page = 1) => {
     listQuestions({ page: 1 });
   }, []);
@@ -64,6 +26,7 @@ const QuestionsBankContent = () => {
   useEffect(() => {
     listQuestionsFunc();
   }, []);
+
   const renderCell = (mock: any) => <QuestionCard data={mock} />;
   return (
     <Container>
@@ -99,7 +62,7 @@ const QuestionsBankContent = () => {
 
       <ScrollableList
         style={{ marginLeft: -4, marginBottom: 40, marginTop: 16 }}
-        data={mockup}
+        data={questions}
         renderCell={renderCell}
         size={800}
       />

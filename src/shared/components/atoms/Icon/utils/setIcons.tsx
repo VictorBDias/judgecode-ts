@@ -4,6 +4,7 @@ import { GrSearch } from 'react-icons/gr';
 import { MdEmail, MdLock, MdPerson, MdDragIndicator } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiFillTags } from 'react-icons/ai';
+import { BiError } from 'react-icons/bi';
 
 export const iconTypes = {
   DATABASE: 'database',
@@ -16,6 +17,7 @@ export const iconTypes = {
   CLOSE: 'close',
   TAGS: 'tags',
   DRAG: 'drag',
+  ERROR: 'error',
 };
 
 export const setIcons = (type: string) => {
@@ -49,6 +51,9 @@ export const setIcons = (type: string) => {
 
     case iconTypes.DRAG:
       return <MdDragIndicator />;
+
+    case iconTypes.ERROR:
+      return <BiError />;
 
     default:
       return null;
