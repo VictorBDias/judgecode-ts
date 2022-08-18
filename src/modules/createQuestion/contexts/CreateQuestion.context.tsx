@@ -10,12 +10,16 @@ const CreateQuestionContext = createContext({} as CreateQuestionContextProps);
 
 const CreateQuestionsProvider = ({ children }: createQuestionProviderProps) => {
   const [codeEditorContent, setCodeEditorContent] = useState('');
+  const [language, setLanguage] = useState('javascript');
+
   return (
     <CreateQuestionContext.Provider
       value={{
         // STATES
         codeEditorContent,
         setCodeEditorContent,
+        language,
+        setLanguage,
         // FUNCTIONS
       }}
     >

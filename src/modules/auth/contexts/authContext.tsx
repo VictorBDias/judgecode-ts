@@ -3,7 +3,13 @@ import {
   ICreateSessionAPI,
   ICreateSessionDTO,
 } from 'modules/auth/interfaces/dtos/sessions.create.dtos';
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import api from 'shared/services/api';
@@ -33,11 +39,15 @@ const clearDefaultsHeaders = () => {
 
 const AuthProvider: React.FC = ({ children }) => {
   const navigate = useNavigate();
-  //* STATES
   const [isLoading, setIsLoading] = React.useState(false);
   const [user, setUser] = useState<any>();
 
   //* FUNCTIONS
+  useEffect(() => {
+    const persistedUser = localStorage.getItem('user');
+    if (persistedUser) setUser(JSON.parse(persistedUser));
+  }, []);
+
   const handleSignIn = useCallback(async (data: ICreateSessionDTO) => {
     const { uid, password } = data;
     setIsLoading(true);
@@ -47,8 +57,8 @@ const AuthProvider: React.FC = ({ children }) => {
       setDefaultsHeaders(response.data.token.token);
       localStorage.setItem('token', JSON.stringify(response.data.token.token));
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      setUser(data);
-
+      localStorage.setItem('userId', response.data.user.id);
+      setUser(response.data.user);
       if (response) navigate('/forms');
       return response;
     } catch (err) {
@@ -58,7 +68,6 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const handleSignOut = useCallback(() => {
-    console.log('sai carai');
     try {
       clearDefaultsHeaders();
       localStorage.removeItem('token');
@@ -73,11 +82,11 @@ const AuthProvider: React.FC = ({ children }) => {
   const handleSignUp = useCallback(async (data: ICreateUserDTO) => {
     setIsLoading(true);
     try {
-      const forattedData = {
+      const formattedData = {
         ...data,
         roles: ['a1f347ff-2a17-42cb-8bc9-94693258a412'],
       };
-      const response = await createUserAPI(forattedData);
+      const response = await createUserAPI(formattedData);
       setUser(data);
       setIsLoading(false);
       return response;

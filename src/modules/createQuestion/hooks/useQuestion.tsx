@@ -41,7 +41,6 @@ const handleRenderQuestion = (questionType: QuestionTypes) => {
 
 export const useQuestionsRender = (
   questionType: QuestionTypes,
-  onSubmit: (data: any) => void,
   setQuestionType: (type: QuestionTypes) => void,
 ) => (
   <div style={{ marginLeft: 24 }}>
@@ -52,8 +51,6 @@ export const useQuestionsRender = (
         onChange={(e: any) => setQuestionType(e.target.value)}
       />
     </div>
-    <form id="question-form" onSubmit={onSubmit}>
-      {handleRenderQuestion(questionType)}
-    </form>
+    {handleRenderQuestion(questionType)}
   </div>
 );

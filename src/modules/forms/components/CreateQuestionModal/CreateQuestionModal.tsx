@@ -9,24 +9,11 @@ import { useQuestionsRender } from '../../../createQuestion/hooks/useQuestion';
 
 const CreateQuestionModal = ({ show, onClose }: any) => {
   const { codeEditorContent } = useCreateQuestion();
-  const {
-    control,
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm<any>();
-  const [questionType, setQuestionType] = useState<QuestionTypes>('codeEditor');
 
-  const onSubmit = (data: any) => console.log(codeEditorContent);
+  const [questionType, setQuestionType] = useState<QuestionTypes>('codeEditor');
   return (
-    <Modal
-      title="Criar Questão"
-      size="full"
-      show={show}
-      onClose={onClose}
-      onSubmit={onSubmit}
-    >
-      {useQuestionsRender(questionType, onSubmit, setQuestionType)}
+    <Modal title="Criar Questão" size="full" show={show} onClose={onClose}>
+      {useQuestionsRender(questionType, setQuestionType)}
     </Modal>
   );
 };

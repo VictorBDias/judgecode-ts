@@ -42,7 +42,7 @@ const CreateQuestion = () => {
       <Typography variant="title" style={{ marginBottom: 16, marginTop: 40 }}>
         Criar Questão
       </Typography>
-      {useQuestionsRender(questionType, onSubmit, setQuestionType)}
+      {useQuestionsRender(questionType, setQuestionType)}
       <FooterButtons
         formId="question-form"
         type="submit"

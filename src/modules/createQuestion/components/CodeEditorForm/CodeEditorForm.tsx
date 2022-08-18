@@ -1,6 +1,8 @@
-import React from 'react';
+import { useAuth } from 'modules/auth/contexts';
+import { useQuestions } from 'modules/questionBank/hooks/useQuestionBank';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FormInput } from 'shared/components/atoms';
+import { Button, FormInput, Typography } from 'shared/components/atoms';
 import { CodeEditor } from 'shared/components/organisms/CodeEditor';
 import { useCreateQuestion } from '../../contexts/CreateQuestion.context';
 
@@ -9,22 +11,47 @@ type FieldValues = {
 };
 
 const CodeEditorForm = () => {
-  const { register } = useForm<FieldValues>();
-  const { codeEditorContent, setCodeEditorContent } = useCreateQuestion();
+  const { user } = useAuth();
+  const { createQuestion } = useQuestions();
+  const { register, handleSubmit } = useForm<any>();
+  const { language } = useCreateQuestion();
+  const [questionCode, setQuestionCode] = useState('');
+  const onSubmit = handleSubmit(async (data: FieldValues) => {
+    console.log(user);
+    if (user) {
+      createQuestion({
+        title: data.description,
+        body: questionCode,
+        category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
+        owner_id: user.id,
+        language,
+      });
+    }
+  });
 
   return (
-    <form id="form-form" onSubmit={(data) => console.log(data)}>
+    <form id="code-form" onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         style={{ marginBottom: 16, maxWidth: 600 }}
         {...register('description', { required: true })}
-        placeholder="Adicione descrição para questão"
+        placeholder="Adicione uma descrição para questão"
         label="Descrição"
       />
       <CodeEditor
         mode="javascript"
-        value={codeEditorContent}
-        onChange={(value) => console.log(value)}
+        value={questionCode}
+        onChange={(value) => setQuestionCode(value)}
       />
+
+      <Button
+        type="submit"
+        color="secondaryObj"
+        size="md"
+        variant="solid"
+        style={{ marginTop: 24 }}
+      >
+        <Typography variant="whiteSubTitle">Salvar</Typography>
+      </Button>
     </form>
   );
 };

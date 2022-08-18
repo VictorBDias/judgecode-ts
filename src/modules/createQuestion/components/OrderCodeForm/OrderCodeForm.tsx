@@ -29,7 +29,7 @@ const OrderCodeForm = () => {
       <FormInput
         style={{ marginBottom: 16, maxWidth: 600 }}
         {...register('description', { required: true })}
-        placeholder="Adicione descrição para questão"
+        placeholder="Adicione uma descrição para questão"
         label="Descrição"
       />
       <LinesDraggableList

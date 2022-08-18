@@ -1,15 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Typography, Button } from '../../shared/components/atoms';
+import { Typography, Button } from '../../../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
-import { ScrollableList, SearchBar } from '../../shared/components/molecules';
-import { Icon } from '../../shared/components/atoms/Icon';
-import { CreateQuestionModal } from '../forms/components/CreateQuestionModal/CreateQuestionModal';
-import { CreateQuestionsProvider } from '../createQuestion/contexts/CreateQuestion.context';
-import { QuestionCard } from '../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
-import FilterByTagModal from './components/FilterByTagModal/FilterByTagModal';
-import { useQuestions } from './hooks/useQuestionBank';
+import {
+  ScrollableList,
+  SearchBar,
+} from '../../../../shared/components/molecules';
+import { Icon } from '../../../../shared/components/atoms/Icon';
+import { CreateQuestionModal } from '../../../forms/components/CreateQuestionModal/CreateQuestionModal';
+import { CreateQuestionsProvider } from '../../../createQuestion/contexts/CreateQuestion.context';
+import { QuestionCard } from '../../../forms/pages/CreateForm/components/QuestionsTab/QuestionCard/QuestionCard';
+import FilterByTagModal from '../../components/FilterByTagModal/FilterByTagModal';
+import { useQuestions } from '../../hooks/useQuestionBank';
 
 const QuestionsBankContent = () => {
   const navigate = useNavigate();

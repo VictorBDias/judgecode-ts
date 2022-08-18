@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 // import { CreateForm } from '../../modules/forms/pages/CreateForm/CreateForm.page';
 import { SignedProvider } from 'modules/auth/contexts';
 import { FormList, CreateForm } from '../../modules/forms/pages';
-import { QuestionsBank } from '../../modules/questionBank/QuestionsBank';
+import { QuestionsBank } from '../../modules/questionBank/pages/QuestionsBank/QuestionsBank.page';
 import { CreateQuestion } from '../../modules/createQuestion/CreateQuestion';
 import { CreateQuestionsProvider } from '../../modules/createQuestion/contexts/CreateQuestion.context';
 

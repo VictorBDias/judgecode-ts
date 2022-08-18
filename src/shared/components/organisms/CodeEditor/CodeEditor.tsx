@@ -31,6 +31,7 @@ import 'ace-builds/src-noconflict/theme-solarized_light';
 import 'ace-builds/src-noconflict/theme-terminal';
 
 import debounce from 'lodash.debounce';
+import { useCreateQuestion } from 'modules/createQuestion/contexts/CreateQuestion.context';
 import { CodeEditorProps } from './codeEditor.interfaces';
 import { Container } from './codeEditor.styles';
 import { Select } from '../../atoms/Select';
@@ -125,7 +126,7 @@ const CodeEditor = ({
   initialData,
   ...rest
 }: CodeEditorProps) => {
-  const [language, setLanguage] = useState('javascript');
+  const { language, setLanguage } = useCreateQuestion();
 
   const debouncedOnChange = debounce((newValue: string) => {
     if (onChange) onChange(newValue);

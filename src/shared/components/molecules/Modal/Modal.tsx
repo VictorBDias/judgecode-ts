@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 // CUSTOM IMPORTS
+import { useForm } from 'react-hook-form';
 import { Button } from '../../atoms/Button';
 import { Typography } from '../../atoms/Typography';
 import { ModalProps } from './modal.interfaces';
@@ -20,8 +21,7 @@ const Modal = ({
   show,
   onClose,
   size = 'md',
-  onSubmit,
-  disableFooter = false,
+  disableFooter = true,
 }: ModalProps) => {
   return (
     <ChakraModal
@@ -46,7 +46,9 @@ const Modal = ({
               <Typography variant="secondary">Cancelar</Typography>
             </Button>
             <Button
-              onClick={onSubmit}
+              formId="code-form"
+              id="code-form"
+              type="submit"
               color="secondaryObj"
               size="sm"
               variant="solid"
