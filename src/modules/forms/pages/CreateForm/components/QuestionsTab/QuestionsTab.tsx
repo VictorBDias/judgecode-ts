@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
+import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
 import {
   Typography,
   Card,
@@ -58,8 +59,18 @@ const QuestionsTab = () => {
   const [showBankModal, setShowBankModal] = React.useState(false);
   const [showQuestionModal, setShowQuestionModal] = React.useState(false);
   // FUNCTIONS
-  const renderCell = (mock: any) => <QuestionCard data={mock} />;
-
+  const renderCell = (data: IQuestion) => {
+    const { title, body, id, language } = data;
+    return (
+      <QuestionCard
+        title={title}
+        id={id}
+        tag={language}
+        // onEdit={() => updateQuestion({ id, data })}
+        // onDelete={() => deleteQuestion({ id })}
+      />
+    );
+  };
   return (
     <>
       <Container>

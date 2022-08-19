@@ -44,6 +44,9 @@ const AuthProvider: React.FC = ({ children }) => {
 
   //* FUNCTIONS
   useEffect(() => {
+    const authorizationToken = localStorage.getItem('token');
+    if (authorizationToken) setDefaultsHeaders(authorizationToken);
+
     const persistedUser = localStorage.getItem('user');
     if (persistedUser) setUser(JSON.parse(persistedUser));
   }, []);
@@ -55,7 +58,7 @@ const AuthProvider: React.FC = ({ children }) => {
       const response = await createSessionAPI({ uid, password });
       setIsLoading(false);
       setDefaultsHeaders(response.data.token.token);
-      localStorage.setItem('token', JSON.stringify(response.data.token.token));
+      localStorage.setItem('token', response.data.token.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('userId', response.data.user.id);
       setUser(response.data.user);
@@ -72,6 +75,7 @@ const AuthProvider: React.FC = ({ children }) => {
       clearDefaultsHeaders();
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('userId');
       setUser(null);
       if (!user) navigate('/signIn', { replace: true });
     } catch (err) {

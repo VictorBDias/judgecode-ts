@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
 import { Typography, Button } from '../../../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
 import {
@@ -16,10 +17,10 @@ import { useQuestions } from '../../hooks/useQuestionBank';
 
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
-  const { listQuestions, page, questions } = useQuestions();
+  const { listQuestions, page, questions, deleteQuestion, updateQuestion } =
+    useQuestions();
 
   //* FUNCTIONS
   const listQuestionsFunc = useCallback((page = 1) => {
@@ -30,7 +31,20 @@ const QuestionsBankContent = () => {
     listQuestionsFunc();
   }, []);
 
-  const renderCell = (mock: any) => <QuestionCard data={mock} />;
+  const renderCell = (data: IQuestion) => {
+    const { title, body, id, language } = data;
+    return (
+      <QuestionCard
+        title={title}
+        id={id}
+        tag={language}
+        onEdit={() => setShowQuestionModal(true)}
+        // onEdit={() => updateQuestion({ id, data })}
+        onDelete={() => deleteQuestion({ id })}
+      />
+    );
+  };
+
   return (
     <Container>
       <Typography variant="title" style={{ margin: '40px 0 8px 4px' }}>
