@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import { Typography, Button } from '../../../../shared/components/atoms';
 import { Container } from './questionsBank.styles';
 import {
@@ -45,7 +45,6 @@ const QuestionsBankContent = () => {
           setSelectedQuestion(data);
           setShowQuestionModal(true);
         }}
-        // onEdit={() => updateQuestion({ id, data })}
         onDelete={() => deleteQuestion({ id })}
       />
     );

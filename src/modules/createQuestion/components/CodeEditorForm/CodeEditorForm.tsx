@@ -10,9 +10,9 @@ type FieldValues = {
   description: string;
 };
 
-const CodeEditorForm = ({ initialData }: any) => {
+const CodeEditorForm = ({ initialData, onClose }: any) => {
   const { user } = useAuth();
-  const { createQuestion } = useQuestions();
+  const { createQuestion, updateQuestion } = useQuestions();
   const { register, handleSubmit } = useForm<any>();
   const { language } = useCreateQuestion();
   const [questionCode, setQuestionCode] = useState(
@@ -20,14 +20,40 @@ const CodeEditorForm = ({ initialData }: any) => {
   );
   const onSubmit = handleSubmit(async (data: FieldValues) => {
     if (user) {
-      createQuestion({
-        title: data.description,
-        body: questionCode,
-        category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
-        owner_id: user.id,
-        language,
-      });
+      if (initialData) {
+        if (user.id === initialData.owner_id) {
+          updateQuestion({
+            id: initialData.id,
+            data: {
+              id: initialData.id,
+              title: data.description,
+              body: questionCode,
+              category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
+              owner_id: user.id,
+              language,
+              ...data,
+            },
+          });
+        } else {
+          createQuestion({
+            title: data.description,
+            body: questionCode,
+            category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
+            owner_id: user.id,
+            language,
+          });
+        }
+      } else {
+        createQuestion({
+          title: data.description,
+          body: questionCode,
+          category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
+          owner_id: user.id,
+          language,
+        });
+      }
     }
+    onClose();
   });
 
   return (

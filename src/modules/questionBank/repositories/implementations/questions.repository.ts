@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useSideEffects } from 'shared/hooks/useSideEffects';
 
-import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import { IQuestionsRepository } from '../IQuestions.repository';
 
 export const useQuestionsRepository = (): IQuestionsRepository => {

@@ -7,7 +7,7 @@ export const useUpdateQuestionsUseCase = ({ update }: IQuestionsRepository) => {
   const execute = useCallback(
     async ({ id, data }: IUpdateQuestionsDTO) => {
       const response = await updateQuestionsAPI({ id, data });
-      update(id, response.data.data);
+      update(id, response.data);
       return response;
     },
     [update],

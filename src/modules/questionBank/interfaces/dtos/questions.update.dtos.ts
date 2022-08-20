@@ -1,9 +1,7 @@
 import { APIResponse } from 'shared/interfaces/dtos';
-import { IQuestion } from '../questions.interfaces';
+import { IQuestion } from '../../../../shared/interfaces/questions.interfaces';
 
-export type IUpdateQuestionsAPI = APIResponse<{
-  data: IQuestion;
-}>;
+export type IUpdateQuestionsAPI = APIResponse<IQuestion>;
 
 export type IUpdateQuestionsDTO = {
   id: string;

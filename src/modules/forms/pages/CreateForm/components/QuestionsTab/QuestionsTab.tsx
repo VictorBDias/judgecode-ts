@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // CUSTOM IMPORTS
-import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import {
   Typography,
   Card,

@@ -1,4 +1,4 @@
-import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import React, { useState } from 'react';
 import { Select } from '../../../shared/components/atoms';
 import { QuestionTypes } from '../../forms/components/CreateQuestionModal/createQuestion.interfaces';
@@ -27,10 +27,11 @@ const questionTypes = [
 const handleRenderQuestion = (
   questionType: QuestionTypes,
   initialData: IQuestion,
+  onClose: () => void,
 ) => {
   switch (questionType) {
     case 'codeEditor':
-      return <CodeEditorForm initialData={initialData} />;
+      return <CodeEditorForm initialData={initialData} onClose={onClose} />;
 
     case 'orderCode':
       return <OrderCodeForm />;
@@ -47,6 +48,7 @@ export const useQuestionsRender = (
   questionType: QuestionTypes,
   setQuestionType: (type: QuestionTypes) => void,
   initialData: IQuestion,
+  onClose: () => void,
 ) => (
   <div style={{ marginLeft: 24 }}>
     <div style={{ marginBottom: 16 }}>
@@ -56,6 +58,6 @@ export const useQuestionsRender = (
         onChange={(e: any) => setQuestionType(e.target.value)}
       />
     </div>
-    {handleRenderQuestion(questionType, initialData)}
+    {handleRenderQuestion(questionType, initialData, onClose)}
   </div>
 );

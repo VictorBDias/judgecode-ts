@@ -1,4 +1,4 @@
-import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import { ReactNode, ReactElement } from 'react';
 
 type Languages =

@@ -9,14 +9,12 @@ import { useQuestionsRender } from '../../../createQuestion/hooks/useQuestion';
 import { handleQuestionType } from './utils/handleQuestionType';
 
 const CreateQuestionModal = ({ show, onClose, initialData }: any) => {
-  const { codeEditorContent } = useCreateQuestion();
-
   const [questionType, setQuestionType] = useState<QuestionTypes>(
     initialData ? handleQuestionType(initialData.category.name) : 'codeEditor',
   );
   return (
     <Modal title="Criar Questão" size="full" show={show} onClose={onClose}>
-      {useQuestionsRender(questionType, setQuestionType, initialData)}
+      {useQuestionsRender(questionType, setQuestionType, initialData, onClose)}
     </Modal>
   );
 };

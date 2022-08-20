@@ -4,14 +4,11 @@ import { IQuestionsRepository } from 'modules/questionBank/repositories/IQuestio
 import { useCallback } from 'react';
 
 export const useCreateQuestionsUseCase = ({ create }: IQuestionsRepository) => {
-  const execute = useCallback(
-    async (data: ICreateQuestionsDTO) => {
-      const response = await createQuestionsAPI(data);
-      create(response.data.data);
-      return response;
-    },
-    [create],
-  );
+  const execute = useCallback(async (data: ICreateQuestionsDTO) => {
+    const response = await createQuestionsAPI(data);
+    create(response.data);
+    return response;
+  }, []);
 
   return { execute };
 };
