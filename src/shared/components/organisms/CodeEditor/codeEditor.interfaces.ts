@@ -1,3 +1,4 @@
+import { IQuestion } from 'modules/questionBank/interfaces/questions.interfaces';
 import { ReactNode, ReactElement } from 'react';
 
 type Languages =
@@ -39,6 +40,6 @@ export interface CodeEditorProps {
   onLoad?: () => void;
   showLanguageOptions?: boolean;
   readOnly?: boolean;
-  initialData?: ICodeQuestion;
+  initialData?: IQuestion;
   [x: string]: any;
 }

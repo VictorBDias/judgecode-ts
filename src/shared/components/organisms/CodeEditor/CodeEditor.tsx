@@ -136,7 +136,7 @@ const CodeEditor = ({
       {showLanguageOptions && (
         <Select
           options={languageOptions}
-          value={language}
+          value={initialData ? initialData.language : language}
           onChange={(e: any) => setLanguage(e.target.value)}
         />
       )}

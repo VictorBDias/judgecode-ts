@@ -10,14 +10,15 @@ type FieldValues = {
   description: string;
 };
 
-const CodeEditorForm = () => {
+const CodeEditorForm = ({ initialData }: any) => {
   const { user } = useAuth();
   const { createQuestion } = useQuestions();
   const { register, handleSubmit } = useForm<any>();
   const { language } = useCreateQuestion();
-  const [questionCode, setQuestionCode] = useState('');
+  const [questionCode, setQuestionCode] = useState(
+    initialData && initialData.body,
+  );
   const onSubmit = handleSubmit(async (data: FieldValues) => {
-    console.log(user);
     if (user) {
       createQuestion({
         title: data.description,
@@ -36,8 +37,10 @@ const CodeEditorForm = () => {
         {...register('description', { required: true })}
         placeholder="Adicione uma descrição para questão"
         label="Descrição"
+        defaultValue={initialData && initialData.title}
       />
       <CodeEditor
+        initialData={initialData}
         mode="javascript"
         value={questionCode}
         onChange={(value) => setQuestionCode(value)}

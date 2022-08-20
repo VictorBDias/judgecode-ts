@@ -19,6 +19,9 @@ const QuestionsBankContent = () => {
   const navigate = useNavigate();
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState<IQuestion | null>(
+    null,
+  );
   const { listQuestions, page, questions, deleteQuestion, updateQuestion } =
     useQuestions();
 
@@ -38,7 +41,10 @@ const QuestionsBankContent = () => {
         title={title}
         id={id}
         tag={language}
-        onEdit={() => setShowQuestionModal(true)}
+        onEdit={() => {
+          setSelectedQuestion(data);
+          setShowQuestionModal(true);
+        }}
         // onEdit={() => updateQuestion({ id, data })}
         onDelete={() => deleteQuestion({ id })}
       />
@@ -86,7 +92,11 @@ const QuestionsBankContent = () => {
 
       <CreateQuestionModal
         show={showQuestionModal}
-        onClose={() => setShowQuestionModal(false)}
+        onClose={() => {
+          setShowQuestionModal(false);
+          setSelectedQuestion(null);
+        }}
+        initialData={selectedQuestion}
       />
 
       <FilterByTagModal show={false} />
