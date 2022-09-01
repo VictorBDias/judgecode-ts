@@ -1,161 +1,43 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// CUSTOM IMPORTS
-import { Typography, Card, Button } from '../../../../shared/components/atoms';
+import { Typography, Card, Button } from 'shared/components/atoms';
+import { ScrollableList, SearchBar } from 'shared/components/molecules';
+import { Icon } from 'shared/components/atoms/Icon';
+import { useForms } from 'modules/forms/hooks/useForms';
+import { IForm } from 'modules/forms/interfaces/forms.interfaces';
 import { Container } from './formlist.styles';
-import {
-  ScrollableList,
-  SearchBar,
-} from '../../../../shared/components/molecules';
-import { Icon } from '../../../../shared/components/atoms/Icon';
 
-const mockup = [
-  {
-    id: 1,
-    title: 'Form 1',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 2,
-    title: 'Form 2',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 3,
-    title: 'Form 3',
-    description: 'Eng. Comp 2022',
-  },
-  {
-    id: 4,
-    title: 'Form 4',
-    description: 'Ads',
-  },
-  {
-    id: 2,
-    title: 'Lorem ipsum dolor a la simet lorem ipsim',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 1,
-    title: 'Form 1',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 2,
-    title: 'Form 2',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 3,
-    title: 'Form 3',
-    description: 'Eng. Comp 2022',
-  },
-  {
-    id: 4,
-    title: 'Form 4',
-    description: 'Ads',
-  },
-  {
-    id: 2,
-    title: 'Lorem ipsum dolor a la simet lorem ipsim',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 1,
-    title: 'Form 1',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 2,
-    title: 'Form 2',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 3,
-    title: 'Form 3',
-    description: 'Eng. Comp 2022',
-  },
-  {
-    id: 4,
-    title: 'Form 4',
-    description: 'Ads',
-  },
-  {
-    id: 2,
-    title: 'Lorem ipsum dolor a la simet lorem ipsim',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 1,
-    title: 'Form 1',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 2,
-    title: 'Form 2',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 3,
-    title: 'Form 3',
-    description: 'Eng. Comp 2022',
-  },
-  {
-    id: 4,
-    title: 'Form 4',
-    description: 'Ads',
-  },
-  {
-    id: 2,
-    title: 'Lorem ipsum dolor a la simet lorem ipsim',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 1,
-    title: 'Form 1',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 2,
-    title: 'Form 2',
-    description: 'Eng. Software 2021',
-  },
-  {
-    id: 3,
-    title: 'Form 3',
-    description: 'Eng. Comp 2022',
-  },
-  {
-    id: 4,
-    title: 'Form 4',
-    description: 'Ads',
-  },
-  {
-    id: 2,
-    title: 'Lorem ipsum dolor a la simet lorem ipsim',
-    description: 'Eng. Software 2021',
-  },
-];
-
-type MockType = {
-  id: number;
-  title: string;
-  description: string;
-};
 const FormList = () => {
-  // STATES
+  const {
+    createForm,
+    deleteForm,
+    forms,
+    lastPage,
+    page,
+    status,
+    listForms,
+    updateForm,
+  } = useForms();
   const navigate = useNavigate();
 
-  // FUNCTIONS
-  const renderCell = (mock: any) => (
+  //* FUNCTIONS
+  const listFormsFunc = useCallback((page = 1) => {
+    listForms({ page: 1 });
+  }, []);
+
+  useEffect(() => {
+    listFormsFunc();
+  }, []);
+
+  const renderCell = (data: IForm) => (
     <Card
       margin={8}
       onEdit={() => console.log('Edit')}
-      onDelete={() => console.log('Delete')}
+      onDelete={() => deleteForm({ id: data.id })}
     >
-      <Typography>{mock.title}</Typography>
-      <Typography>{mock.description}</Typography>
+      <Typography>{data.name}</Typography>
+      <Typography>{data.description}</Typography>
     </Card>
   );
 
@@ -188,7 +70,7 @@ const FormList = () => {
 
       <ScrollableList
         style={{ marginLeft: -4, marginBottom: 40, marginTop: 16 }}
-        data={mockup}
+        data={forms}
         renderCell={renderCell}
         size={800}
       />

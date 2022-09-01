@@ -5,9 +5,3 @@ export interface IInputProps extends InputProps {
   name: string;
   placeholder: string;
 }
-
-export type Teste = {
-  name: string;
-  grade: string;
-  age: number;
-};
