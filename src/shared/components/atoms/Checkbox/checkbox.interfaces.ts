@@ -5,5 +5,6 @@ export interface CheckBoxProps {
   label?: string;
   isDisabled?: boolean;
   defaultChecked?: boolean;
+  onChange?: () => void;
   [x: string]: any;
 }

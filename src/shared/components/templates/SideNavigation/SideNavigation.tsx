@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
-import { useAuth } from 'modules/auth/contexts';
+import { useAuth } from 'layers/auth/contexts';
 import { Typography } from '../../atoms';
 
 interface NavItemProps extends FlexProps {

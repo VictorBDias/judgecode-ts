@@ -1,7 +1,6 @@
-import React, { Children } from 'react';
-import { Checkbox, CheckboxGroup } from '@chakra-ui/react';
+import React from 'react';
+import { Checkbox } from '@chakra-ui/react';
 
-// CUSTOM IMPORTS
 import { CheckBoxProps } from './checkbox.interfaces';
 import { Typography } from '../Typography';
 
@@ -10,10 +9,12 @@ const CheckBox = ({
   isChecked,
   isDisabled = false,
   defaultChecked = false,
+  onChange,
   ...rest
 }: CheckBoxProps) => (
   <Checkbox
     {...rest}
+    onChange={onChange}
     isChecked={isChecked}
     isDisabled={isDisabled}
     defaultChecked={defaultChecked}

@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 
 // CUSTOM IMPORTS
 // import { CreateForm } from '../../modules/forms/pages/CreateForm/CreateForm.page';
-import { SignedProvider } from 'modules/auth/contexts';
-import { FormList, CreateForm } from '../../modules/forms/pages';
-import { QuestionsBank } from '../../modules/questionBank/pages/QuestionsBank/QuestionsBank.page';
-import { CreateQuestion } from '../../modules/createQuestion/CreateQuestion';
-import { CreateQuestionsProvider } from '../../modules/createQuestion/contexts/CreateQuestion.context';
+import { SignedProvider } from 'layers/auth/contexts';
+import { FormList, CreateForm } from '../../layers/signed/modules/forms/pages';
+import { QuestionsBank } from '../../layers/signed/modules/questionBank/pages/QuestionsBank/QuestionsBank.page';
+import { CreateQuestion } from '../../layers/signed/modules/createQuestion/CreateQuestion';
+import { CreateQuestionsProvider } from '../../layers/signed/modules/createQuestion/contexts/CreateQuestion.context';
 
 // ELEMENTS
 

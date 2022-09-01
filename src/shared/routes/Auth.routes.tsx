@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { GeneratedForm } from 'modules/public/GeneratedForm/GeneratedForm';
-import { SignIn } from 'modules/auth/pages/SignIn/SignIn';
-import { SignUp } from 'modules/auth/pages/SignUp/SignUp';
+import { GeneratedForm } from 'layers/public/GeneratedForm/GeneratedForm';
+import { SignIn } from 'layers/auth/pages/SignIn/SignIn';
+import { SignUp } from 'layers/auth/pages/SignUp/SignUp';
 
 const AuthRoutes = () => (
   <Routes>

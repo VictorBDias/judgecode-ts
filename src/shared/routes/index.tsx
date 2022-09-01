@@ -1,7 +1,7 @@
 import React from 'react';
 
 // CUSTOM IMPORTS
-import { useAuth } from 'modules/auth/contexts';
+import { useAuth } from 'layers/auth/contexts';
 import { SignedRoutes } from './Signed.routes';
 import { AuthRoutes } from './Auth.routes';
 
