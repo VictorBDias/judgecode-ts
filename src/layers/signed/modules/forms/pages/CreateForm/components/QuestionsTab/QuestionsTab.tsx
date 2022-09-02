@@ -1,62 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// CUSTOM IMPORTS
 import { IQuestion } from 'shared/interfaces/questions.interfaces';
-import { useQuestions } from 'layers/signed/modules/questionBank/hooks/useQuestionBank';
-import {
-  Typography,
-  Card,
-  Button,
-} from '../../../../../../../../shared/components/atoms';
+import { Button } from 'shared/components/atoms';
+import { ScrollableList } from 'shared/components/molecules';
+import { Icon } from 'shared/components/atoms/Icon';
 import { Container } from './questionsTab.styles';
-import { ScrollableList } from '../../../../../../../../shared/components/molecules';
-import { Icon } from '../../../../../../../../shared/components/atoms/Icon';
 import { QuestionBankModal } from './QuestionBankModal/QuestionBankModal';
 import { CreateQuestionModal } from '../../../../components/CreateQuestionModal/CreateQuestionModal';
 import { QuestionCard } from './QuestionCard/QuestionCard';
 
-const mockup = [
-  {
-    id: 1,
-    title: 'Question 1',
-    description: 'Description',
-    tag: 'Código',
-  },
-  {
-    id: 2,
-    title: 'Question 2',
-    description: 'Eng. Software 2021 Description',
-    tag: 'Código',
-  },
-  {
-    id: 3,
-    title: 'Question 3',
-    description: 'Description',
-    tag: 'Múltipla escolha',
-  },
-  {
-    id: 4,
-    title: 'Question 4',
-    description: 'Eng. Software 2021 Description',
-    tag: 'Texto',
-  },
-  {
-    id: 5,
-    title: 'Question 5',
-    description: 'Description',
-    tag: 'Ordenar',
-  },
-];
-
-type MockType = {
-  id: number;
-  title: string;
-  description: string;
-};
-const QuestionsTab = () => {
+const QuestionsTab = ({ repository }: any) => {
   const navigate = useNavigate();
-  const { questions, page, deleteQuestion, updateQuestion } = useQuestions();
+  const { questions, page, deleteQuestion, updateQuestion, createQuestion } =
+    repository;
 
   //* STATES
   const [showBankModal, setShowBankModal] = React.useState(false);
@@ -128,6 +85,8 @@ const QuestionsTab = () => {
           setSelectedQuestion(null);
         }}
         initialData={selectedQuestion}
+        createQuestion={createQuestion}
+        updateQuestion={updateQuestion}
       />
     </>
   );

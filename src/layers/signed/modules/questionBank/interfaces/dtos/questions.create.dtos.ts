@@ -7,5 +7,5 @@ export type ICreateQuestionsDTO = {
   body: string;
   language?: string;
   owner_id: string;
-  category_id: string;
+  category_id?: string;
 };

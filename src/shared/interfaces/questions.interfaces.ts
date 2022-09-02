@@ -30,7 +30,7 @@ export type IQuestion = {
   body: string;
   language: string;
   owner_id: string;
-  category_id: string;
+  category_id?: string;
   owner?: IOwner;
   category?: ICategory;
 };

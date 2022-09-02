@@ -19,8 +19,14 @@ const QuestionsBankContent = () => {
   const [selectedQuestion, setSelectedQuestion] = useState<IQuestion | null>(
     null,
   );
-  const { listQuestions, page, questions, deleteQuestion, updateQuestion } =
-    useQuestions();
+  const {
+    listQuestions,
+    page,
+    questions,
+    deleteQuestion,
+    updateQuestion,
+    createQuestion,
+  } = useQuestions();
 
   //* FUNCTIONS
   const listQuestionsFunc = useCallback((page = 1) => {
@@ -93,6 +99,8 @@ const QuestionsBankContent = () => {
           setSelectedQuestion(null);
         }}
         initialData={selectedQuestion}
+        createQuestion={createQuestion}
+        updateQuestion={updateQuestion}
       />
 
       <FilterByTagModal show={false} />

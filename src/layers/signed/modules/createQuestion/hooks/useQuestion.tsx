@@ -24,14 +24,32 @@ const questionTypes = [
   },
 ];
 
-const handleRenderQuestion = (
-  questionType: QuestionTypes,
-  initialData: IQuestion,
-  onClose: () => void,
-) => {
+export type QuestionsRenderType = {
+  questionType?: QuestionTypes;
+  setQuestionType: (type: QuestionTypes) => void;
+  initialData?: IQuestion;
+  onClose?: () => void;
+  createQuestion?: (question: IQuestion) => void;
+  updateQuestion?: (questionId: string, data: IQuestion) => void;
+};
+
+const handleRenderQuestion = ({
+  questionType,
+  initialData,
+  onClose,
+  createQuestion,
+  updateQuestion,
+}: Omit<QuestionsRenderType, 'setQuestionType'>) => {
   switch (questionType) {
     case 'codeEditor':
-      return <CodeEditorForm initialData={initialData} onClose={onClose} />;
+      return (
+        <CodeEditorForm
+          initialData={initialData}
+          onClose={onClose}
+          createQuestion={createQuestion}
+          updateQuestion={updateQuestion}
+        />
+      );
 
     case 'orderCode':
       return <OrderCodeForm />;
@@ -44,12 +62,14 @@ const handleRenderQuestion = (
   }
 };
 
-export const useQuestionsRender = (
-  questionType: QuestionTypes,
-  setQuestionType: (type: QuestionTypes) => void,
-  initialData: IQuestion,
-  onClose: () => void,
-) => (
+export const useQuestionsRender = ({
+  questionType,
+  setQuestionType,
+  initialData,
+  onClose,
+  createQuestion,
+  updateQuestion,
+}: QuestionsRenderType) => (
   <div style={{ marginLeft: 24 }}>
     <div style={{ marginBottom: 16 }}>
       <Select
@@ -58,6 +78,12 @@ export const useQuestionsRender = (
         onChange={(e: any) => setQuestionType(e.target.value)}
       />
     </div>
-    {handleRenderQuestion(questionType, initialData, onClose)}
+    {handleRenderQuestion({
+      questionType,
+      initialData,
+      onClose,
+      createQuestion,
+      updateQuestion,
+    })}
   </div>
 );

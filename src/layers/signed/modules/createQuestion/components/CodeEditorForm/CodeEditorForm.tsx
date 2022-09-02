@@ -10,9 +10,13 @@ type FieldValues = {
   description: string;
 };
 
-const CodeEditorForm = ({ initialData, onClose }: any) => {
+const CodeEditorForm = ({
+  initialData,
+  onClose,
+  createQuestion,
+  updateQuestion,
+}: any) => {
   const { user } = useAuth();
-  const { createQuestion, updateQuestion } = useQuestions();
   const { register, handleSubmit } = useForm<any>();
   const { language } = useCreateQuestion();
   const [questionCode, setQuestionCode] = useState(
@@ -28,7 +32,6 @@ const CodeEditorForm = ({ initialData, onClose }: any) => {
               id: initialData.id,
               title: data.description,
               body: questionCode,
-              category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
               owner_id: user.id,
               language,
               ...data,
@@ -38,7 +41,6 @@ const CodeEditorForm = ({ initialData, onClose }: any) => {
           createQuestion({
             title: data.description,
             body: questionCode,
-            category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
             owner_id: user.id,
             language,
           });
@@ -47,7 +49,6 @@ const CodeEditorForm = ({ initialData, onClose }: any) => {
         createQuestion({
           title: data.description,
           body: questionCode,
-          category_id: '33b5bb58-ebaf-4026-a90d-58139dbe86ca',
           owner_id: user.id,
           language,
         });

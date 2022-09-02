@@ -1,3 +1,4 @@
+import { useQuestions } from 'layers/signed/modules/questionBank/hooks/useQuestionBank';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +22,7 @@ const CreateForm = () => {
     formState: { errors },
   } = useForm<FieldValues>();
   const navigate = useNavigate();
+  const repository = useQuestions();
 
   const [isActive, setIsActive] = useState(false);
 
@@ -31,7 +33,7 @@ const CreateForm = () => {
       <Tabs tabs={tabs} variant="line">
         <GeneralTab activeControls={{ isActive, setIsActive }} />
         <CreateQuestionsProvider>
-          <QuestionsTab />
+          <QuestionsTab repository={repository} />
         </CreateQuestionsProvider>
       </Tabs>
       <FooterButtons
