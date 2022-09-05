@@ -1,12 +1,15 @@
 import { useQuestions } from 'layers/signed/modules/questionBank/hooks/useQuestionBank';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { Tabs, FooterButtons } from 'shared/components/molecules';
 import { CreateQuestionsProvider } from '../../../createQuestion/contexts/CreateQuestion.context';
+import { useForms } from '../../hooks/useForms';
 import { GeneralTab } from './components/GeneralTab/GeneralTab';
 import { QuestionsTab } from './components/QuestionsTab/QuestionsTab';
+import { showFormsApi } from '../../apis/forms.apis';
+import { IForm } from '../../interfaces/forms.interfaces';
 
 type FieldValues = {
   name: string;
@@ -22,16 +25,34 @@ const CreateForm = () => {
     formState: { errors },
   } = useForm<FieldValues>();
   const navigate = useNavigate();
+  const { createForm } = useForms();
   const repository = useQuestions();
+  const { formId } = useParams();
+
+  const [initialData, setInitialData] = useState<IForm | null>(null);
 
   const [isActive, setIsActive] = useState(false);
 
-  const onSubmit = (data: any) => console.log(data);
+  useEffect(() => {
+    if (formId) {
+      showFormsApi({ id: formId }).then((response) =>
+        setInitialData(response.data),
+      );
+    }
+  }, []);
+
+  const onSubmit = ({ name, description }: any) => {
+    createForm({ name, description, problems: repository.questions });
+    navigate('/forms');
+  };
 
   return (
-    <>
+    <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
       <Tabs tabs={tabs} variant="line">
-        <GeneralTab activeControls={{ isActive, setIsActive }} />
+        <GeneralTab
+          activeControls={{ isActive, setIsActive }}
+          register={register}
+        />
         <CreateQuestionsProvider>
           <QuestionsTab repository={repository} />
         </CreateQuestionsProvider>
@@ -41,7 +62,7 @@ const CreateForm = () => {
         type="submit"
         onCancel={() => navigate('/forms')}
       />
-    </>
+    </form>
   );
 };
 

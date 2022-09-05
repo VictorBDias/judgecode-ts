@@ -9,16 +9,7 @@ import { IForm } from 'layers/signed/modules/forms/interfaces/forms.interfaces';
 import { Container } from './formlist.styles';
 
 const FormList = () => {
-  const {
-    createForm,
-    deleteForm,
-    forms,
-    lastPage,
-    page,
-    status,
-    listForms,
-    updateForm,
-  } = useForms();
+  const { deleteForm, forms, lastPage, page, status, listForms } = useForms();
   const navigate = useNavigate();
 
   //* FUNCTIONS
@@ -33,7 +24,7 @@ const FormList = () => {
   const renderCell = (data: IForm) => (
     <Card
       margin={8}
-      onEdit={() => console.log('Edit')}
+      onEdit={() => navigate(`/forms/edit/${data.id}`)}
       onDelete={() => deleteForm({ id: data.id })}
     >
       <Typography>{data.name}</Typography>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 
 import { Tooltip } from '@chakra-ui/react';
 import { FormInput, NumericFormInput } from 'shared/components/atoms';
@@ -11,24 +10,22 @@ type FieldValues = {
   attempts: number;
 };
 
-const GeneralTab = ({ activeControls }: any) => {
-  const {
-    control,
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm<FieldValues>();
+const GeneralTab = ({ activeControls, register }: any) => {
   const { isActive, setIsActive } = activeControls;
 
-  const onSubmit = (data: any) => console.log(data);
-
   return (
-    <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
+    <>
       <FormInput
         style={{ marginBottom: 16, maxWidth: 320 }}
-        {...register('title', { required: true })}
+        {...register('name', { required: true })}
         placeholder="Adicione um nome para o formulário"
         label="Nome do formulário"
+      />
+      <FormInput
+        style={{ marginBottom: 16, maxWidth: 320 }}
+        {...register('description', { required: true })}
+        placeholder="Adicione uma descrição formulário"
+        label="Descrição do formulário"
       />
       <NumericFormInput
         {...register('attempts', { required: true })}
@@ -59,7 +56,7 @@ const GeneralTab = ({ activeControls }: any) => {
           </div>
         </Tooltip>
       </CheckBoxesContainer>
-    </form>
+    </>
   );
 };
 

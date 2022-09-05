@@ -15,6 +15,10 @@ import {
   IListFormsAPI,
   IListFormsDTO,
 } from '../interfaces/dtos/forms.list.dtos';
+import {
+  IShowFormsAPI,
+  IShowFormsDTO,
+} from '../interfaces/dtos/forms.show.dtos';
 
 export const listFormsAPI = ({
   page,
@@ -39,3 +43,6 @@ export const updateFormsAPI = ({
 
 export const deleteFormsAPI = ({ id }: IDeleteFormsDTO): IDeleteFormsAPI =>
   api.delete(`/admin/categories/${id}`);
+
+export const showFormsApi = ({ id }: IShowFormsDTO): IShowFormsAPI =>
+  api.get(`/admin/categories/${id}`);

@@ -12,7 +12,6 @@ const CreateQuestionModal = ({
   createQuestion,
   updateQuestion,
 }: any) => {
-  console.log(initialData);
   const [questionType, setQuestionType] = useState<QuestionTypes>(
     initialData && initialData.category
       ? handleQuestionType(initialData.category.name)
