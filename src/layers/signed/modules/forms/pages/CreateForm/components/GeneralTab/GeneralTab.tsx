@@ -10,7 +10,7 @@ type FieldValues = {
   attempts: number;
 };
 
-const GeneralTab = ({ activeControls, register }: any) => {
+const GeneralTab = ({ activeControls, register, initialData }: any) => {
   const { isActive, setIsActive } = activeControls;
 
   return (
@@ -20,17 +20,21 @@ const GeneralTab = ({ activeControls, register }: any) => {
         {...register('name', { required: true })}
         placeholder="Adicione um nome para o formulário"
         label="Nome do formulário"
+        defaultValue={initialData && initialData.name}
       />
       <FormInput
         style={{ marginBottom: 16, maxWidth: 320 }}
         {...register('description', { required: true })}
         placeholder="Adicione uma descrição formulário"
         label="Descrição do formulário"
+        defaultValue={initialData && initialData.description}
       />
       <NumericFormInput
         {...register('attempts', { required: true })}
         placeholder="Selecione o número de tentativas"
         label="Número de tentativas"
+        min={1}
+        defaultValue={1}
       />
       <CheckBoxesContainer>
         <Tooltip

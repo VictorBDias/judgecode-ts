@@ -25,7 +25,7 @@ export const listQuestionsAPI = ({
   api.get('/admin/problems', {
     params: {
       page,
-      per_page: perPage,
+      per_page: 9,
       search,
     },
   });
@@ -34,7 +34,7 @@ export const createQuestionsAPI = (
 ): ICreateQuestionsAPI =>
   api.post('/admin/problems', {
     ...data,
-    category_id: '420c6a7e-6c15-4faa-b909-374f91ae67ac',
+    category_id: '248c6aa9-8636-45c4-bff3-4c082615ac24',
   });
 
 export const updateQuestionsAPI = ({
@@ -43,7 +43,7 @@ export const updateQuestionsAPI = ({
 }: IUpdateQuestionsDTO): IUpdateQuestionsAPI =>
   api.put(`/admin/problems/${id}`, {
     ...data,
-    category_id: '420c6a7e-6c15-4faa-b909-374f91ae67ac',
+    category_id: '248c6aa9-8636-45c4-bff3-4c082615ac24',
   });
 
 export const deleteQuestionsAPI = ({

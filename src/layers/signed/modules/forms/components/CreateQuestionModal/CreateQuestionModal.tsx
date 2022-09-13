@@ -18,7 +18,12 @@ const CreateQuestionModal = ({
       : 'codeEditor',
   );
   return (
-    <Modal title="Criar Questão" size="full" show={show} onClose={onClose}>
+    <Modal
+      title={initialData ? 'Editar Questão' : 'Criar Questão'}
+      size="full"
+      show={show}
+      onClose={onClose}
+    >
       {useQuestionsRender({
         questionType,
         setQuestionType,

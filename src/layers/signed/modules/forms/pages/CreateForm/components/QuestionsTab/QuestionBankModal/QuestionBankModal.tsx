@@ -1,30 +1,30 @@
-import React from 'react';
+import { useQuestions } from 'layers/signed/modules/questionBank/hooks/useQuestionBank';
+import React, { useCallback, useEffect } from 'react';
 import { Card, Typography } from 'shared/components/atoms';
 import { CheckBox } from 'shared/components/atoms/Checkbox';
 import { Modal, ScrollableList, SearchBar } from 'shared/components/molecules';
+import { IQuestion } from 'shared/interfaces/questions.interfaces';
 
 const QuestionBankModal = ({ show, onClose }: any) => {
-  const mockup = [
-    {
-      id: 1,
-      title: 'Question 1',
-      description: 'Description',
-    },
-    {
-      id: 2,
-      title: 'Question 2',
-      description: 'Eng. Software 2021 Description',
-    },
-  ];
-  const renderCell = (mock: any) => (
+  const { listQuestions, questions } = useQuestions();
+  const renderCell = (question: IQuestion) => (
     <div style={{ display: 'flex', marginLeft: 8 }}>
       <CheckBox />
       <Card width={400} height={80} margin={8}>
-        <Typography>{mock.title}</Typography>
-        <Typography>{mock.description}</Typography>
+        <Typography>{question.title}</Typography>
+        <Typography>{question.body}</Typography>
       </Card>
     </div>
   );
+
+  //* FUNCTIONS
+  const listQuestionsFunc = useCallback((page = 1) => {
+    listQuestions({ page: 1 });
+  }, []);
+
+  useEffect(() => {
+    listQuestionsFunc();
+  }, []);
 
   return (
     <Modal
@@ -37,7 +37,7 @@ const QuestionBankModal = ({ show, onClose }: any) => {
         <SearchBar placeholder="Busque uma questão" />
         <ScrollableList
           style={{ marginTop: 16 }}
-          data={mockup}
+          data={questions}
           renderCell={renderCell}
           size={600}
         />

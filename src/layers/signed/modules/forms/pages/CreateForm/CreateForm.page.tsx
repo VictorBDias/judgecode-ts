@@ -52,6 +52,7 @@ const CreateForm = () => {
         <GeneralTab
           activeControls={{ isActive, setIsActive }}
           register={register}
+          initialData={initialData}
         />
         <CreateQuestionsProvider>
           <QuestionsTab repository={repository} />

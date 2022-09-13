@@ -14,6 +14,7 @@ import { useQuestions } from '../../hooks/useQuestionBank';
 
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState('');
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<IQuestion | null>(
@@ -22,6 +23,7 @@ const QuestionsBankContent = () => {
   const {
     listQuestions,
     page,
+    lastPage,
     questions,
     deleteQuestion,
     updateQuestion,
@@ -30,11 +32,19 @@ const QuestionsBankContent = () => {
 
   //* FUNCTIONS
   const listQuestionsFunc = useCallback((page = 1) => {
-    listQuestions({ page: 1 });
+    listQuestions({ page, search: searchValue });
   }, []);
 
   useEffect(() => {
     listQuestionsFunc();
+  }, []);
+
+  const handlePaginate = useCallback((value) => {
+    listQuestions({ page: page + value });
+  }, []);
+
+  const handleSearch = useCallback((value) => {
+    listQuestions({ page: 1, search: value });
   }, []);
 
   const renderCell = (data: IQuestion) => {
@@ -65,7 +75,12 @@ const QuestionsBankContent = () => {
           alignItems: 'center',
         }}
       >
-        <SearchBar placeholder="Busque uma questão" style={{ maxWidth: 400 }} />
+        <SearchBar
+          placeholder="Busque uma questão"
+          style={{ maxWidth: 400 }}
+          onClear={() => handleSearch('')}
+          onChange={(value: string) => handleSearch(value)}
+        />
         <Button
           leftIcon={<Icon name="plus" variant="white" />}
           onClick={() => setShowQuestionModal(true)}
@@ -86,7 +101,10 @@ const QuestionsBankContent = () => {
       </div>
 
       <ScrollableList
-        style={{ marginLeft: -4, marginBottom: 40, marginTop: 16 }}
+        style={{ marginLeft: -4, marginTop: 16 }}
+        currentPage={page}
+        lastPage={lastPage}
+        handlePaginate={handlePaginate}
         data={questions}
         renderCell={renderCell}
         size={800}

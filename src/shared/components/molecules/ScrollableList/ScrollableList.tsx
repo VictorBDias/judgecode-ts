@@ -1,22 +1,26 @@
 import React from 'react';
 
-// CUSTOM IMPORTS
 import { Icon } from 'shared/components/atoms/Icon';
+import { Button } from 'shared/components/atoms/Button';
 import { Typography } from 'shared/components/atoms/Typography';
-import SimpleBar from 'simplebar-react';
-import { Container, List } from './scrollableList.styles';
+import { Container, ButtonContainer } from './scrollableList.styles';
 import { ScrollableListProps } from './scrollableList.interfaces';
-import 'simplebar/dist/simplebar.min.css';
 
-/** List displays words and characters at various sizes. */
-function ScrollableList({ data, renderCell, ...rest }: ScrollableListProps) {
+export const ScrollableList = ({
+  data,
+  currentPage,
+  lastPage,
+  renderCell,
+  handlePaginate,
+  ...rest
+}: ScrollableListProps) => {
   const handleRenderCell = (item: object, index: number) => (
     <div key={`${item}-${index}`}>{renderCell(item, index)}</div>
   );
 
   return (
-    <Container class="simplebar-container">
-      <List {...rest}>
+    <div {...rest}>
+      <Container>
         {data &&
           (data.length > 0 ? (
             data.map(
@@ -27,7 +31,7 @@ function ScrollableList({ data, renderCell, ...rest }: ScrollableListProps) {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'cener',
+                justifyContent: 'center',
                 marginTop: 24,
               }}
             >
@@ -35,9 +39,24 @@ function ScrollableList({ data, renderCell, ...rest }: ScrollableListProps) {
               <Typography>Lista vazia</Typography>
             </div>
           ))}
-      </List>
-    </Container>
+      </Container>
+      <ButtonContainer>
+        {/* {currentPage > 1 && (
+          <Button
+            variant="outline"
+            onClick={() => handlePaginate(-1)}
+            size="md"
+            style={{ marginRight: 32 }}
+          >
+            Anterior
+          </Button>
+        )} */}
+        {currentPage < lastPage && (
+          <Button variant="outline" onClick={() => handlePaginate(1)} size="md">
+            Próxima
+          </Button>
+        )}
+      </ButtonContainer>
+    </div>
   );
-}
-
-export { ScrollableList };
+};

@@ -1,20 +1,15 @@
 import styled, { css } from 'styled-components';
 import SimpleBar from 'simplebar-react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'simplebar/dist/simplebar.min.css';
-import { ScrollableListProps } from './scrollableList.interfaces';
 
 type ContainerType = {
   class: string;
 };
 
-export const Container = styled.div<ContainerType>`
+export const Container = styled.div`
   color: '#000';
-  .simplebar-content {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
 `;
 
 export const List = styled(SimpleBar)<any>`
@@ -23,4 +18,12 @@ export const List = styled(SimpleBar)<any>`
     css`
       height: ${props.size}px;
     `};
+`;
+
+export const ButtonContainer = styled.div`
+  padding: 0 8px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;

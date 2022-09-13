@@ -31,16 +31,6 @@ const SearchBar = ({
     }
   }
 
-  function clearSearchBar() {
-    if (inputRef.current) {
-      const { current } = inputRef;
-      let { value } = current;
-      onChange('');
-      value = '' as never;
-      setSearchBar('');
-    }
-  }
-
   const debouncedSearch = debounce((func: any) => {
     onSearchChange();
   }, 500);
@@ -65,16 +55,6 @@ const SearchBar = ({
         onBlur={() => setIsFocused(false)}
         onChange={debouncedSearch}
       />
-
-      {searchBar !== '' && (
-        <ClearButton
-          type="button"
-          onClick={() => clearSearchBar}
-          title="Limpar"
-        >
-          <Icon name="close" />
-        </ClearButton>
-      )}
     </Container>
   );
 };

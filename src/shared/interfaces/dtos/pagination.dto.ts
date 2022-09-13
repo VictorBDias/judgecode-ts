@@ -1,8 +1,9 @@
 export type IPaginationAPI = {
-  total: string;
-  perPage: number;
+  total: number;
+  per_page: number;
   page: number;
-  lastPage: number;
+  current_page: number;
+  last_page: number;
 };
 
 export interface PaginationResponse {
