@@ -14,7 +14,6 @@ import { useQuestions } from '../../hooks/useQuestionBank';
 
 const QuestionsBankContent = () => {
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState('');
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<IQuestion | null>(
@@ -32,7 +31,7 @@ const QuestionsBankContent = () => {
 
   //* FUNCTIONS
   const listQuestionsFunc = useCallback((page = 1) => {
-    listQuestions({ page, search: searchValue });
+    listQuestions({ page });
   }, []);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const QuestionsBankContent = () => {
     return (
       <QuestionCard
         title={title}
-        id={id}
+        id={id!}
         tag={language}
         onEdit={() => {
           setSelectedQuestion(data);
@@ -78,7 +77,6 @@ const QuestionsBankContent = () => {
         <SearchBar
           placeholder="Busque uma questão"
           style={{ maxWidth: 400 }}
-          onClear={() => handleSearch('')}
           onChange={(value: string) => handleSearch(value)}
         />
         <Button

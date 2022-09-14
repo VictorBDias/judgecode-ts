@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import { Button } from 'shared/components/atoms';
@@ -11,9 +10,14 @@ import { CreateQuestionModal } from '../../../../components/CreateQuestionModal/
 import { QuestionCard } from './QuestionCard/QuestionCard';
 
 const QuestionsTab = ({ repository }: any) => {
-  const navigate = useNavigate();
-  const { questions, page, deleteQuestion, updateQuestion, createQuestion } =
-    repository;
+  const {
+    questions,
+    deleteQuestion,
+    updateQuestion,
+    createQuestion,
+    createSideEffect,
+    deleteSideEffect,
+  } = repository;
 
   //* STATES
   const [showBankModal, setShowBankModal] = React.useState(false);
@@ -28,7 +32,7 @@ const QuestionsTab = ({ repository }: any) => {
     return (
       <QuestionCard
         title={title}
-        id={id}
+        id={id!}
         tag={language}
         onEdit={() => {
           setSelectedQuestion(data);
@@ -76,9 +80,11 @@ const QuestionsTab = ({ repository }: any) => {
       </Container>
       <QuestionBankModal
         show={showBankModal}
+        createSideEffect={createSideEffect}
         onClose={() => setShowBankModal(false)}
       />
       <CreateQuestionModal
+        onlySideEffect
         show={showQuestionModal}
         onClose={() => {
           setShowQuestionModal(false);

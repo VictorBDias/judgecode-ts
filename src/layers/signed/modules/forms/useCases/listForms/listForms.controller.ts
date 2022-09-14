@@ -30,10 +30,10 @@ export const useFormsController = ({
         const response = await execute({ page, search });
 
         const { meta } = response.data;
-        // replacePagination({
-        //   page: meta.current_page,
-        //   lastPage: meta.last_page,
-        // });
+        replacePagination({
+          page: meta.current_page,
+          lastPage: meta.last_page,
+        });
 
         changeStatus('success');
 

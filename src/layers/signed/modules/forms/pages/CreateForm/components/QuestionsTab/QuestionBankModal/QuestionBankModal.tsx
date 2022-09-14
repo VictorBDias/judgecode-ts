@@ -1,18 +1,20 @@
 import { useQuestions } from 'layers/signed/modules/questionBank/hooks/useQuestionBank';
 import React, { useCallback, useEffect } from 'react';
-import { Card, Typography } from 'shared/components/atoms';
+import { Button, Card, Icon, Typography } from 'shared/components/atoms';
 import { CheckBox } from 'shared/components/atoms/Checkbox';
 import { Modal, ScrollableList, SearchBar } from 'shared/components/molecules';
 import { IQuestion } from 'shared/interfaces/questions.interfaces';
 
-const QuestionBankModal = ({ show, onClose }: any) => {
-  const { listQuestions, questions } = useQuestions();
+const QuestionBankModal = ({ show, onClose, createSideEffect }: any) => {
+  const { listQuestions, questions, page, lastPage } = useQuestions();
   const renderCell = (question: IQuestion) => (
-    <div style={{ display: 'flex', marginLeft: 8 }}>
-      <CheckBox />
-      <Card width={400} height={80} margin={8}>
-        <Typography>{question.title}</Typography>
-        <Typography>{question.body}</Typography>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <Button onClick={() => createSideEffect(question)} size="sm">
+        <Icon name="plus" variant="white" />
+      </Button>
+      <Card width={400} height={100} margin={8}>
+        <Typography maxLines={1}>{question.title}</Typography>
+        <Typography maxLines={2}>{question.body}</Typography>
       </Card>
     </div>
   );
@@ -26,6 +28,14 @@ const QuestionBankModal = ({ show, onClose }: any) => {
     listQuestionsFunc();
   }, []);
 
+  const handlePaginate = useCallback((value) => {
+    listQuestions({ page: page + value });
+  }, []);
+
+  const handleSearch = useCallback((value) => {
+    listQuestions({ page: 1, search: value });
+  }, []);
+
   return (
     <Modal
       size="lg"
@@ -34,10 +44,17 @@ const QuestionBankModal = ({ show, onClose }: any) => {
       onClose={onClose}
     >
       <>
-        <SearchBar placeholder="Busque uma questão" />
+        <SearchBar
+          placeholder="Busque uma questão"
+          style={{ maxWidth: 400 }}
+          onChange={(value: string) => handleSearch(value)}
+        />
         <ScrollableList
           style={{ marginTop: 16 }}
           data={questions}
+          currentPage={page}
+          lastPage={lastPage}
+          handlePaginate={handlePaginate}
           renderCell={renderCell}
           size={600}
         />

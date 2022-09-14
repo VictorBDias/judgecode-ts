@@ -14,11 +14,19 @@ const FormList = () => {
 
   //* FUNCTIONS
   const listFormsFunc = useCallback((page = 1) => {
-    listForms({ page: 1 });
+    listForms({ page });
   }, []);
 
   useEffect(() => {
     listFormsFunc();
+  }, []);
+
+  const handlePaginate = useCallback((value) => {
+    listForms({ page: page + value });
+  }, []);
+
+  const handleSearch = useCallback((value) => {
+    listForms({ page: 1, search: value });
   }, []);
 
   const renderCell = (data: IForm) => (
@@ -45,8 +53,9 @@ const FormList = () => {
         }}
       >
         <SearchBar
-          placeholder="Busque um formulário"
+          placeholder="Busque uma questão"
           style={{ maxWidth: 400 }}
+          onChange={(value: string) => handleSearch(value)}
         />
 
         <Button
@@ -62,6 +71,9 @@ const FormList = () => {
       <ScrollableList
         style={{ marginLeft: -4, marginBottom: 40, marginTop: 16 }}
         data={forms}
+        currentPage={page}
+        lastPage={lastPage}
+        handlePaginate={handlePaginate}
         renderCell={renderCell}
         size={800}
       />

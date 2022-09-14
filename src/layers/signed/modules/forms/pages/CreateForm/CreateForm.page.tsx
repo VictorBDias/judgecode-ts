@@ -10,6 +10,7 @@ import { GeneralTab } from './components/GeneralTab/GeneralTab';
 import { QuestionsTab } from './components/QuestionsTab/QuestionsTab';
 import { showFormsApi } from '../../apis/forms.apis';
 import { IForm } from '../../interfaces/forms.interfaces';
+import { handleFormatFormQuestions } from '../../handlers/handleFormatFormQuestions';
 
 type FieldValues = {
   name: string;
@@ -42,7 +43,11 @@ const CreateForm = () => {
   }, []);
 
   const onSubmit = ({ name, description }: any) => {
-    createForm({ name, description, problems: repository.questions });
+    createForm({
+      name,
+      description,
+      problems: handleFormatFormQuestions(repository.questions),
+    });
     navigate('/forms');
   };
 

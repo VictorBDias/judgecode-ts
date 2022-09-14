@@ -11,6 +11,7 @@ const CreateQuestionModal = ({
   initialData,
   createQuestion,
   updateQuestion,
+  onlySideEffect = false,
 }: any) => {
   const [questionType, setQuestionType] = useState<QuestionTypes>(
     initialData && initialData.category
@@ -31,6 +32,7 @@ const CreateQuestionModal = ({
         onClose,
         createQuestion,
         updateQuestion,
+        onlySideEffect,
       })}
     </Modal>
   );

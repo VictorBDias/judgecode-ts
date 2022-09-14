@@ -1,5 +1,5 @@
 import { IQuestion } from 'shared/interfaces/questions.interfaces';
-import React, { useState } from 'react';
+import React from 'react';
 import { Select } from '../../../../../shared/components/atoms';
 import { QuestionTypes } from '../../forms/components/CreateQuestionModal/createQuestion.interfaces';
 import { CodeEditorForm } from '../components/CodeEditorForm/CodeEditorForm';
@@ -31,6 +31,7 @@ export type QuestionsRenderType = {
   onClose?: () => void;
   createQuestion?: (question: IQuestion) => void;
   updateQuestion?: (questionId: string, data: IQuestion) => void;
+  onlySideEffect?: boolean;
 };
 
 const handleRenderQuestion = ({
@@ -39,6 +40,7 @@ const handleRenderQuestion = ({
   onClose,
   createQuestion,
   updateQuestion,
+  onlySideEffect,
 }: Omit<QuestionsRenderType, 'setQuestionType'>) => {
   switch (questionType) {
     case 'codeEditor':
@@ -48,6 +50,7 @@ const handleRenderQuestion = ({
           onClose={onClose}
           createQuestion={createQuestion}
           updateQuestion={updateQuestion}
+          onlySideEffect={onlySideEffect}
         />
       );
 
@@ -69,6 +72,7 @@ export const useQuestionsRender = ({
   onClose,
   createQuestion,
   updateQuestion,
+  onlySideEffect,
 }: QuestionsRenderType) => (
   <div style={{ marginLeft: 24 }}>
     <div style={{ marginBottom: 16 }}>
@@ -84,6 +88,7 @@ export const useQuestionsRender = ({
       onClose,
       createQuestion,
       updateQuestion,
+      onlySideEffect,
     })}
   </div>
 );

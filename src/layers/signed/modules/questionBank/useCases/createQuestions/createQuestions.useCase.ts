@@ -5,9 +5,12 @@ import { useCallback } from 'react';
 
 export const useCreateQuestionsUseCase = ({ create }: IQuestionsRepository) => {
   const execute = useCallback(async (data: ICreateQuestionsDTO) => {
-    const response = await createQuestionsAPI(data);
-    create(response.data);
-    return response;
+    if (!data.onlySideEffect) {
+      const response = await createQuestionsAPI(data);
+      create(response.data);
+      return response;
+    }
+    create(data);
   }, []);
 
   return { execute };

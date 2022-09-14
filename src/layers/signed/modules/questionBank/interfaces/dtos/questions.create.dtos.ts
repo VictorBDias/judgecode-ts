@@ -8,4 +8,5 @@ export type ICreateQuestionsDTO = {
   language?: string;
   owner_id: string;
   category_id?: string;
+  onlySideEffect?: boolean;
 };

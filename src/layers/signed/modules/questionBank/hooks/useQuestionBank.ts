@@ -31,13 +31,14 @@ export const useQuestions = () => {
     repository,
     changeStatus,
   );
-
   return {
     questions: repository.questions,
     listQuestions: listQuestionController.handle,
     createQuestion: createQuestionController.handle,
     updateQuestion: updateQuestionController.handle,
     deleteQuestion: deleteQuestionController.handle,
+    createSideEffect: repository.create,
+    deleteSideEffect: repository.destroy,
     status,
     page,
     lastPage,

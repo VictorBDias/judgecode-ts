@@ -15,6 +15,7 @@ const CodeEditorForm = ({
   onClose,
   createQuestion,
   updateQuestion,
+  onlySideEffect,
 }: any) => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm<any>();
@@ -34,6 +35,7 @@ const CodeEditorForm = ({
               body: questionCode,
               owner_id: user.id,
               language,
+              onlySideEffect,
               ...data,
             },
           });
@@ -43,6 +45,7 @@ const CodeEditorForm = ({
             body: questionCode,
             owner_id: user.id,
             language,
+            onlySideEffect,
           });
         }
       } else {
@@ -50,6 +53,7 @@ const CodeEditorForm = ({
           title: data.description,
           body: questionCode,
           owner_id: user.id,
+          onlySideEffect,
           language,
         });
       }

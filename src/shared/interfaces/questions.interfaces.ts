@@ -28,7 +28,7 @@ export type IQuestion = {
   id: string;
   title: string;
   body: string;
-  language: string;
+  language?: string;
   owner_id: string;
   category_id?: string;
   owner?: IOwner;
