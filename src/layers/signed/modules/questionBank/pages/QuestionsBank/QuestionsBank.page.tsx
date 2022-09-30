@@ -35,7 +35,7 @@ const QuestionsBankContent = () => {
   }, []);
 
   useEffect(() => {
-    listQuestionsFunc();
+    setTimeout(() => listQuestionsFunc(), 100);
   }, []);
 
   const handlePaginate = useCallback((value) => {

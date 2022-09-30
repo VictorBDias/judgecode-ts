@@ -18,7 +18,7 @@ const FormList = () => {
   }, []);
 
   useEffect(() => {
-    listFormsFunc();
+    setTimeout(() => listFormsFunc(), 100);
   }, []);
 
   const handlePaginate = useCallback((value) => {

@@ -16,7 +16,7 @@ type FieldValues = {
   name: string;
 };
 
-const tabs = ['Geral', 'Questões', 'Visualizar'];
+const tabs = ['Geral', 'Questões'];
 
 const CreateForm = () => {
   const {
