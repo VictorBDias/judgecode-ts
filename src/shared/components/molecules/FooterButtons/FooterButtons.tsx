@@ -23,7 +23,6 @@ function FooterButtons({
   return (
     <Box
       as="footer"
-      // bg="primary"
       style={{
         width: '100%',
         display: 'flex',
@@ -43,9 +42,9 @@ function FooterButtons({
           color="secondaryObj"
           onClick={() => onCancel()}
         >
-          {cancelButton || (
-            <Typography variant="secondary">Cancelar</Typography>
-          )}
+          <Typography variant="secondary">
+            {cancelButton || 'Cancelar'}
+          </Typography>
         </Button>
       )}
 
@@ -58,9 +57,9 @@ function FooterButtons({
           form={formId}
           style={{ marginLeft: 8 }}
         >
-          {confirmButtonName || (
-            <Typography variant="whiteSubTitle">Salvar</Typography>
-          )}
+          <Typography variant="whiteSubTitle">
+            {confirmButtonName || 'Salvar'}
+          </Typography>
         </Button>
       )}
     </Box>

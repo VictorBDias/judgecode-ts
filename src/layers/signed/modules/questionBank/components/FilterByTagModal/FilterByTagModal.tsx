@@ -15,16 +15,16 @@ const tagMock = [
   },
 ];
 
-const FilterByTagModal = ({ show, onClose }: any) => {
+const FilterByTagModal = ({ show, onClose, ...rest }: any) => {
   const [filters, setFilters] = useState<string[]>([]);
   return (
     <Modal
       show={show}
       onClose={onClose}
-      title="Filtrar por TAGS"
+      title="Filtrar por Tags"
       onSubmit={() => console.log(filters)}
     >
-      <TagGroup data={tagMock} />
+      <TagGroup data={tagMock} style={{ marginBottom: 40 }} {...rest} />
     </Modal>
   );
 };

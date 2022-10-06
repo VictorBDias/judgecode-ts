@@ -119,7 +119,11 @@ const QuestionsBankContent = () => {
         updateQuestion={updateQuestion}
       />
 
-      <FilterByTagModal show={false} />
+      <FilterByTagModal
+        show={showTagModal}
+        onClose={() => setShowTagModal(false)}
+        onClick={() => setShowTagModal(false)}
+      />
     </Container>
   );
 };

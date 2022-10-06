@@ -124,6 +124,7 @@ const CodeEditor = ({
   showLanguageOptions = true,
   readOnly = false,
   initialData,
+  mode,
   ...rest
 }: CodeEditorProps) => {
   const { language, setLanguage } = useCreateQuestion();
@@ -148,7 +149,7 @@ const CodeEditor = ({
           borderRadius: 8,
         }}
         placeholder={placeholder}
-        mode={language}
+        mode={mode || language}
         theme={theme}
         name="blah2"
         onLoad={onLoad}
