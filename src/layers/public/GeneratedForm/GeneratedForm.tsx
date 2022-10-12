@@ -1,26 +1,9 @@
-import { stringify } from 'querystring';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormInput, Line, PageCard, Typography } from 'shared/components/atoms';
 import { FooterButtons, LinesDraggableList } from 'shared/components/molecules';
 import { CodeEditor } from 'shared/components/organisms';
 
-const mockQuestions = [
-  { id: 1, type: 'codeEditor' },
-  { id: 1, type: 'orderCode' },
-];
-const mockCodeEditor = `# Qual o resultado da seguinte função recursiva em Python?
-
-def fatorial(n: int) -> int:
-    if n == 1 or n == 0:
-        return 1
-    return n * fatorial(n - 1)
-
-
-if __name__ == "__main__":
-    fat5 = fatorial(5)
-    print(fat5)"
-`;
 const mockOrderData = [
   { id: 1, content: 'var length = items.length;' },
   { id: 2, content: 'for (var i = 0; i < length; i++)' },

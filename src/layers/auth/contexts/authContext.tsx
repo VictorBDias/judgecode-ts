@@ -102,10 +102,10 @@ const AuthProvider: React.FC = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        // STATES
+        //* STATES
         user,
         isLoading,
-        // FUNCTIONS
+        //* FUNCTIONS
         handleSignIn,
         handleSignUp,
         handleSignOut,

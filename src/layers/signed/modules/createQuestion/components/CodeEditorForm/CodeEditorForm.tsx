@@ -78,11 +78,12 @@ const CodeEditorForm = ({
       />
 
       <Button
-        type="submit"
+        type={!onlySideEffect ? 'submit' : 'button'}
         color="secondaryObj"
         size="md"
         variant="solid"
         style={{ marginTop: 24 }}
+        onClick={onlySideEffect && onSubmit}
       >
         <Typography variant="whiteSubTitle">Salvar</Typography>
       </Button>

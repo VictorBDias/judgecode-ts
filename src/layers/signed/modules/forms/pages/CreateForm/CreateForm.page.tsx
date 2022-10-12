@@ -10,7 +10,10 @@ import { GeneralTab } from './components/GeneralTab/GeneralTab';
 import { QuestionsTab } from './components/QuestionsTab/QuestionsTab';
 import { showFormsApi } from '../../apis/forms.apis';
 import { IForm } from '../../interfaces/forms.interfaces';
-import { handleFormatFormQuestions } from '../../handlers/handleFormatFormQuestions';
+import {
+  handleFormatFormQuestions,
+  handleFormatPutQuestions,
+} from '../../handlers/handleFormatFormQuestions';
 
 type FieldValues = {
   name: string;
@@ -26,7 +29,7 @@ const CreateForm = () => {
     formState: { errors },
   } = useForm<FieldValues>();
   const navigate = useNavigate();
-  const { createForm } = useForms();
+  const { createForm, updateForm, changeStatus, status } = useForms();
   const repository = useQuestions();
   const { formId } = useParams();
 
@@ -35,22 +38,46 @@ const CreateForm = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    changeStatus('pending');
+
     if (formId) {
-      showFormsApi({ id: formId }).then((response) =>
-        setInitialData(response.data),
-      );
+      showFormsApi({ id: formId }).then((response) => {
+        setInitialData(response.data);
+        changeStatus('success');
+      });
+    } else {
+      changeStatus('success');
     }
   }, []);
 
   const onSubmit = ({ name, description }: any) => {
-    createForm({
-      name,
-      description,
-      problems: handleFormatFormQuestions(repository.questions),
-    });
-    navigate('/forms');
-  };
+    try {
+      if (!formId) {
+        createForm({
+          name,
+          description,
+          problems: handleFormatFormQuestions(repository.questions),
+        });
+      } else {
+        updateForm({
+          id: formId,
+          data: {
+            id: formId,
+            name,
+            description,
+            problems: handleFormatPutQuestions({
+              questions: repository.questions,
+              categoryId: formId,
+            }),
+          },
+        });
+      }
 
+      navigate('/forms');
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
       <Tabs tabs={tabs} variant="line">
@@ -60,7 +87,10 @@ const CreateForm = () => {
           initialData={initialData}
         />
         <CreateQuestionsProvider>
-          <QuestionsTab repository={repository} />
+          <QuestionsTab
+            repository={repository}
+            initialData={initialData?.problems}
+          />
         </CreateQuestionsProvider>
       </Tabs>
       <FooterButtons

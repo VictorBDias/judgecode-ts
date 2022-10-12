@@ -39,6 +39,7 @@ export const useForms = () => {
     updateForm: updateFormController.handle,
     deleteForm: deleteFormController.handle,
     status,
+    changeStatus,
     page,
     lastPage,
   };

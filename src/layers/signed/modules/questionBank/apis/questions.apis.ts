@@ -31,20 +31,13 @@ export const listQuestionsAPI = ({
   });
 export const createQuestionsAPI = (
   data: ICreateQuestionsDTO,
-): ICreateQuestionsAPI =>
-  api.post('/admin/problems', {
-    ...data,
-    category_id: '248c6aa9-8636-45c4-bff3-4c082615ac24',
-  });
+): ICreateQuestionsAPI => api.post('/admin/problems', data);
 
 export const updateQuestionsAPI = ({
   id,
   data,
 }: IUpdateQuestionsDTO): IUpdateQuestionsAPI =>
-  api.put(`/admin/problems/${id}`, {
-    ...data,
-    category_id: '248c6aa9-8636-45c4-bff3-4c082615ac24',
-  });
+  api.put(`/admin/problems/${id}`, data);
 
 export const deleteQuestionsAPI = ({
   id,

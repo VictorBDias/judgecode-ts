@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { IQuestion } from 'shared/interfaces/questions.interfaces';
 import { Button } from 'shared/components/atoms';
 import { ScrollableList } from 'shared/components/molecules';
 import { Icon } from 'shared/components/atoms/Icon';
+import { handleFormatQuestions } from 'layers/signed/modules/questionBank/pages/QuestionsBank/utils/formattQuestions';
 import { Container } from './questionsTab.styles';
 import { QuestionBankModal } from './QuestionBankModal/QuestionBankModal';
 import { CreateQuestionModal } from '../../../../components/CreateQuestionModal/CreateQuestionModal';
 import { QuestionCard } from './QuestionCard/QuestionCard';
 
-const QuestionsTab = ({ repository }: any) => {
+const QuestionsTab = ({ repository, initialData }: any) => {
   const {
     questions,
     deleteQuestion,
     updateQuestion,
     createQuestion,
     createSideEffect,
-    deleteSideEffect,
   } = repository;
 
   //* STATES
@@ -25,8 +25,13 @@ const QuestionsTab = ({ repository }: any) => {
   const [selectedQuestion, setSelectedQuestion] = useState<IQuestion | null>(
     null,
   );
-
   //* FUNCTIONS
+  useEffect(() => {
+    if (initialData) {
+      initialData.map((question: any) => createSideEffect(question));
+    }
+  }, [initialData]);
+
   const renderCell = (data: IQuestion) => {
     const { title, body, id, language } = data;
     return (
@@ -42,6 +47,7 @@ const QuestionsTab = ({ repository }: any) => {
       />
     );
   };
+
   return (
     <>
       <Container>
