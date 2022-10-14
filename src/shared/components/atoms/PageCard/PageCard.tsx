@@ -9,6 +9,7 @@ export const PageCard = ({
   children,
   color,
   margin = 80,
+  height,
   ...rest
 }: CardProps) => (
   <Container>
