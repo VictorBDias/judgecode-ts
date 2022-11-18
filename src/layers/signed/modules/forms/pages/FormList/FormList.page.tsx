@@ -53,7 +53,7 @@ const FormList = () => {
         }}
       >
         <SearchBar
-          placeholder="Busque uma questão"
+          placeholder="Busque por um formulário"
           style={{ maxWidth: 400 }}
           onChange={(value: string) => handleSearch(value)}
         />
