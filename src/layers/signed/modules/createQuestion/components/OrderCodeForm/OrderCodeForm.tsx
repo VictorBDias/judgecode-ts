@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FormInput } from 'shared/components/atoms';
+import { Button, FormInput, Typography } from 'shared/components/atoms';
 import { LinesDraggableList } from '../../../../../../shared/components/molecules';
 import { useOrderHandlers } from './hooks/useOrderHandlers';
 
@@ -38,6 +38,14 @@ const OrderCodeForm = () => {
         onDelete={deleteLine}
         onDragFinish={reorderLines}
       />
+      <Button
+        color="secondaryObj"
+        size="md"
+        variant="solid"
+        style={{ marginTop: 24 }}
+      >
+        <Typography variant="whiteSubTitle">Salvar</Typography>
+      </Button>
     </form>
   );
 };

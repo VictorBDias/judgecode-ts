@@ -79,13 +79,16 @@ const CreateForm = () => {
     }
   };
   return (
-    <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
+    <>
       <Tabs tabs={tabs} variant="line">
-        <GeneralTab
-          activeControls={{ isActive, setIsActive }}
-          register={register}
-          initialData={initialData}
-        />
+        <form id="form-form" onSubmit={handleSubmit(onSubmit)}>
+          <GeneralTab
+            activeControls={{ isActive, setIsActive }}
+            register={register}
+            initialData={initialData}
+          />
+        </form>
+
         <CreateQuestionsProvider>
           <QuestionsTab
             repository={repository}
@@ -98,7 +101,7 @@ const CreateForm = () => {
         type="submit"
         onCancel={() => navigate('/forms')}
       />
-    </form>
+    </>
   );
 };
 

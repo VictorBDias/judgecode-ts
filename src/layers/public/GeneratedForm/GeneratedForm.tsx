@@ -23,7 +23,19 @@ export const GeneratedForm = () => {
   useEffect(() => {
     setIsLoaded(false);
     guestShowFormApi(formId!).then((res) => {
-      setFormData(res.data);
+      setFormData({
+        ...res.data,
+        problems: [
+          ...res.data.problems,
+          {
+            id: 999,
+            title: 'Ordene o algorítimo',
+            body: '',
+            language: 'javascript',
+            type: 'orderCode',
+          },
+        ],
+      });
       setIsLoaded(true);
     });
   }, []);
@@ -34,7 +46,6 @@ export const GeneratedForm = () => {
 
   const handleRenderQuestions = (questions: any) =>
     questions.map((question: any, index: number) => {
-      console.log(question);
       const { id, title, body, language, type } = question;
       switch (type) {
         case 'codeEditor':
@@ -69,7 +80,6 @@ export const GeneratedForm = () => {
               <LinesDraggableList
                 data={mockOrderData}
                 readOnly
-                title={title}
                 initialData={question}
               />
               <Line style={{ margin: 24, marginLeft: -8 }} />
