@@ -1,6 +1,5 @@
 ## Document
-[judgecode.pdf](https://github.com/VictorBDias/judgecode-ts/files/11384791/judgecode.pdf)
-
+[judgecode.pdf](https://github.com/VictorBDias/judgecode-ts/files/11384812/judgecode.pdf)
 
 ## Running locally
 
