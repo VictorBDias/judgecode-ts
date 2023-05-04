@@ -8,8 +8,9 @@ Sistema web para questões de programação que tem como objetivo facilitar o pr
 
 ### `yarn start`
 
-Inicia o aplicativo em modo de desenvolvimento
-Abra [http://localhost:3000](http://localhost:3000) para visualizar no navegador.
+Inicia o aplicativo em modo de desenvolvimento.
+
+[http://localhost:3000](http://localhost:3000) para visualizar no navegador.
 
 ## Prints
 
